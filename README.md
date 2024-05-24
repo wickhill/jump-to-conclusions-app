@@ -30,13 +30,13 @@
 <br />
 <div align="center">
 <!--   <a href="https://jumpToConclusions-app.netlify.app"> -->
-    <img src="jtcm01-sq.png" alt="Icon" width="80" height="80">
+    <img src="joanna-office-space.png" alt="Icon" width="80" height="80">
   </a>
 
 <h3 align="center">Jump To Conclusions App!</h3>
 
   <p align="center">
-    Dragon Beats: Stream, organize, and share the ultimate study and coding playlists.
+    The Jump To Conclusions App! Ask it anything, and it'll jump to a conclusion for you!
     <br />
     <a href="https://github.com/wickhill/jumpToConclusions"><strong>Explore the docs »</strong></a>
     <br />
@@ -98,12 +98,11 @@
 
 <br>
 
-<h1 align="center">"Tune in. Code out. Study smarter."</h1>
+<h1 align="center">"You know... I had an idea like [The Pet Rock] once..."</h1>
 
 ### Project Team:
-- [Karina Nova](https://github.com/kbmelody8)
-- [David Lesesne](https://github.com/dlesesne23)
 - [Wick Hill](https://github.com/wickhill)
+- [Tom Smykowski](https://www.imdb.com/name/nm0726223/?ref_=tt_cl_t_8)
 
 ### Quick Links:
 - [Office Space IMDB](https://www.imdb.com/title/tt0151804/)
