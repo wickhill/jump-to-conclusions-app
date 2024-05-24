@@ -33,7 +33,7 @@
     <img src="joanna-office-space.png" alt="Icon" width="80" height="80">
   </a>
 
-<h3 align="center">Jump To Conclusions App!</h3>
+<h3 align="center">It's a... Jump To Conclusions App!</h3>
 
   <p align="center">
     The Jump To Conclusions App! Ask it anything, and it'll jump to a conclusion for you!
@@ -71,7 +71,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Leap Before You Look:The Roadmap to the Jump To Conclusions App!</a></li>
+    <li><a href="#roadmap">Roadmap: Leap! Our journey</a></li>
         <ul>
         <li><a href="#project-origins">Project Origins</a></li>
         <li><a href="#user-stories">User Stories</a></li>
@@ -299,7 +299,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [license-url]: https://opensource.org/licenses/MIT
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://www.linkedin.com/in/wickhill/
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
