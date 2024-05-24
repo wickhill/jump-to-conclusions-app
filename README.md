@@ -98,7 +98,7 @@
 
 <br>
 
-<h1 align="center">"You know... I had an idea like [The Pet Rock] once..."</h1>
+<h1 align="center">"You know... I had an idea like that once..."</h1>
 
 ### Project Team:
 - [Wick Hill](https://github.com/wickhill)
@@ -115,6 +115,7 @@
 ### Built With
 
 * [![React][React.js]][React-url]
+* [![Bootstrap][bootstrap-shield]][bootstrap-url]
 * [![Tailwind CSS][Tailwind.js]][Tailwind-url]
 * [![NPM][NPM.js]][NPM-url]
 * [![jQuery][jQuery.js]][jQuery-url]
@@ -316,6 +317,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+[bootstrap-shield]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[bootstrap-url]: https://getbootstrap.com
 
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB "React Badge"
 [React-url]: https://reactjs.org/
