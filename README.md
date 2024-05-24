@@ -29,11 +29,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-<!--   <a href="https://dragon-beats-app.netlify.app"> -->
+<!--   <a href="https://jumpToConclusions-app.netlify.app"> -->
     <img src="jtcm01-sq.png" alt="Icon" width="80" height="80">
   </a>
 
-<h3 align="center">Dragon Beats</h3>
+<h3 align="center">Jump To Conclusions App!</h3>
 
   <p align="center">
     Dragon Beats: Stream, organize, and share the ultimate study and coding playlists.
@@ -75,7 +75,7 @@
         <ul>
         <li><a href="#project-origins">Project Origins</a></li>
         <li><a href="#user-stories">User Stories</a></li>
-        <li><a href="#spotify-api">Spotify's API</a></li>
+        <li><a href="#jump-to-conclusions-data">Jump To Conclusions Data</a></li>
         <li><a href="#hurdles">Hurdles</a></li>
         </ul>
     <li><a href="#screenshots">Screenshots</a></li>
@@ -106,9 +106,8 @@
 - [Wick Hill](https://github.com/wickhill)
 
 ### Quick Links:
-- [Spotify for Developers Documentation](https://developer.spotify.com/documentation/web-api)
-- [Code Commerce's Tailwind Guide](https://www.youtube.com/watch?v=_PoYJqG04Zc)
-- [Scott Chacon's "So You Think You Know Your Git?"](https://youtu.be/aolI_Rz0ZqY?si=iqDKHdpO9_uHtlib)
+- [Office Space IMDB](https://www.imdb.com/title/tt0151804/)
+- [Scott Chacon's "So You Think You Know Git?"](https://youtu.be/aolI_Rz0ZqY?si=iqDKHdpO9_uHtlib)
 - [NPM](https://www.npmjs.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -118,7 +117,6 @@
 
 * [![React][React.js]][React-url]
 * [![Tailwind CSS][Tailwind.js]][Tailwind-url]
-* [![Spotify][Spotify.js]][Spotify-url]
 * [![NPM][NPM.js]][NPM-url]
 * [![jQuery][jQuery.js]][jQuery-url]
 * [![ChatGPT][ChatGPT.js]][ChatGPT-url]
@@ -131,7 +129,7 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get started with Dragon Beats, just follow these steps:
+To get started with The Jump To Conclusions App, just follow these steps:
 
 ### Prerequisites
 
@@ -142,11 +140,11 @@ To get started with Dragon Beats, just follow these steps:
 
 ### Installation
 
-1. Get a free Spotify API Key at [https://developer.spotify.com/documentation/web-api](https://developer.spotify.com/documentation/web-api)
+1. First, read the films reviews and scores on IMDB! [https://www.imdb.com/title/tt0151804/](https://www.imdb.com/title/tt0151804/)
 
 2. Clone the repo
    ```sh
-   git clone https://github.com/wickhill/dragon-beats.git
+   git clone https://github.com/wickhill/jumpToConclusions
    ```
 
 3. Install NPM packages
@@ -157,8 +155,7 @@ To get started with Dragon Beats, just follow these steps:
    npm i mongoose
    ```
 
-4. Enter your Spotify Developer Client ID and Client secret into an `.env` file you create in your frontend root directory. You can find these Client parameters by going to:
-* []() Spotify Developer's Dashboard --->
+4. Enter your IMDB username into an `.env` file you create in your frontend root directory. You can find these Client parameters by going to:
 * []() Select your app --->
 * []() Settings --->
 * []() Client ID + click on 'View client secret'
@@ -177,22 +174,20 @@ Then, this is what the code in your frontend `.env` should look like:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-**Find Your Focus with Dragon Beats.**
+**Find Your Happiness with Casual Fridays.**
 
-Dragon Beats harmonizes your study and coding sessions with curated playlists that sharpen focus without distraction. It's where music transforms from mere background noise to a productivity-boosting soundscape.
+Just don't get too casual and forget about those TPS Reports!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- ROADMAP to Dragon Beats -->
+<!-- ROADMAP to Jump To Conclusions -->
 ## Roadmap
 
-- See our [Lucid Board](https://lucid.app/lucidchart/628ed53c-eba0-448e-b1db-7fe2a378ffec/edit?invitationId=inv_84059993-f9b4-4242-9ba8-44dfba3f4f0b&page=0_0#) for our ERD and Routes Table.
+- See my [Figma Board](https://www.figma.com/board/ZmQYxUoys0tOWwHSDY3fia/Jump-To-Conclusions-App?node-id=0-1&t=BmHscWeCgJKBg3Vc-0) for my Wireframe and Proposed Features.
 
-- See our [Lucid Board](https://lucid.app/lucidspark/659fecc1-5684-4de2-b60c-24e020f7b54e/edit?existing=1&docId=659fecc1-5684-4de2-b60c-24e020f7b54e&shared=true&page=0_0&invitationId=inv_dcd3f292-1910-46a0-8fc1-c5d88f6999a7#) for a comprehensive list of our Wireframe and Proposed Features.
-
-- See our [Trello Board](https://trello.com/b/wglvCwe2/dragonbeats) for MVP and stretch goals.
+- See my [Trello Board](https://trello.com/b/2dwSSjZy/jump-to-conclusions) for MVP and stretch goals.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -202,7 +197,7 @@ Dragon Beats harmonizes your study and coding sessions with curated playlists th
 
 ## Project Origins
 
-DragonBeats originated from our motivation to create a useful application for students who are seeking music to enhance extended study sessions. Built using Spotify's API, DragonBeats integrates our knowledge of third-party APIs, authorization flows, and user accessibility. DragonBeats features genres like Classical, Jazz, and Nature Sounds, with curated playlists designed to support focused study environments.
+Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is meant to provide light entertainment for those who might be having a “Case of the Mondays”. Even if it Casual Friday.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -212,27 +207,25 @@ DragonBeats originated from our motivation to create a useful application for st
 
 ## User Stories
 
-**Account Management**: As a user, I want to be able to create an account and update my profile, so that I can personalize my experience and manage my information securely.
+**Elevator Pitch App**: As a Recruiter, I want to see an app that showcases the skills and personality of the candidate.
 
-**Genre Browsing**: As a student, I want to easily browse through main study-centric genres like ambient, chill, classical, and jazz, so that I can find music that helps me concentrate and enhances my study sessions.
+**Fun With Friends**: As a User, I have some spare time with which I'd like to have casual, non-demanding fun that I can also take screen-shots of and share with friends.
 
-**Music Discovery**: As a user, I want to access detailed information about Spotify artists, songs, and albums, so that I can discover new music and deepen my understanding of what I’m listening to.
+**Nostalgia**: As a User/Recruiter that is interested in seeing a concept from one of my favorite films ("Office Space") come to life.
 
-**Sub-genre Exploration**: As a user, I want to explore sub-genres of my favorite study-centric music categories, so that I can diversify my musical selections and enhance my focus during study.
+**Replay-ability**: As a User, the hidden "cheeves" (achievements) sprinkled into the game, as well as my personal player history, encourage me to come back and play again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- SPOTIFY API -->
+<!-- Jump To Conclusions Data -->
 
-## Spotify API
+## Jump To Conclusions Data
 
-Spotify's API uses OAuth 2.0 for authentication. Developers implement the API by obtaining an access token, and then use the token to make authorized requests to various endpoints for data retrieval, data modification (saved tracks, playlists), or even playback.
+There's more to the game than you think! Go ahead and hit the "Mix it Up!" or "Do You Dare?" buttons to see what happens!
 
-Spotify's API implements an additional security measure to protect user data and limit unauthorized access: access tokens are valid for only one hour. This is common industry practice, reducing the potential for the misuse of tokens.
-
-_For additional technical information, please refer to Spotify's API [Documentation](https://developer.spotify.com/documentation/web-api)_
+_For additional technical information, please refer to the "Office Space" IMDB [Documentation](https://www.imdb.com/title/tt0151804/)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -242,13 +235,9 @@ _For additional technical information, please refer to Spotify's API [Documentat
 
 ## Hurdles
 
-**From Authorization Code Flow to Client Credentials Flow.**
+**Everybody gets a case of 'The Mondays'. Even us ☹️**
 
-Spotify's API offers comprehensive documentation that supports a variety of integrations, from accessing saved songs to managing playlists. Implementing its full capabilities, such as user-specific data access, typically requires authentication steps including user login via the robust "Authorization Code Flow". This flow, while offering extensive access to user resources and requiring token refresh mechanisms, was initially considered for our project.
-
-However, given its complexity and our project's timeframe, we opted for the more accessible "Client Credentials Flow". This approach, which only requires a secret key and is executed server-side, provides access to a more limited set of features but is significantly easier to implement, fitting our need for simplicity and quick integration.
-
-The design of our app is flexible enough that, with our growing understanding, we feel confident in our ability to implement the full "Authorization Code Flow" and its extensive features in future iterations.
+Yeah, I know it's hard to believe. But even *we* get a case of 'The Mondays' from time to time. But hey, that ain't nothing that some 'Shrimp Poppers' or 'Extreme Fajitas' can't fix!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -257,8 +246,7 @@ The design of our app is flexible enough that, with our growing understanding, w
 <!-- SCREENSHOTS -->
 ## Screenshots
 
- <img src="https://i.imgur.com/EjnXxor.png" alt="Dragon Beats Playlists" width="800" height="600">
- <img src="https://i.imgur.com/GjyrM3c.png" alt="Dragon Beats Login Page" width="800" height="600">
+ <img src="https://i.imgur.com/btZhrEY.jpg" alt="Jump To Conclusions Mat" width="336" height="500">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -276,8 +264,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-* []() Karina Nova: [kbmelody8](https://github.com/kbmelody8)
-* []() David Lesesne: [dlesesne23](https://github.com/dlesesne23)
 * []() Wick Hill: [@wickstarter](https://twitter.com/wickstarter)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -288,7 +274,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Acknowledgments
 
 * []() General Assembly Class #1204
-* []() Digital Dragons Code Crew
+* []() The Bobs
 * []() Caffeine
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -297,17 +283,17 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/wickhill/dragon-beats.svg?style=for-the-badge
-[contributors-url]: https://github.com/wickhill/dragon-beats/graphs/contributors
+[contributors-shield]: https://img.shields.io/github/contributors/wickhill/jumpToConclusions.svg?style=for-the-badge
+[contributors-url]: https://github.com/wickhill/jumpToConclusions/graphs/contributors
 
-[forks-shield]: https://img.shields.io/github/forks/wickhill/dragon-beats.svg?style=for-the-badge
-[forks-url]: https://github.com/wickhill/dragon-beats/network/members
+[forks-shield]: https://img.shields.io/github/forks/wickhill/jumpToConclusions.svg?style=for-the-badge
+[forks-url]: https://github.com/wickhill/jumpToConclusions/network/members
 
-[stars-shield]: https://img.shields.io/github/stars/wickhill/dragon-beats.svg?style=for-the-badge
-[stars-url]: https://github.com/wickhill/dragon-beats/stargazers
+[stars-shield]: https://img.shields.io/github/stars/wickhill/jumpToConclusions.svg?style=for-the-badge
+[stars-url]: https://github.com/wickhill/jumpToConclusions/stargazers
 
-[issues-shield]: https://img.shields.io/github/issues/wickhill/dragon-beats.svg?style=for-the-badge
-[issues-url]: https://github.com/wickhill/dragon-beats/issues
+[issues-shield]: https://img.shields.io/github/issues/wickhill/jumpToConclusions.svg?style=for-the-badge
+[issues-url]: https://github.com/wickhill/jumpToConclusions/issues
 
 [license-shield]: https://img.shields.io/badge/License-MIT-yellow.svg
 [license-url]: https://opensource.org/licenses/MIT
