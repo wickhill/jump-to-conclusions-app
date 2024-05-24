@@ -206,7 +206,7 @@ Just don't get too casual and forget about those TPS Reports!
 
 ## Project Origins
 
-Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is meant to provide light entertainment for those who might be having a “Case of the Mondays”. Even if it Casual Friday.
+Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is meant to provide light entertainment for those who might be having a “Case of the Mondays”. Even if it is Casual Friday.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
