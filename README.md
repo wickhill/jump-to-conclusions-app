@@ -71,12 +71,12 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap: Leap! Our journey</a></li>
+    <li><a href="#roadmap">Roadmap: Leap Before You Look!</a></li>
         <ul>
-        <li><a href="#project-origins">Project Origins</a></li>
+        <li><a href="#project-origins">Our Journey</a></li>
         <li><a href="#user-stories">User Stories</a></li>
         <li><a href="#jump-to-conclusions-data">Jump To Conclusions Data</a></li>
-        <li><a href="#hurdles">Hurdles</a></li>
+        <li><a href="#hurdles">Hurdles: Is This Good For The Company?</a></li>
         </ul>
     <li><a href="#screenshots">Screenshots</a></li>
     <li><a href="#license">License</a></li>
@@ -235,9 +235,9 @@ _For additional technical information, please refer to the "Office Space" IMDB [
 
 ## Hurdles
 
-**Everybody gets a case of 'The Mondays'. Even us ☹️**
+**Is This Good For The Company?**
 
-Yeah, I know it's hard to believe. But even *we* get a case of 'The Mondays' from time to time. But hey, that ain't nothing that some 'Shrimp Poppers' or 'Extreme Fajitas' can't fix!
+Even *we* get a case of 'The Mondays' from time to time ☹️. Hard to believe, I know. But hey, this ain't nothing that a few 'Shrimp Poppers' or 'Extreme Fajitas' can't fix!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
