@@ -189,6 +189,15 @@ Just don't get too casual and forget about those TPS Reports!
 
 - See my [Trello Board](https://trello.com/b/2dwSSjZy/jump-to-conclusions) for MVP and stretch goals.
 
+- Here's our Wireframe and ERDs:
+
+<div align="center">
+  <a href="">
+    <img src="https://i.imgur.com/GIGtJM9.jpg" alt="Whiteboard Wireframe" width="400" height="300">
+    <img src="https://i.imgur.com/qfzxthd.jpg" alt="Whiteboard ERD" width="400" height="300">
+  </a>
+</div>
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
