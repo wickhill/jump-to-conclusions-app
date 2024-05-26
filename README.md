@@ -246,7 +246,7 @@ _For additional technical information, please refer to the "Office Space" IMDB [
 
 **Is This Good For The Company?**
 
-Even *we* get a case of 'The Mondays' from time to time ☹️. Hard to believe, I know. But hey, this ain't nothing that a few 'Shrimp Poppers' or 'Extreme Fajitas' can't fix!
+Even *we* get a case of 'The Mondays' from time to time ☹️. Hard to believe, I know. But hey, this ain't nothing that a few 'Shrimp Poppers' or 'Extreme Fajitas' can't fix 🦐🎉
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
