@@ -36,7 +36,7 @@
 <h3 align="center">It's a... Jump To Conclusions App!</h3>
 
   <p align="center">
-    The Jump To Conclusions App! Ask it anything, and it'll jump to a conclusion for you!
+    Ask the app anything, and let it jump to a conclusion for you!
     <br />
     <a href="https://github.com/wickhill/jumpToConclusions"><strong>Explore the docs »</strong></a>
     <br />
@@ -282,9 +282,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []() General Assembly Class #1204
-* []() The Bobs
+* []() That guy who invented the Pet Rock
 * []() Caffeine
+* []() The Bobs
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
