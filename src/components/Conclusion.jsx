@@ -2,8 +2,9 @@ import React from "react";
 
 const Conclusion = ({ conclusion }) => {
   return (
-    <div>
-      <h2>{conclusion.answer}</h2>
+    // Setting bg as light gray temporarily; round corners; add medium shadow for depth
+    <div className="p-4 bg-gray-200 rounded-md shadow-md">
+      <h2 className="text-center">{conclusion.answer}</h2>
     </div>
   );
 };
