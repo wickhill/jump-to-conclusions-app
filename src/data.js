@@ -73,4 +73,4 @@ const conclusions = {
     },
 };
 
-console.log(conclusions);
+export default conclusions
