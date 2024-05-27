@@ -8,8 +8,8 @@ function App() {
 
   return (
     <>
-    <h1>{conclusions.conclusion2.answer}</h1>
-    <Conclusions></Conclusions>
+    {/* <h1>{conclusions.conclusion2.answer}</h1> */}
+    <Conclusions conclusions={conclusions}/>
 
     </>
   )
