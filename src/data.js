@@ -1,4 +1,4 @@
-const conclusions = {
+const conclusionsData = {
     conclusion1: {
         answer: "???",
         answerAlt1: "FREE LUNCH AT FLINGERS",
@@ -73,4 +73,4 @@ const conclusions = {
     },
 };
 
-export default conclusions
+export default conclusionsData

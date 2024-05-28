@@ -8,7 +8,9 @@ function App() {
 
   return (
     <>
+    <div id="root" className="p-8 text-center">
       <Conclusions conclusions={conclusions} />
+    </div>
     </>
   );
 }
