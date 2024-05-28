@@ -25,8 +25,8 @@ const conclusionsData = {
     },
     conclusion5: {
         answer: "LOOSE ONE TURN",
-        answerAlt1: "I'LL HAVE TO CONSULT WITH THE BOBS",
-        answerAlt2: "I'M GOING TO NEED YOU TO COME IN ON... SATURDAY",
+        answerAlt1: "CONSULT WITH THE BOBS",
+        answerAlt2: "COME IN ON... SATURDAY",
         answerAlt3: "ZONK OUT",
     },
     conclusion6: {
@@ -57,7 +57,7 @@ const conclusionsData = {
         answer: "ONE STEP BACK",
         answerAlt1: "SLEEP IN",
         answerAlt2: "BLAME IT ON MILTON",
-        answerAlt3: "I'M GOING TO NEED YOU TO MOVE YOUR DESK",
+        answerAlt3: "YOU NEED TO MOVE YOUR DESK",
     },
     conclusion11: {
         answer: "THINK AGAIN",
