@@ -20,18 +20,25 @@ export const resizeText = (element, minFontSize, maxFontSize) => {
     console.log(`After adjustment - scrollWidth: ${element.scrollWidth}, clientWidth: ${element.clientWidth}`);
   }
 
-  // Ensure single words are not wrapped unnecessarily
+  // Ensure single words and specific conditions are handled correctly
   const words = element.textContent.split(' ');
-  if (words.length === 1 && fontSize >= maxFontSize) {
+  console.log(`Words: ${words}`);
+  if (words.length === 1) {
     element.style.whiteSpace = 'nowrap'; // Prevents the text from wrapping
-    element.style.fontSize = `${Math.min(maxFontSize, fontSize - 1)}px`; // Slightly decrease the font size for single words
-    console.log(`Single word adjustment - font size: ${element.style.fontSize}`);
-  } else if (words.length === 2 && fontSize >= maxFontSize) {
-    element.style.fontSize = `${Math.min(maxFontSize, fontSize - 3)}px`; // Slightly decrease the font size for two words
-    console.log(`Two words adjustment - font size: ${element.style.fontSize}`);
+    fontSize = Math.min(maxFontSize, fontSize - 1); // Slightly decrease the font size for single words
+    console.log(`Single word adjustment - font size: ${fontSize}px`);
+  } else if (words.length === 2) {
+    fontSize = Math.min(maxFontSize, fontSize - 3); // Slightly decrease the font size for two words
+    console.log(`Two words adjustment - font size: ${fontSize}px`);
+  } else if (words[0].length >= 6 || words[0] === "ACCEPT") {
+    fontSize = Math.min(maxFontSize, fontSize - 2); // Slightly decrease the font size if the first word is longer than 6 characters
+    console.log(`Long first word adjustment - font size: ${fontSize}px`);
   } else {
     element.style.whiteSpace = 'normal'; // Allows normal wrapping for more than two words
+    console.log(`Normal wrapping - font size: ${fontSize}px`);
   }
 
+  // Ensure the font size is set properly for all cases
+  element.style.fontSize = `${fontSize}px`;
   console.log(`Final font size: ${fontSize}px`);
 };

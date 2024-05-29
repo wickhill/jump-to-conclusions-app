@@ -42,7 +42,7 @@ const conclusionsData = {
         answerAlt3: "ONLY IF WE CAN BLAME MILTON",
     },
     conclusion8: {
-        answer: "ACCEPT IT",
+        answer: "Accept It",
         answerAlt1: "NOT IN A MILLION YEARS",
         answerAlt2: "ASK THE BOBS",
         answerAlt3: "YOU NEED AT LEAST 37 PIECES OF FLAIR",
