@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { resizeText } from "../utils/utils";
+import '../App.css';
 
 const Conclusion = ({ conclusion, colorClass }) => {
   const textRef = useRef(null);

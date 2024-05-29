@@ -1,4 +1,12 @@
 /* App.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
+.jersey-15-regular {
+    font-family: "Jersey 15", sans-serif;
+    font-weight: 800;
+    }
+    
 .dynamic-text {
     font-size: 24px;  /* Default font size */
     padding: 0.5rem;
@@ -6,3 +14,23 @@
     word-wrap: break-word;
     box-sizing: border-box;
     }
+
+/* If you want to add custom styles */
+.footprint-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .footprint-icon {
+    width: 50px; /* Adjust the size as needed */
+    height: auto;
+  }
+  
+  /* Additional footer styles */
+  .footer {
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa; /* Adjust background color as needed */
+  }
+  

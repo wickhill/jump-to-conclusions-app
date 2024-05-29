@@ -6,7 +6,7 @@ import Home from './pages/Home';
 // import UpdateUserProfile from './components/UpdateUserProfile';
 // import AchievementsPage from './pages/AchievementsPage';
 // import Navbar from './components/Navbar';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -25,7 +25,7 @@ function App() {
           </>
         )} */}
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

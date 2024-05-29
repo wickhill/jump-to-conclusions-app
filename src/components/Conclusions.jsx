@@ -1,6 +1,7 @@
 import React from "react";
 import Conclusion from "./Conclusion";
 import conclusionsData from "../data";
+import '../App.css';
 
 const colorMapping = {
     conclusion1: "bg-blue-500",
@@ -25,9 +26,9 @@ const Conclusions = ({ conclusions = conclusionsData }) => {
         <div className="p-4">
         {/*  Center the text horizontally, then add bottom margin to container;  */}
         <div className="text-center mb-4">
-            <h2 className="text-xl">Jump</h2>
-            <h2 className="text-xl">to</h2>
-            <h2 className="text-xl">Conclusions</h2>
+            <h2 className="text-4xl jersey-15-regular">Jump</h2>
+            <h2 className="text-3xl jersey-15-regular">to</h2>
+            <h2 className="text-4xl jersey-15-regular">Conclusions</h2>
         </div>
 
         {/* Apply grid layout; we define a 3-column grid, then add a gap (4) between grid items */}

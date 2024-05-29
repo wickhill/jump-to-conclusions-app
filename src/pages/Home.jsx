@@ -3,11 +3,11 @@ import conclusions from '../data';
 import Conclusions from '../components/Conclusions';
 
 const Home = () => {
-  return (
+    return (
     <div id="root" className="p-8 text-center">
-      <Conclusions conclusions={conclusions} />
+        <Conclusions conclusions={conclusions} />
     </div>
-  );
+    );
 };
 
 export default Home;
