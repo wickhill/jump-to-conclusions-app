@@ -1,13 +1,32 @@
-import React from "react";
-import "./App.css";
-import conclusions from "./data";
-import Conclusions from "./components/Conclusions";
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+// import Signin from './components/Signin';
+// import Signup from './components/Signup';
+// import UpdateUserProfile from './components/UpdateUserProfile';
+// import AchievementsPage from './pages/AchievementsPage';
+// import Navbar from './components/Navbar';
+// import Footer from './components/Footer';
 
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
-    <div id="root" className="p-8 text-center">
-      <Conclusions conclusions={conclusions} />
-    </div>
+    <>
+      {/* <Navbar user={user} onLogout={() => setUser(null)} /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/signin" element={<Signin onSignin={setUser} />} />
+        <Route path="/signup" element={<Signup onSignup={setUser} />} />
+        {user && (
+          <>
+            <Route path="/profile" element={<UpdateUserProfile user={user} setUser={setUser} />} />
+            <Route path="/achievements" element={<AchievementsPage user={user} />} />
+          </>
+        )} */}
+      </Routes>
+      {/* <Footer /> */}
+    </>
   );
 }
 
