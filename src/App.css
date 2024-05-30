@@ -2,6 +2,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
 
+.jump-to-text {
+    color: black;
+}
+
+#root {
+    background-color: white;
+}
+
 .jersey-15-regular {
     font-family: "Jersey 15", sans-serif;
     font-weight: 800;
@@ -20,17 +28,16 @@
     background: transparent;
     border: none;
     cursor: pointer;
-  }
+    }
   
-  .footprint-icon {
+.footprint-icon {
     width: 50px; /* Adjust the size as needed */
     height: auto;
-  }
-  
+    }
+
   /* Additional footer styles */
-  .footer {
+.footer {
     display: flex;
     justify-content: center;
     background-color: #f8f9fa; /* Adjust background color as needed */
-  }
-  
+    }
