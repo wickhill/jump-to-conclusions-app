@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 require("dotenv").config()
+const livereload = require("livereload");
+const connectLiveReload = require("connect-livereload");
+const methodOverride = require("method-override");
+
 
 // const db = require('./models')
 // const userCtrl = require("./controllers/userController")
@@ -12,9 +16,20 @@ app.use(cors());
 const axios = require("axios") 
 // Middleware to parse JSON bodies
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 //HTTP request logger middleware for node.js
 const morgan = require("morgan")
 app.use(morgan("tiny"))
+app.use(connectLiveReload());
+app.use(methodOverride("_method"));
+
+// app.use(
+//     session({
+//     secret: process.env.SECRET_KEY,
+//     resave: false,
+//     saveUninitialized: false,
+//     })
+//     );
 
 // app.use("/user", userCtrl)
 
@@ -24,6 +39,6 @@ app.get("/", (req, res) => {
     res.send("Jump! To Conclusions!");
 });
 
-// Server:
+// Server initialization:
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
