@@ -1,16 +1,30 @@
-// Load environment variables from .env file
-require("dotenv").config()
-// Import mongoose to interact with MongoDB
-const mongoose = require("mongoose")
-// Retrieve MongoDB connection URI from environment variables
-mongoose.connect(process.env.MONGODBURI);
-const db = mongoose.connection
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
-// Event listener for successful connection to MongoDB
-db.on("connected", function() {
-    console.log(`Connected to MongoDB ${db.name} at ${db.host}:${db.port}`)
+const userSchema = new mongoose.Schema({
+    username: {type: String, required: true, unique: true},
+    email: {type: String, required: true, unique: true},
+    password: {type: String, required: true},
+}, {
+    timestamps: true,
+    toJSON: {
+        transform: function(doc, ret){
+            delete ret.password;  
+            return ret;
+        }
+    }
+});
+
+userSchema.methods.generateAuthToken = async function(){
+    const token = jwt.sign({_id: this._id, name: this.name}, process.env.JWT_SECRETKEY)
+    return token
+}
+
+userSchema.pre('save', async function(next){
+    if(!this.isModified('password')) return next()
+    this.password = await bcrypt.hash(this.password, 10)
+    return next()
 })
 
-module.exports = {
-    User: require("./User"),
-}
+module.exports = mongoose.model('User', userSchema)
