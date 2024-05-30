@@ -1,13 +1,13 @@
 import React from 'react';
-import Conclusions from '../components/Conclusions'; // Ensure the path is correct
+import conclusions from '../data';
+import Conclusions from '../components/Conclusions';
 
-const Home = ({ setRandomizerFunction }) => {
-  return (
-    <div>
-      <h1>Welcome to Jump to Conclusions!</h1>
-      <Conclusions onRandomize={setRandomizerFunction} />
+const Home = () => {
+    return (
+    <div id="root" className="p-8 text-center">
+        <Conclusions conclusions={conclusions} />
     </div>
-  );
+    );
 };
 
 export default Home;
