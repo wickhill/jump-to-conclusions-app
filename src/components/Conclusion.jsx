@@ -4,15 +4,29 @@ import '../App.css';
 
 const Conclusion = ({ conclusion, colorClass }) => {
   const textRef = useRef(null);
+  const divRef = useRef(null);
 
   useEffect(() => {
     if (textRef.current) {
-      resizeText(textRef.current, 8, 20); // Adjust min and max font size as needed
+      resizeText(textRef.current, 8, 20);
     }
   }, [conclusion]);
 
+  const handleHover = () => {
+    if (divRef.current) {
+      divRef.current.classList.add('hover');
+      setTimeout(() => {
+        divRef.current.classList.remove('hover');
+      }, 300); // Adjust the timing as needed
+    }
+  };
+
   return (
-    <div className={`p-1 ${colorClass} text-black rounded-md shadow-md flex items-center justify-center h-20 w-30`}>
+    <div
+      ref={divRef}
+      className={`p-1 ${colorClass} text-black rounded-md shadow-md flex items-center justify-center h-20 w-30 hover-trigger`}
+      onTouchStart={handleHover}
+    >
       <h2 ref={textRef} className="text-center dynamic-text w-full h-full">
         {conclusion.answer}
       </h2>

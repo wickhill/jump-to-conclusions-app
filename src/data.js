@@ -54,7 +54,7 @@ const conclusionsData = {
         answerAlt3: "TOM'S HAVING A COOKOUT!",
     },
     conclusion10: {
-        answer: "ONE STEP BACK YOU HAVE A CASE OF THE MONDAYS",
+        answer: "ONE STEP BACK",
         answerAlt1: "SLEEP IN",
         answerAlt2: "BLAME IT ON MILTON",
         answerAlt3: "YOU NEED TO MOVE YOUR DESK",

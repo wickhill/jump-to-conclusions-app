@@ -1,19 +1,19 @@
 import React from 'react';
 import footprintSvg from '../assets/footprint.svg';
 
-const FootprintButton = () => {
+const FootprintButton = ({ onClick }) => {
     return (
-    <button className="footprint-button">
-    <img src={footprintSvg} alt="Footprint" className="footprint-icon" />
-    </button>
+        <button className="footprint-button" onClick={onClick}>
+            <img src={footprintSvg} alt="Footprint" className="footprint-icon" />
+        </button>
     );
 };
 
-const Footer = () => {
+const Footer = ({ onRandomize }) => {
     return (
-    <footer className="footer">
-    <FootprintButton />
-    </footer>
+        <footer className="footer">
+            <FootprintButton onClick={onRandomize} />
+        </footer>
     );
 };
 
