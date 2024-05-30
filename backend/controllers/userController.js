@@ -137,6 +137,4 @@ router.put('/:id', async (req, res) => {
     res.status(200).json({ token, user: updatedUser });
 });
 
-
-
 module.exports = router
