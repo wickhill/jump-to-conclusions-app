@@ -1,11 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
 
-.jump-to-text {
-    color: black;
-}
-
 #root {
     background-color: #cdcbcb;
+    padding: 0; /* Ensure no padding is applied */
+    margin: 0; /* Ensure no margin is applied */
+    min-height: 85.4vh; /* Ensure it takes full height of the viewport */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+/* Ensure footer is visible */
+#root::after {
+    content: '';
+    display: block;
+    height: 50px; /* Adjust to the height of your footer */
+}
+
+/* Mobile-specific styling */
+@media (max-width: 768px) {
+    #root {
+        padding-top: 60px; /* Adjust top padding for mobile */
+        padding-bottom: 50px; /* Adjust to the height of your footer */
+    }
+}
+
+.jump-to-text {
+    color: black;
 }
 
 .jersey-15-regular {

@@ -4,7 +4,7 @@ import Conclusions from '../components/Conclusions';
 
 const Home = ({ setRandomizerFunction }) => {
     return (
-    <div id="root" className="p-7 text-center">
+    <div id="root" className="p-5 text-center">
         <Conclusions onRandomize={setRandomizerFunction} />
     </div>
     );

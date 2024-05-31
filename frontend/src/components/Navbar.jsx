@@ -22,7 +22,7 @@ const handleToggleDropdown = () => {
         </Link>
 
         {/* Right-aligned sign-in/sign-up links */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 h-10">
         {user ? (
             <div className="relative">
             <button onClick={handleToggleDropdown} type="button" className="text-sm rounded-full focus:ring-4 focus:ring-gray-300">
