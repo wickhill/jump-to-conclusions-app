@@ -28,7 +28,7 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize }) => {
             interval = setInterval(() => {
                 const randomIndex = Math.floor(Math.random() * Object.keys(conclusions).length);
                 setHighlightedIndex(randomIndex);
-            }, 200); // Change highlight every 123ms
+            }, 200); // Change highlight every 200ms
         }
         return () => clearInterval(interval);
     }, [highlightedIndex, conclusions]);
