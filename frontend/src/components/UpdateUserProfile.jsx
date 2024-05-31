@@ -69,14 +69,14 @@ const handleDelete = async () => {
 
     return (
     <div className="pt-[0px] relative w-full h-screen bg-zinc-700/90">
-    <img
+    {/* <img
         className="absolute w-full h-full object-cover mix-blend-overlay"
         src={img1}
         alt="/"
-    />
+    /> */}
     <div className="flex justify-center items-center h-full">
         <form
-        className="max-w-[400px] w-full mx-auto bg-white p-8"
+        className="max-w-[400px] w-full mx-auto bg-black p-8"
         onSubmit={handleUpdate}
         >
         <h1 className="text-4xl font-bold text-center py-6">
@@ -86,7 +86,7 @@ const handleDelete = async () => {
             <div className="flex flex-col px-1 py-2 mb-1">
             <label className="">Username:</label>
             <input
-            className="border relative bg-gray-100 p-1"
+            className="border relative bg-black-100 p-1"
             type="text"
             name="username"
             value={formData.username}
@@ -96,7 +96,7 @@ const handleDelete = async () => {
             <div className="flex flex-col px-1 py-2 mb-1">
             <label className="">Email:</label>
             <input
-            className="border relative bg-gray-100 p-1"
+            className="border relative bg-black-100 p-1"
             type="email"
             name="email"
             value={formData.email}
@@ -106,7 +106,7 @@ const handleDelete = async () => {
             <div className="flex flex-col px-1 py-2 mb-1">
             <label>Password:</label>
             <input
-            className="border relative bg-gray-100 p-1"
+            className="border relative bg-black-100 p-1"
             type="password"
             name="password"
             placeholder="to keep current password, leave blank"
@@ -115,12 +115,12 @@ const handleDelete = async () => {
             />
             </div>
         <button
-        className="w-full py-3 mt-4 bg-gray-400 hover:bg-gray-300 relative"
+        className="w-full py-3 mt-4 bg-black-400 hover:bg-gray-300 relative"
         type="submit"
         >
         Update Profile
         </button>
-        <button className="w-full py-3 mt-4 bg-gray-400 hover:bg-gray-300 relative" onClick={handleDelete}>Delete Profile</button>
+        <button className="w-full py-3 mt-4 bg-black-400 hover:bg-gray-300 relative" onClick={handleDelete}>Delete Profile</button>
         </form>
     </div>
     </div>

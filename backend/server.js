@@ -24,7 +24,8 @@ const userController = require('./controllers/userController');
 app.use('/user', userController);
 
 // I.N.D.U.C.E.S.
-// Index route:
+//
+// Index Route:
 app.get("/", (req, res) => {
     res.send("Jump! To Conclusions!");
 });

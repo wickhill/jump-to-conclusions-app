@@ -12,12 +12,13 @@ const Conclusion = ({ conclusion, colorClass }) => {
     }
   }, [conclusion]);
 
+  // Hover effect plus timing parameter
   const handleHover = () => {
     if (divRef.current) {
       divRef.current.classList.add('hover');
       setTimeout(() => {
         divRef.current.classList.remove('hover');
-      }, 300); // Adjust the timing as needed
+      }, 300);
     }
   };
 
