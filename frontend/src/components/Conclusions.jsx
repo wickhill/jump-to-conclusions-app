@@ -26,8 +26,9 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize }) => {
         let interval;
         if (highlightedIndex !== null) {
             interval = setInterval(() => {
-                setHighlightedIndex((prevIndex) => (prevIndex + 1) % Object.keys(conclusions).length);
-            }, 200); // Change highlight every 200ms
+                const randomIndex = Math.floor(Math.random() * Object.keys(conclusions).length);
+                setHighlightedIndex(randomIndex);
+            }, 200); // Change highlight every 123ms
         }
         return () => clearInterval(interval);
     }, [highlightedIndex, conclusions]);
@@ -36,10 +37,10 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize }) => {
         setRandomIndex(null); // Reset the randomIndex to clear previous selection
         setHighlightedIndex(0);
         setTimeout(() => {
-            const randomIndex = Math.floor(Math.random() * Object.keys(conclusions).length);
-            setRandomIndex(randomIndex);
+            const finalRandomIndex = Math.floor(Math.random() * Object.keys(conclusions).length);
+            setRandomIndex(finalRandomIndex);
             setHighlightedIndex(null);
-        }, 3000); // Cycle for 3 seconds
+        }, 2300); // Cycle for 2.3 seconds
     };
 
     // Make startRandomizer available to the parent component

@@ -62,25 +62,25 @@ router.post('/signin', async (req, res) => {
 
 // Create token form
 function createToken(user) {
-    return jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '24h' })
+    return jwt.sign({ user }, process.env.SECRETKEY)
 }
 
 // Verify a token
 
 function checkToken(req, res, next) {
-    let token = req.get('Authorization')
+    let token = req.get('Authorization');
     if (token) {
-    token = token.split(' ')[1]
-    jwt.verify(token, process.env.SECRET, (err, decoded) => {
-    req.user = err ? null : decoded.user
-      req.exp = err ? null : new Date(decoded.exp * 1000)
-    })
-    return next()
+        token = token.split(' ')[1];
+        jwt.verify(token, process.env.SECRET, (err, decoded) => {
+            req.user = err ? null : decoded.user;
+        });
+        return next();
     } else {
-    req.user = null
-    return next()
+        req.user = null;
+        return next();
     }
 }
+
 
 function ensureLoggedIn(req, res, next) {
     if (req.user) return next()

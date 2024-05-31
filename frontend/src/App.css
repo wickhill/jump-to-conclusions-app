@@ -4,15 +4,22 @@
     background-color: #cdcbcb;
     padding: 0; /* Ensure no padding is applied */
     margin: 0; /* Ensure no margin is applied */
-    min-height: 85.4vh; /* Ensure it takes full height of the viewport */
+    min-height: 100vh; /* Ensure it takes full height of the viewport */
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
-/* Ensure footer is visible */
-#root::after {
-    content: '';
-    display: block;
-    height: 50px; /* Adjust to the height of your footer */
+#content {
+    flex: 1;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: #c1bebe;
+    padding: 1rem;
+    width: 100%;
 }
 
 /* Mobile-specific styling */
@@ -56,16 +63,10 @@
     height: auto;
     }
 
-.footer {
-    display: flex;
-    justify-content: center;
-    background-color: #c1bebe;
-    }
+.hover-trigger {
+    transition: background-color 0.3s;
+}
 
-    .hover-trigger {
-        transition: background-color 0.3s;
-    }
-
-    .hover-trigger:hover {
-        background-color: var(--tw-bg-opacity, 1) var(--hover-color);
-    }
+.hover-trigger:hover {
+    background-color: var(--tw-bg-opacity, 1) var(--hover-color);
+}

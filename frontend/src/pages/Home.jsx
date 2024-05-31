@@ -4,9 +4,9 @@ import Conclusions from '../components/Conclusions';
 
 const Home = ({ setRandomizerFunction }) => {
     return (
-    <div id="root" className="p-5 text-center">
-        <Conclusions onRandomize={setRandomizerFunction} />
-    </div>
+        <div id="content" className="p-5 text-center">
+            <Conclusions onRandomize={setRandomizerFunction} />
+        </div>
     );
 };
 
