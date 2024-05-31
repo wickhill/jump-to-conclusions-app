@@ -1,16 +1,16 @@
-// Load environment variables from .env file:
-require("dotenv").config()
-// Import mongoose to interact w/ MongoDB:
-const mongoose = require("mongoose")
-// Retrieve MongoDB connection URI from environment vars:
-mongoose.connect(process.env.MONGODBURI);
-const db = mongoose.connection
+const mongoose = require('mongoose');
+const userSchema = require('./user');
 
-// Event listener for successful connections to MongoDB
-db.on("connected", function() {
-    console.log(`Connected to MongoDB ${db.name} at ${db.host}:${db.port}`)
-})
+console.log("userSchema:", userSchema); // Add this line to check the schema
 
-module.exports = {
-    User: require("./User"),
-}
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // useCreateIndex is deprecated and should be removed
+});
+
+const db = {
+    User: mongoose.model('User', userSchema)
+};
+
+module.exports = db;

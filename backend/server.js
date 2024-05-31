@@ -1,43 +1,42 @@
+require("dotenv").config();
 const express = require('express');
-const app = express();
+const mongoose = require('mongoose');
 const cors = require('cors');
-require("dotenv").config()
 const livereload = require("livereload");
 const connectLiveReload = require("connect-livereload");
 const methodOverride = require("method-override");
+const morgan = require("morgan");
 
-
-// const db = require('./models')
-// const userCtrl = require("./controllers/userController")
+const app = express();
 
 // Middleware
 app.use(cors());
-//Promise based HTTP client for making requests to external API... even though I don't anticipate using one...
-const axios = require("axios") 
-// Middleware to parse JSON bodies
-app.use(express.json())
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//HTTP request logger middleware for node.js
-const morgan = require("morgan")
-app.use(morgan("tiny"))
+app.use(morgan("tiny"));
 app.use(connectLiveReload());
 app.use(methodOverride("_method"));
 
-// app.use(
-//     session({
-//     secret: process.env.SECRET_KEY,
-//     resave: false,
-//     saveUninitialized: false,
-//     })
-//     );
+// Import the userController
+const userController = require('./controllers/userController');
 
-// app.use("/user", userCtrl)
+// Use the userController routes
+app.use('/user', userController);
 
 // I.N.D.U.C.E.S.
 // Index route:
 app.get("/", (req, res) => {
     res.send("Jump! To Conclusions!");
 });
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+        console.log('Connected to MongoDB');
+    })
+    .catch(err => {
+        console.error('MongoDB connection error:', err.message);
+    });
 
 // Server initialization:
 const PORT = process.env.PORT || 3000;
