@@ -15,6 +15,7 @@ function App() {
     <div id="root">
       <Navbar user={user} onLogout={() => setUser(null)} />
       <Routes>
+        <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} />} />
       {!user &&
             <Route path="/" element={<Home />} />
       }
@@ -26,7 +27,6 @@ function App() {
             <Route path="/updateProfile" element={<UpdateUserProfile user={user} setUser={setUser} />} />
             </>
         )}
-        <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} />} />
       </Routes>
       <Footer onRandomize={randomizerFunction} />
     </div>
