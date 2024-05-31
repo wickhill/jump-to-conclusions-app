@@ -53,9 +53,9 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize }) => {
     return (
         <div className="p-4">
             <div className="jump-to-text text-center mb-4">
-                <h2 className="text-4xl jersey-15-regular -mb-2">Jump!</h2>
-                <h2 className="text-3xl jersey-15-regular -mb-2">to</h2>
-                <h2 className="text-4xl jersey-15-regular -mb-0">Conclusions!</h2>
+                <h2 className="text-4xl jersey-15-regular mb-2">Jump!</h2>
+                <h2 className="text-3xl jersey-15-regular mb-2">to</h2>
+                <h2 className="text-4xl jersey-15-regular mb-2">Conclusions!</h2>
             </div>
 
             <div className="grid grid-cols-3 gap-4">

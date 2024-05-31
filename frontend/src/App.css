@@ -1,34 +1,36 @@
+@import 'tailwindcss/tailwind.css';
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 #root {
     background-color: #cdcbcb;
-    padding: 0; /* Ensure no padding is applied */
-    margin: 0; /* Ensure no margin is applied */
-    min-height: 100vh; /* Ensure it takes full height of the viewport */
     display: flex;
     flex-direction: column;
+    min-height: 100vh; /* Ensure it takes full height of the viewport */
     box-sizing: border-box; /* Include padding in the element's total width and height */
-}
-
-#content {
-    flex: 1;
 }
 
 .footer {
     display: flex;
     justify-content: center;
-    background-color: #c1bebe;
-    padding: 1rem;
-    width: 100%;
+    background-color: #c1bebe;  
+}
+
+#content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    padding: 5px; /* Adjust padding as needed */
 }
 
 /* Mobile-specific styling */
-@media (max-width: 768px) {
-    #root {
-        padding-top: 60px; /* Adjust top padding for mobile */
-        padding-bottom: 50px; /* Adjust to the height of your footer */
-    }
-}
 
 .jump-to-text {
     color: black;
@@ -60,8 +62,8 @@
 
 .footprint-icon {
     width: 50px;
-    height: auto;
-    }
+    height: 50px;
+}
 
 .hover-trigger {
     transition: background-color 0.3s;
@@ -69,4 +71,11 @@
 
 .hover-trigger:hover {
     background-color: var(--tw-bg-opacity, 1) var(--hover-color);
+}
+
+@media (max-width: 768px) {
+    #root {
+        padding-top: 0px; /* Adjust top padding for mobile */
+        padding-bottom: 0px; /* Adjust bottom padding for mobile */
+    }
 }
