@@ -22,7 +22,7 @@ function App() {
         <Route path="/signup" element={<Signup onSignup={ setUser }/>} />
         {user && (
             <>
-            <Route path="/" element={<Genre />} />
+            {/* <Route path="/" element={<Genre />} /> */}
             <Route path="/updateProfile" element={<UpdateUserProfile user={user} setUser={setUser} />} />
             </>
         )}
