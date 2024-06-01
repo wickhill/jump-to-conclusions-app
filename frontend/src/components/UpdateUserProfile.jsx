@@ -55,7 +55,7 @@ const handleDelete = async () => {
         `We're sad to see you leave. Your profile has been successfully deleted.`
         );
         // Clear token and user info
-        localStorage.removeItem('token'); // Remove the token from local storage
+        localStorage.removeItem('token'); // Remove token from local storage
         setUser(null); // Reset user state to null
         navigate("/"); // Navigate to index page
         } catch (error) {

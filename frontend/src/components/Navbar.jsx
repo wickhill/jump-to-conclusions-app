@@ -7,6 +7,8 @@ import lawrence from '../assets/lawrence-office-space-sq.jpg'
 import michael_bolton from '../assets/michael-bolton-sq.jpg'
 import printer_office_space from '../assets/printer-office-space-sq.jpg'
 import the_bobs_sq from '../assets/the-bobs-sq.jpg'
+import trophy from '../assets/trophy.svg'
+import leaning_tower from '../assets/leaning-tower.svg'
 import Logout from './Logout'
 
 const Navbar = ({ user, onLogout}) => {
@@ -39,12 +41,22 @@ const handleToggleDropdown = () => {
     };
 
     return (
-    <nav className="fixed top-0 left-0 right-0 bg-gray-400 shadow z-50">
+    <nav className="fixed top-0 left-0 right-0 bg-blue-300 shadow z-50">
     <div className="max-w-screen-xl mx-auto p-4 flex justify-between items-center">
-        {/* Centered Logo and App Name */}
+        {/* Home Img + Button */}
         <Link to="/" className="flex flex-col items-center">
-        <img src={imgSrc} className="h-12 m-" alt="Bob" />
+        <img src={imgSrc} className="h-12" alt="Bob" />
         <span className="text-sm font-semibold text-gray-500">Home</span>
+        </Link>
+
+        {/* Cheeve SVG + Button */}
+        <Link to="/" className="flex flex-col items-center">
+            <img src={trophy} className="h-16" />
+        </Link>
+
+        {/* History SVG + Button */}
+        <Link to="/" className="flex flex-col items-center">
+            <img src={leaning_tower} className="h-16" />
         </Link>
 
         {/* Right-aligned sign-in/sign-up links */}
@@ -52,13 +64,13 @@ const handleToggleDropdown = () => {
         {user ? (
             <div className="relative">
             <button onClick={handleToggleDropdown} type="button" className="text-sm rounded-full focus:ring-4 focus:ring-gray-300">
-                <CgProfile className="text-gray-600 h-8 w-8" />
+                <CgProfile className="text-gray-100 h-8 w-8" />
             </button>
             {isDropdownOpen && (
-                <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                <div className="py-1">
+                <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-white ring-opacity-5">
+                <div>
                     <Link to="/updateProfile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</Link>
-                    <Logout onLogout={onLogout}  />
+                    <Logout onLogout={onLogout} />
                 </div>
                 </div>
                 )}

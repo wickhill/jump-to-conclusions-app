@@ -18,7 +18,7 @@ html, body {
 .footer {
     display: flex;
     justify-content: center;
-    background-color: #c1bebe;  
+    background-color: hsl(185, 87%, 43%);  
 }
 
 #content {
@@ -53,7 +53,7 @@ html, body {
     background: transparent;
     border: none;
     cursor: pointer;
-    background-color: rgb(228, 115, 238);
+    background-color: hsl(185, 87%, 43%);  
     }
 
 .footprint-button:hover {
