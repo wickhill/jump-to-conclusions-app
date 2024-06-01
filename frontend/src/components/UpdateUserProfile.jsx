@@ -109,7 +109,7 @@ const handleDelete = async () => {
             className="border relative bg-black-100 p-1"
             type="password"
             name="password"
-            placeholder="to keep current password, leave blank"
+            placeholder="to keep current psswd, leave blank"
             value={formData.password}
             onChange={handleChange}
             />

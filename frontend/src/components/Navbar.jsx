@@ -1,12 +1,38 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { CgProfile } from 'react-icons/cg'
-// import logo from '../assets/logo.jpg'
+import joanna from '../assets/joanna-office-space.jpg'
+import lawrence from '../assets/lawrence-office-space-sq.jpg'
+import michael_bolton from '../assets/michael-bolton-sq.jpg'
+import printer_office_space from '../assets/printer-office-space-sq.jpg'
+import the_bobs_sq from '../assets/the-bobs-sq.jpg'
 import Logout from './Logout'
 
 const Navbar = ({ user, onLogout}) => {
-const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const location = useLocation();
+
+    let imgSrc;
+    let imgAlt;
+
+    switch (location.pathname) {
+        case '/signup':
+            imgSrc = joanna;
+            imgAlt = 'Sign Up';
+            break;
+        case '/signin':
+            imgSrc = michael_bolton;
+            imgAlt = 'Sign In';
+            break;
+        case '/updateProfile':
+            imgSrc = lawrence;
+            imgAlt = 'Update Profile';
+            break;
+        default:
+            imgSrc = the_bobs_sq;
+            imgAlt = 'Home';
+    }
 
 const handleToggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -16,9 +42,9 @@ const handleToggleDropdown = () => {
     <nav className="fixed top-0 left-0 right-0 bg-gray-400 shadow z-50">
     <div className="max-w-screen-xl mx-auto p-4 flex justify-between items-center">
         {/* Centered Logo and App Name */}
-        <Link to="/" className="flex justify-center items-center mx-auto sm:pl-40">
-        {/* <img src={logo} className="h-8 mr-2" alt="Logo" /> */}
-        <span className="text-sm font-semibold text-gray-500"></span>
+        <Link to="/" className="flex flex-col items-center">
+        <img src={imgSrc} className="h-12 m-" alt="Bob" />
+        <span className="text-sm font-semibold text-gray-500">Home</span>
         </Link>
 
         {/* Right-aligned sign-in/sign-up links */}
