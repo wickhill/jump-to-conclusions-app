@@ -23,11 +23,26 @@ const userController = require('./controllers/userController');
 // Use the userController routes
 app.use('/user', userController);
 
-// I.N.D.U.C.E.S.
+// I.N.D.U.C.E.S
 //
+// Index   /user             GET
+// New     /user/new         GET
+// Delete  /user/:id         DELETE
+// Update  /user/:id         PUT/PATCH
+// Create  /user             POST
+// Edit    /user/:id/edit    GET
+// Show    /user/:id         GET
+
+/* modules
+--------------------------------------------------------------- */
+
 // Index Route:
 app.get("/", (req, res) => {
     res.send("Jump! To Conclusions!");
+});
+
+app.get("/:id/history/", (req, res) => {
+    res.send("User History For display!");
 });
 
 // Connect to MongoDB

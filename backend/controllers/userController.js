@@ -6,6 +6,19 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require("../jwt.config")
 
+// I.N.D.U.C.E.S
+//
+// Index   /user             GET
+// New     /user/new         GET
+// Delete  /user/:id         DELETE
+// Update  /user/:id         PUT/PATCH
+// Create  /user             POST
+// Edit    /user/:id/edit    GET
+// Show    /user/:id         GET
+
+/* modules
+--------------------------------------------------------------- */
+
 // SIGNUP
 router.post('/signup', async (req, res) => {
     try {
@@ -115,5 +128,27 @@ router.put('/:id', async (req, res) => {
     const token = createToken(updatedUser);
     res.status(200).json({ token, user: updatedUser });
 });
+
+// SHOW Route for User History:
+router.get("/history/:id", function (req, res) {
+    // Find user by ID provided in the URL
+    db.user.findById(req.params.id)
+        .then((user) => {
+            if (user) {
+            // Render user-history view, passing user + user's data
+            res.render("user-history", {
+                user: user,
+                currentUser: req.session.currentUser,
+            });
+            } else {
+            // Render 404 page if user isn't found
+            res.render("404");
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.render("404"); // Render 404 page if there is an error
+        });
+    });
 
 module.exports = router;

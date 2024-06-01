@@ -51,13 +51,15 @@ const handleToggleDropdown = () => {
 
         {/* Cheeve SVG + Button */}
         <Link to="/" className="flex flex-col items-center">
-            <img src={trophy} className="h-16" />
+          <img src={trophy} className="h-16" />
         </Link>
 
         {/* History SVG + Button */}
-        <Link to="/" className="flex flex-col items-center">
+        {user && (
+          <Link to={`/${user._id}/history`} className="flex flex-col items-center">
             <img src={leaning_tower} className="h-16" />
-        </Link>
+          </Link>
+        )}
 
         {/* Right-aligned sign-in/sign-up links */}
         <div className="flex items-center space-x-3 h-10">
