@@ -7,6 +7,7 @@ import Signin from "./components/Signin";
 import Signup from './components/Signup';
 import UpdateUserProfile from './components/UpdateUserProfile';
 import History from './pages/History';
+import Achievements from './pages/Achievements';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,6 +28,7 @@ function App() {
             {/* <Route path="/" element={<Genre />} /> */}
             <Route path="/updateProfile" element={<UpdateUserProfile user={user} setUser={setUser} />} />
             <Route path="/:id/history" element={<History />} />
+            <Route path="/:id/achievements" element={<Achievements />} />
             </>
         )}
       </Routes>

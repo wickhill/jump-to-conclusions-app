@@ -41,8 +41,14 @@ app.get("/", (req, res) => {
     res.send("Jump! To Conclusions!");
 });
 
+// Create Route:
+app.get("/:id/achievements", (req, res) => {
+    res.send("User Achievements!")
+})
+
+// Show Route:
 app.get("/:id/history/", (req, res) => {
-    res.send("User History For display!");
+    res.send("User History!");
 });
 
 // Connect to MongoDB

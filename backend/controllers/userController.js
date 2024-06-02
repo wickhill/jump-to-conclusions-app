@@ -129,26 +129,38 @@ router.put('/:id', async (req, res) => {
     res.status(200).json({ token, user: updatedUser });
 });
 
-// SHOW Route for User History:
-router.get("/history/:id", function (req, res) {
-    // Find user by ID provided in the URL
+
+// CREATE Route for User Achievements:
+router.get("/:id/achievements", function (req, res) {
     db.user.findById(req.params.id)
         .then((user) => {
             if (user) {
-            // Render user-history view, passing user + user's data
-            res.render("user-history", {
-                user: user,
-                currentUser: req.session.currentUser,
-            });
+                res.json({ user }); // Send user data as JSON
             } else {
-            // Render 404 page if user isn't found
-            res.render("404");
+                res.status(404).json({ message: "User not found" }); // Send 404 if user isn't found
             }
         })
         .catch((err) => {
             console.error(err);
-            res.render("404"); // Render 404 page if there is an error
+            res.status(500).json({ message: "Internal Server Error", error: err });
         });
-    });
+});
+
+// SHOW Route for User History:
+router.get("/:id/history", function (req, res) {
+    db.user.findById(req.params.id)
+        .then((user) => {
+            if (user) {
+                res.json({ user }); // Send user data as JSON
+            } else {
+                res.status(404).json({ message: "User not found" }); // Send 404 if user isn't found
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).json({ message: "Internal Server Error", error: err });
+        });
+});
+
 
 module.exports = router;

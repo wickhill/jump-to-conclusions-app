@@ -8,17 +8,29 @@ import michael_bolton from '../assets/michael-bolton-sq.jpg'
 import printer_office_space from '../assets/printer-office-space-sq.jpg'
 import the_bobs_sq from '../assets/the-bobs-sq.jpg'
 import trophy from '../assets/trophy.svg'
+import trophy_first from '../assets/trophy-first.svg'
 import leaning_tower from '../assets/leaning-tower.svg'
+import printerSVG from '../assets/printer.svg'
+import stapler from '../assets/red-stapler.svg'
+import TPSreport from '../assets/tps-report.svg'
 import Logout from './Logout'
 
 const Navbar = ({ user, onLogout}) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isTooltipVisible, setIsTooltipVisible] = useState(false);
     const location = useLocation();
+
+    const handleMouseEnter = () => setIsTooltipVisible(true);
+    const handleMouseLeave = () => setIsTooltipVisible(false);
 
     let imgSrc;
     let imgAlt;
 
     switch (location.pathname) {
+        case '/':
+            imgSrc = the_bobs_sq;
+            imgAlt = 'Home';
+            break;
         case '/signup':
             imgSrc = joanna;
             imgAlt = 'Sign Up';
@@ -32,7 +44,7 @@ const Navbar = ({ user, onLogout}) => {
             imgAlt = 'Update Profile';
             break;
         default:
-            imgSrc = the_bobs_sq;
+            imgSrc = printerSVG;
             imgAlt = 'Home';
     }
 
@@ -46,15 +58,26 @@ const handleToggleDropdown = () => {
         {/* Home Img + Button */}
         <Link to="/" className="flex flex-col items-center">
         <img src={imgSrc} className="h-12" alt="Bob" />
-        <span className="text-sm font-semibold text-gray-500">Home</span>
+        <span className="text-sm font-semibold text-gray-800">Home</span>
         </Link>
 
-        {/* Cheeve SVG + Button */}
-        <Link to="/" className="flex flex-col items-center">
-          <img src={trophy} className="h-16" />
-        </Link>
+        {/* Achievements SVG + Button */}
+{/* Achievements SVG + Button */}
+<div className="flex flex-col items-center">
+  {user ? (
+    <Link to={`/${user._id}/achievements`} className="h-16">
+      <img src={stapler} className="h-16" />
+    </Link>
+  ) : (
+    <div className="flex flex-col items-center">
+      <img src={stapler} className="h-16" />
+      <span className="text-center text-xs text-gray-900"></span>
+    </div>
+  )}
+</div>
 
-        {/* History SVG + Button */}
+
+        {/* History SVG + Button for users that signup and login */}
         {user && (
           <Link to={`/${user._id}/history`} className="flex flex-col items-center">
             <img src={leaning_tower} className="h-16" />
