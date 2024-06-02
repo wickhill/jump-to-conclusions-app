@@ -42,9 +42,9 @@ app.get("/", (req, res) => {
 });
 
 // Create Route:
-app.get("/:id/achievements", (req, res) => {
-    res.send("User Achievements!")
-})
+// app.get("/:id/achievements", (req, res) => {
+//     res.send("User Achievements!")
+// })
 
 // Show Route:
 app.get("/:id/history/", (req, res) => {
