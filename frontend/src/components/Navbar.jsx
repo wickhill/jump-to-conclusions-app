@@ -7,9 +7,6 @@ import lawrence from '../assets/lawrence-office-space-sq.jpg'
 import michael_bolton from '../assets/michael-bolton-sq.jpg'
 import printer_office_space from '../assets/printer-office-space-sq.jpg'
 import the_bobs_sq from '../assets/the-bobs-sq.jpg'
-import trophy from '../assets/trophy.svg'
-import trophy_first from '../assets/trophy-first.svg'
-import leaning_tower from '../assets/leaning-tower.svg'
 import printerSVG from '../assets/printer.svg'
 import stapler from '../assets/red-stapler.svg'
 import TPSreport from '../assets/tps-report.svg'
@@ -72,7 +69,7 @@ const handleToggleDropdown = () => {
   ) : (
     <div className="flex flex-col items-center">
       <img src={stapler} className="h-16" />
-      <span className="text-center text-xs text-gray-900">Cheeves <br/>(please sign in first)</span>
+      <span className="text-center text-xs text-gray-900">Cheeves <br/>(sign in to view)</span>
     </div>
   )}
 </div>

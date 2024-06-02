@@ -51,8 +51,8 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize }) => {
     }, [onRandomize]);
 
     return (
-        <div className="p-4">
-            <div className="jump-to-text text-center mb-4">
+        <div className="p-1">
+            <div className="jump-to-text text-center mb-5">
                 <h2 className="text-4xl jersey-15-regular mb-2">Jump!</h2>
                 <h2 className="text-3xl jersey-15-regular mb-2">to</h2>
                 <h2 className="text-4xl jersey-15-regular mb-2">Conclusions!</h2>
