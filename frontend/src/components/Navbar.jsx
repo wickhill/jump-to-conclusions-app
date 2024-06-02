@@ -66,12 +66,13 @@ const handleToggleDropdown = () => {
 <div className="flex flex-col items-center">
   {user ? (
     <Link to={`/${user._id}/achievements`} className="h-16">
-      <img src={stapler} className="h-16" />
+      <img src={stapler} className="h-16 -mt-3" />
+      <span className="text-center text-xs text-gray-900">Cheeves</span>
     </Link>
   ) : (
     <div className="flex flex-col items-center">
-      <img src={stapler} className="h-16" />
-      <span className="text-center text-xs text-gray-900"></span>
+      <img src={stapler} className="h-16 -mt-3" />
+      <span className="text-center text-xs text-gray-900">Sign In for Cheeves</span>
     </div>
   )}
 </div>
@@ -80,7 +81,8 @@ const handleToggleDropdown = () => {
         {/* History SVG + Button for users that signup and login */}
         {user && (
           <Link to={`/${user._id}/history`} className="flex flex-col items-center">
-            <img src={leaning_tower} className="h-16" />
+            <img src={TPSreport} className="h-16" />
+            <span className="text-center text-xs text-gray-900 mt-2">History</span>
           </Link>
         )}
 
