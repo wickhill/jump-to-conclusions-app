@@ -71,8 +71,8 @@ const handleToggleDropdown = () => {
     </Link>
   ) : (
     <div className="flex flex-col items-center">
-      <img src={stapler} className="h-16 -mt-3" />
-      <span className="text-center text-xs text-gray-900">Sign In for Cheeves</span>
+      <img src={stapler} className="h-16" />
+      <span className="text-center text-xs text-gray-900">Cheeves <br/>(please sign in first)</span>
     </div>
   )}
 </div>
@@ -82,7 +82,7 @@ const handleToggleDropdown = () => {
         {user && (
           <Link to={`/${user._id}/history`} className="flex flex-col items-center">
             <img src={TPSreport} className="h-16" />
-            <span className="text-center text-xs text-gray-900 mt-2">History</span>
+            <span className="text-center text-xs text-gray-900 mt-1">History</span>
           </Link>
         )}
 
