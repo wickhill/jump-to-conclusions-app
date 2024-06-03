@@ -18,7 +18,7 @@ const colorMapping = {
     conclusion12: "bg-purple-500 hover:bg-purple-300",
 };
 
-const Conclusions = ({ conclusions = conclusionsData, onRandomize }) => {
+const Conclusions = ({ conclusions = conclusionsData, onRandomize, user }) => {
     const [highlightedIndex, setHighlightedIndex] = useState(null);
     const [randomIndex, setRandomIndex] = useState(null);
 
@@ -40,7 +40,27 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize }) => {
             const finalRandomIndex = Math.floor(Math.random() * Object.keys(conclusions).length);
             setRandomIndex(finalRandomIndex);
             setHighlightedIndex(null);
+
+            // Send the conclusion landing to the backend
+            if (user) {
+                const conclusionKey = Object.keys(conclusions)[finalRandomIndex];
+                updateUserConclusion(user._id, conclusionKey);
+            }
         }, 2300); // Cycle for 2.3 seconds
+    };
+
+    const updateUserConclusion = async (userId, conclusionId) => {
+        try {
+            await fetch(`/user/${userId}/conclusion`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ conclusionId }),
+            });
+        } catch (error) {
+            console.error("Error updating conclusion:", error);
+        }
     };
 
     // Make startRandomizer available to the parent component
