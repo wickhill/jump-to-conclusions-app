@@ -6,22 +6,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require("../jwt.config")
 
-// Check if achievement should be unlocked
-const requiredLandingsMap = {
-    conclusion1: 1,
-    conclusion2: 1,
-    conclusion3: 1,
-    conclusion4: 1,
-    conclusion5: 1,
-    conclusion6: 1,
-    conclusion7: 1,
-    conclusion8: 1,
-    conclusion9: 1,
-    conclusion10: 1,
-    conclusion11: 1,
-    conclusion12: 1,            
-};
-
 // I.N.D.U.C.E.S
 //
 // Index   /user             GET
@@ -147,30 +131,55 @@ router.put('/:id', async (req, res) => {
 
 
 // POST Route for User Conclusions:
-router.post('/user/:id/conclusion', async (req, res) => {
+router.post('/:id/conclusion', async (req, res) => {
     const { id } = req.params;
     const { conclusionId } = req.body;
 
+    console.log(`Received POST request with conclusionId: ${conclusionId}`);
+
     try {
         const user = await db.User.findById(id);
-        if (!user) return res.status(404).send('User not found');
+        if (!user) {
+            console.log('User not found');
+            return res.status(404).send('User not found');
+        }
 
         user.conclusions.set(conclusionId, (user.conclusions.get(conclusionId) || 0) + 1);
 
-        // Get the required landings for the given conclusion
-        const requiredLandings = requiredLandingsMap[conclusionId] || 3; // Default to 3 if not specified
+        // Debugging logs
+        console.log('Conclusion ID:', conclusionId);
+        console.log('User conclusions:', user.conclusions);
 
-        // Check if achievement should be unlocked
+        const requiredLandingsMap = {
+            conclusion1: 1,
+            conclusion2: 1,
+            conclusion3: 1,
+            conclusion4: 1,
+            conclusion5: 1,
+            conclusion6: 1,
+            conclusion7: 1,
+            conclusion8: 1,
+            conclusion9: 1,
+            conclusion10: 1,
+            conclusion11: 1,
+            conclusion12: 1,
+        };
+
+        const requiredLandings = requiredLandingsMap[conclusionId] || 3;
+
         if (user.conclusions.get(conclusionId) >= requiredLandings) {
             user.achievements.set(conclusionId, true);
+            console.log(`Achievement for ${conclusionId} unlocked!`);
         }
 
         await user.save();
         res.status(200).send('Conclusion count updated');
     } catch (error) {
+        console.error('Error updating conclusion:', error);
         res.status(500).send('Internal Server Error');
     }
 });
+
 
 
 // CREATE Route for User Achievements:

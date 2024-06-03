@@ -43,8 +43,9 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user }) => {
 
             // Send the conclusion landing to the backend
             if (user) {
-                const conclusionKey = Object.keys(conclusions)[finalRandomIndex];
-                updateUserConclusion(user._id, conclusionKey);
+                const conclusionId = Object.keys(conclusions)[finalRandomIndex];
+                console.log(`Sending POST request with conclusionId: ${conclusionId}`);
+                updateUserConclusion(user._id, conclusionId);
             }
         }, 2300); // Cycle for 2.3 seconds
     };
@@ -58,10 +59,12 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user }) => {
                 },
                 body: JSON.stringify({ conclusionId }),
             });
+            console.log('POST request sent successfully');
         } catch (error) {
             console.error("Error updating conclusion:", error);
         }
     };
+    
 
     // Make startRandomizer available to the parent component
     useEffect(() => {
@@ -90,7 +93,7 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user }) => {
                 })}
             </div>
 
-            <style jsx>{`
+            <style>{`
                 .highlighted {
                     border: 4px solid yellow;
                 }

@@ -1,14 +1,15 @@
-import React from 'react';
+import React from "react";
+import '../App.css';
 
-const Achievement = ({ name, image, isUnlocked }) => {
-  return (
-    <div className="flex flex-col items-center">
-      <img src={image} className={`h-16 ${!isUnlocked && 'opacity-30'}`} alt={name} />
-      <span className="text-center text-xs text-gray-900">
-        {name} <br /> {!isUnlocked && "(hasn't been unlocked)"}
-      </span>
-    </div>
-  );
+const Achievement = ({ achievement, isUnlocked }) => {
+    return (
+        <div className={`flex flex-col items-center ${isUnlocked ? 'opacity-100' : 'opacity-30'}`}>
+            <img src={achievement.image} className="h-16" />
+            <span className="text-center text-xs text-gray-900">
+                {achievement.name} <br /> {!isUnlocked && "(hasn't been unlocked)"}
+            </span>
+        </div>
+    );
 };
 
 export default Achievement;
