@@ -1,24 +1,33 @@
 const User = require('../models/User');
-
 require('dotenv').config();
 const router = require('express').Router();
-const axios = require("axios");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const config = require("../jwt.config");
 
-// I.N.D.U.C.E.S
-//
-// Index   /user             GET
-// New     /user/new         GET
-// Delete  /user/:id         DELETE
-// Update  /user/:id         PUT/PATCH
-// Create  /user             POST
-// Edit    /user/:id/edit    GET
-// Show    /user/:id         GET
+// Create token form
+function createToken(user) {
+    return jwt.sign({ user }, process.env.SECRETKEY);
+}
 
-/* modules
---------------------------------------------------------------- */
+// Verify a token
+function checkToken(req, res, next) {
+    let token = req.get('Authorization');
+    if (token) {
+        token = token.split(' ')[1];
+        jwt.verify(token, process.env.SECRETKEY, (err, decoded) => {
+            req.user = err ? null : decoded.user;
+            return next();
+        });
+    } else {
+        req.user = null;
+        return next();
+    }
+}
+
+function ensureLoggedIn(req, res, next) {
+    if (req.user) return next();
+    res.status(401).json({ msg: 'Unauthorized You Shall Not Pass' });
+}
 
 // SIGNUP
 router.post('/signup', async (req, res) => {
@@ -60,31 +69,6 @@ router.post('/signin', async (req, res) => {
         res.status(400).json({ msg: error.message });
     }
 });
-
-// Create token form
-function createToken(user) {
-    return jwt.sign({ user }, process.env.SECRETKEY);
-}
-
-// Verify a token
-function checkToken(req, res, next) {
-    let token = req.get('Authorization');
-    if (token) {
-        token = token.split(' ')[1];
-        jwt.verify(token, process.env.SECRETKEY, (err, decoded) => {
-            req.user = err ? null : decoded.user;
-        });
-        return next();
-    } else {
-        req.user = null;
-        return next();
-    }
-}
-
-function ensureLoggedIn(req, res, next) {
-    if (req.user) return next();
-    res.status(401).json({ msg: 'Unauthorized You Shall Not Pass' });
-}
 
 // GET user by id
 router.get('/:id', async (req, res) => {
@@ -133,7 +117,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // POST Route for User Conclusions:
-router.post('/:id/conclusion', async (req, res) => {
+router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
     const { id } = req.params;
     const { conclusionId } = req.body;
 
@@ -181,7 +165,6 @@ router.post('/:id/conclusion', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
 
 // CREATE Route for User Achievements:
 router.get("/:id/achievements", function (req, res) {

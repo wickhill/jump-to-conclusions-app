@@ -51,7 +51,6 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user }) => {
     };
 
 
-
 const updateUserConclusion = async (userId, conclusionId) => {
     try {
         console.log('Sending POST request to:', `/user/${userId}/conclusion`);
@@ -68,8 +67,6 @@ const updateUserConclusion = async (userId, conclusionId) => {
         console.error("Error updating conclusion:", error);
     }
 };
-
-    
 
     // Make startRandomizer available to the parent component
     useEffect(() => {
