@@ -5,7 +5,7 @@ const Achievement = ({ name, image, isUnlocked }) => {
     <div className="flex flex-col items-center">
       <img src={image} className={`h-16 ${!isUnlocked && 'opacity-30'}`} alt={name} />
       <span className="text-center text-xs text-gray-900">
-        {name} <br /> {!isUnlocked && '(Cheeve not yet unlocked)'}
+        {name} <br /> {!isUnlocked && "(hasn't been unlocked)"}
       </span>
     </div>
   );

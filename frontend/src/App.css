@@ -10,9 +10,12 @@ html, body {
 #root {
     background-color: #cdcbcb;
     display: flex;
+    width: 100%;
     flex-direction: column;
     min-height: 100vh; /* Ensure it takes full height of the viewport */
     box-sizing: border-box; /* Include padding in the element's total width and height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
 .footer {
@@ -33,6 +36,14 @@ html, body {
 /* Mobile-specific styling */
 
 .jump-to-text {
+    color: black;
+}
+
+.achievements-text {
+    color: black;
+}
+
+.history-text {
     color: black;
 }
 

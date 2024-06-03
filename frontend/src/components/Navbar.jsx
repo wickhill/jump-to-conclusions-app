@@ -64,12 +64,12 @@ const handleToggleDropdown = () => {
   {user ? (
     <Link to={`/${user._id}/achievements`} className="h-16">
       <img src={stapler} className="h-16 -mt-3" />
-      <span className="text-center text-xs text-gray-900">Cheeves</span>
+      <span className="text-center text-xs text-gray-900">Cheeves!</span>
     </Link>
   ) : (
     <div className="flex flex-col items-center">
       <img src={stapler} className="h-16" />
-      <span className="text-center text-xs text-gray-900">Cheeves <br/>(sign in to view)</span>
+      <span className="text-center text-xs text-gray-900">Cheeves! <br/>(sign in to view)</span>
     </div>
   )}
 </div>
