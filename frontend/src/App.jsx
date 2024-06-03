@@ -24,7 +24,7 @@ function App() {
           <>
             <Route path="/updateProfile" element={<UpdateUserProfile user={user} setUser={setUser} />} />
             <Route path="/:id/history" element={<History />} />
-            <Route path="/:id/achievements" element={<Achievements />} />
+            <Route path="/:id/achievements" element={<Achievements user={user} />} />
           </>
         )}
       </Routes>

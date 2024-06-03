@@ -7,6 +7,19 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require("../jwt.config");
 
+// I.N.D.U.C.E.S
+//
+// Index   /user             GET
+// New     /user/new         GET
+// Delete  /user/:id         DELETE
+// Update  /user/:id         PUT/PATCH
+// Create  /user             POST
+// Edit    /user/:id/edit    GET
+// Show    /user/:id         GET
+
+/* modules
+--------------------------------------------------------------- */
+
 // SIGNUP
 router.post('/signup', async (req, res) => {
     try {
@@ -19,7 +32,9 @@ router.post('/signup', async (req, res) => {
         const newUser = new User({
             username,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            conclusions: new Map(),
+            achievements: new Map()
         });
         await newUser.save();
         const token = createToken(newUser);
@@ -167,12 +182,17 @@ router.post('/:id/conclusion', async (req, res) => {
     }
 });
 
+
 // CREATE Route for User Achievements:
 router.get("/:id/achievements", function (req, res) {
     User.findById(req.params.id)
         .then((user) => {
             if (user) {
-                res.json({ user }); // Send user data as JSON
+                // Ensure achievements is included in the response
+                const userWithAchievements = user.toObject();
+                userWithAchievements.achievements = Object.fromEntries(user.achievements);
+
+                res.json({ user: userWithAchievements }); // Send user data as JSON
             } else {
                 res.status(404).json({ message: "User not found" }); // Send 404 if user isn't found
             }
