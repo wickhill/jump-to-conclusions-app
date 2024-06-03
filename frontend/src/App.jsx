@@ -18,18 +18,14 @@ function App() {
       <Navbar user={user} onLogout={() => setUser(null)} />
       <Routes>
         <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} />} />
-      {!user &&
-            <Route path="/" element={<Home />} />
-      }
-        <Route path="/signin" element={<Signin onSignin={ setUser }/>} />
-        <Route path="/signup" element={<Signup onSignup={ setUser }/>} />
+        <Route path="/signin" element={<Signin onSignin={setUser} />} />
+        <Route path="/signup" element={<Signup onSignup={setUser} />} />
         {user && (
-            <>
-            {/* <Route path="/" element={<Genre />} /> */}
+          <>
             <Route path="/updateProfile" element={<UpdateUserProfile user={user} setUser={setUser} />} />
             <Route path="/:id/history" element={<History />} />
             <Route path="/:id/achievements" element={<Achievements />} />
-            </>
+          </>
         )}
       </Routes>
       <Footer onRandomize={randomizerFunction} />

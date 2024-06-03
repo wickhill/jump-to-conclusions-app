@@ -4,25 +4,36 @@ import { useNavigate } from 'react-router-dom';
 const Signin = ({ onSignin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleSignin = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:3000/user/signin', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username,
-                password
-            })
-        });
-        const res = await response.json();
-        console.log(res);
-        onSignin(res.user);
-        localStorage.setItem('token', res.token);
-        navigate("/");
+        setError('');
+        try {
+            const response = await fetch('http://localhost:3000/user/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            });
+            const res = await response.json();
+            if (response.ok) {
+                console.log(res);
+                onSignin(res.user);
+                localStorage.setItem('token', res.token);
+                navigate("/");
+            } else {
+                setError(res.msg || 'Failed to sign in');
+            }
+        } catch (error) {
+            console.error('Error signing in:', error);
+            setError('Failed to sign in');
+        }
     };
 
     return (

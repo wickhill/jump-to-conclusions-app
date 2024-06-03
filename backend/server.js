@@ -23,6 +23,14 @@ const userController = require('./controllers/userController');
 // Use the userController routes
 app.use('/user', userController);
 
+const corsOptions = {
+    origin: 'http://localhost:5173/', // frontend URL
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
+
 // I.N.D.U.C.E.S
 //
 // Index   /user             GET

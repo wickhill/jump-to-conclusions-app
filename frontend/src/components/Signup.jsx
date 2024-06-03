@@ -6,24 +6,35 @@ const Signup = ({ onSignup }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
+    const [error, setError] = useState('');
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:3000/user/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email,
-                username,
-                password
-            })
-        });
-        const res = await response.json();
-        onSignup(res.user);
-        localStorage.setItem('token', res.token);
-        navigate("/");
+        setError('');
+        try {
+            const response = await fetch('http://localhost:3000/user/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    username,
+                    password
+                })
+            });
+            const res = await response.json();
+            if (response.ok) {
+                onSignup(res.user);
+                localStorage.setItem('token', res.token);
+                navigate("/");
+            } else {
+                setError(res.msg || 'Failed to sign up');
+            }
+        } catch (error) {
+            console.error('Error signing up:', error);
+            setError('Failed to sign up');
+        }
     };
 
     return (

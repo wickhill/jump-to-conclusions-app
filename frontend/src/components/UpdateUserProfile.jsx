@@ -34,16 +34,18 @@ const handleChange = (event) => {
 const handleUpdate = async (event) => {
     event.preventDefault();
     try {
-    const response = await axios.put(`http://localhost:3000/user/${user._id}`, formData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    });
-    alert("Profile Updated Successfully.");
-      navigate("/"); // Navigate back in index
+        const response = await axios.put(`http://localhost:3000/user/${user._id}`, formData, {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        });
+        setUser(response.data.user); // Update user state with new user data
+        alert("Profile Updated Successfully.");
+        navigate("/"); // Nav to index
     } catch (error) {
-    console.error(`Error updating user's profile:`, error);
-    alert("We were unable to update your profile. Please try again.");
+        console.error(`Error updating user's profile:`, error);
+        alert("We were unable to update your profile. Please try again.");
     }
 };
+
 
 const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete your profile?")) {

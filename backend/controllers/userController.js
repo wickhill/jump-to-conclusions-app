@@ -1,34 +1,22 @@
+const User = require('../models/User');
+
 require('dotenv').config();
 const router = require('express').Router();
-const axios = require("axios")
-const db = require('../models');
+const axios = require("axios");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const config = require("../jwt.config")
-
-// I.N.D.U.C.E.S
-//
-// Index   /user             GET
-// New     /user/new         GET
-// Delete  /user/:id         DELETE
-// Update  /user/:id         PUT/PATCH
-// Create  /user             POST
-// Edit    /user/:id/edit    GET
-// Show    /user/:id         GET
-
-/* modules
---------------------------------------------------------------- */
+const config = require("../jwt.config");
 
 // SIGNUP
 router.post('/signup', async (req, res) => {
     try {
         const { username, email, password } = req.body;
-        const existingUser = await db.User.findOne({ username });
+        const existingUser = await User.findOne({ username });
         if (existingUser) {
             return res.status(409).json({ msg: `Username ${username} already exists. Please sign in.` });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new db.User({
+        const newUser = new User({
             username,
             email,
             password: hashedPassword
@@ -37,7 +25,7 @@ router.post('/signup', async (req, res) => {
         const token = createToken(newUser);
         res.json({ token, user: newUser });
     } catch (error) {
-        console.log("Signup Error:", error.message)
+        console.log("Signup Error:", error.message);
         res.status(400).json({ msg: error.message });
     }
 });
@@ -47,7 +35,7 @@ router.post('/signin', async (req, res) => {
     try {
         console.log("Attempting to sign in with:", req.body); 
         const { username, password } = req.body;
-        const foundUser = await db.User.findOne({ username });
+        const foundUser = await User.findOne({ username });
         if (!foundUser) throw new Error(`No user found with username ${username}`);
         const validPassword = await bcrypt.compare(password, foundUser.password);
         if (!validPassword) throw new Error(`The password credentials shared did not match the credentials for the user with username ${username}`);
@@ -86,7 +74,7 @@ function ensureLoggedIn(req, res, next) {
 // GET user by id
 router.get('/:id', async (req, res) => {
     try {
-        const user = await db.User.findById(req.params.id);
+        const user = await User.findById(req.params.id);
         if (!user) {
             return res.status(404).send({ message: "User not found" });
         }
@@ -99,7 +87,7 @@ router.get('/:id', async (req, res) => {
 // DELETE user by id
 router.delete('/:id', async (req, res) => {
     try {
-        const deletedUser = await db.User.findByIdAndDelete(req.params.id);
+        const deletedUser = await User.findByIdAndDelete(req.params.id);
         if (!deletedUser) {
             return res.status(404).json({ message: "User not found" });
         }
@@ -120,7 +108,7 @@ router.put('/:id', async (req, res) => {
         password = await bcrypt.hash(password, salt);
         updateData.password = password;
     }
-    const updatedUser = await db.User.findByIdAndUpdate(
+    const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
         { $set: updateData },
         { new: true }
@@ -128,7 +116,6 @@ router.put('/:id', async (req, res) => {
     const token = createToken(updatedUser);
     res.status(200).json({ token, user: updatedUser });
 });
-
 
 // POST Route for User Conclusions:
 router.post('/:id/conclusion', async (req, res) => {
@@ -138,7 +125,7 @@ router.post('/:id/conclusion', async (req, res) => {
     console.log(`Received POST request with conclusionId: ${conclusionId}`);
 
     try {
-        const user = await db.User.findById(id);
+        const user = await User.findById(id);
         if (!user) {
             console.log('User not found');
             return res.status(404).send('User not found');
@@ -165,7 +152,7 @@ router.post('/:id/conclusion', async (req, res) => {
             conclusion12: 1,
         };
 
-        const requiredLandings = requiredLandingsMap[conclusionId] || 3;
+        const requiredLandings = requiredLandingsMap[conclusionId] || 1;
 
         if (user.conclusions.get(conclusionId) >= requiredLandings) {
             user.achievements.set(conclusionId, true);
@@ -180,11 +167,9 @@ router.post('/:id/conclusion', async (req, res) => {
     }
 });
 
-
-
 // CREATE Route for User Achievements:
 router.get("/:id/achievements", function (req, res) {
-    db.User.findById(req.params.id)
+    User.findById(req.params.id)
         .then((user) => {
             if (user) {
                 res.json({ user }); // Send user data as JSON
@@ -200,7 +185,7 @@ router.get("/:id/achievements", function (req, res) {
 
 // SHOW Route for User History:
 router.get("/:id/history", function (req, res) {
-    db.User.findById(req.params.id)
+    User.findById(req.params.id)
         .then((user) => {
             if (user) {
                 res.json({ user }); // Send user data as JSON
@@ -213,6 +198,5 @@ router.get("/:id/history", function (req, res) {
             res.status(500).json({ message: "Internal Server Error", error: err });
         });
 });
-
 
 module.exports = router;
