@@ -129,7 +129,8 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
             console.log('User not found');
             return res.status(404).send('User not found');
         }
-
+        
+        // increment count for given conclusionId in user.conclusions:
         user.conclusions.set(conclusionId, (user.conclusions.get(conclusionId) || 0) + 1);
 
         // Debugging logs
@@ -151,8 +152,10 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
             'Weekend Warrior': 1,
         };
 
+        // retrieves required number of landings for specified conclusionId from requiredLandingsMap
         const requiredLandings = requiredLandingsMap[conclusionId] || 1;
 
+        // check if incremented count meets required landings from requiredLandingsMap:
         if (user.conclusions.get(conclusionId) >= requiredLandings) {
             user.achievements.set(conclusionId, true);
             console.log(`Achievement for ${conclusionId} unlocked!`);
@@ -171,10 +174,15 @@ router.get("/:id/achievements", function (req, res) {
     User.findById(req.params.id)
         .then((user) => {
             if (user) {
+
                 // Ensure achievements is included in the response
+                // Converts the user document to plain JavaScript object w/ user.toObject():
                 const userWithAchievements = user.toObject();
+
+                // achievements map is included in the response by converting it to an object:
                 userWithAchievements.achievements = Object.fromEntries(user.achievements);
 
+                // responds w/ user data including achievements as JSON:
                 res.json({ user: userWithAchievements }); // Send user data as JSON
             } else {
                 res.status(404).json({ message: "User not found" }); // Send 404 if user isn't found
