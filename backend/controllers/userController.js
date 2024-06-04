@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const requiredLandingsMap = require('../models/requiredLandingsMap.js');
 require('dotenv').config();
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
@@ -137,20 +138,20 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
         console.log('Conclusion ID:', conclusionId);
         console.log('User conclusions:', user.conclusions);
 
-        const requiredLandingsMap = {
-            'Extreme Fajita': 1,
-            "Boss's Birthday": 1,
-            'Hot Coffee': 1,
-            'Movie Night': 1,
-            'PC Load Letter': 1,
-            'Snooze Button': 1,
-            'Secret ATM': 1,
-            'Baseball Bat': 1,
-            'Fishing Trip': 1,
-            'Beer with Friends': 1,
-            'Gaming at Work': 1,
-            'Weekend Warrior': 1,
-        };
+        // const requiredLandingsMap = {
+        //     'Extreme Fajita': 1,
+        //     "Boss's Birthday": 1,
+        //     'Hot Coffee': 1,
+        //     'Movie Night': 1,
+        //     'PC Load Letter': 1,
+        //     'Snooze Button': 1,
+        //     'Secret ATM': 1,
+        //     'Baseball Bat': 1,
+        //     'Fishing Trip': 1,
+        //     'Beer with Friends': 1,
+        //     'Gaming at Work': 1,
+        //     'Weekend Warrior': 1,
+        // };
 
         // retrieves required number of landings for specified conclusionId from requiredLandingsMap
         const requiredLandings = requiredLandingsMap[conclusionId] || 1;

@@ -1,5 +1,5 @@
 import React from 'react';
-import conclusions from '../data';
+import conclusions from '../conclusionsData';
 import Conclusions from '../components/Conclusions';
 
 const Home = ({ setRandomizerFunction, fetchAchievements }) => {
