@@ -50,23 +50,25 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user }) => {
         }, 2300); // Cycle for 2.3 seconds
     };
 
-
-const updateUserConclusion = async (userId, conclusionId) => {
-    try {
-        console.log('Sending POST request to:', `/user/${userId}/conclusion`);
-        console.log('Request body:', { conclusionId });
-        const response = await fetch(`/user/${userId}/conclusion`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ conclusionId }),
-        });
-        console.log('POST request sent successfully', response);
-    } catch (error) {
-        console.error("Error updating conclusion:", error);
-    }
-};
+    const updateUserConclusion = async (userId, conclusionId) => {
+        try {
+            console.log('Sending POST request to:', `/user/${userId}/conclusion`);
+            console.log('Request body:', JSON.stringify({ conclusionId }));
+            const response = await fetch(`/user/${userId}/conclusion`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include the token
+                },
+                body: JSON.stringify({ conclusionId }),
+            });
+            const data = await response.json();
+            console.log('POST request sent successfully:', response);
+            console.log('Response data:', data);
+        } catch (error) {
+            console.error("Error updating conclusion:", error);
+        }
+    };
 
     // Make startRandomizer available to the parent component
     useEffect(() => {

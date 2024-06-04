@@ -10,27 +10,28 @@ import History from './pages/History';
 import Achievements from './pages/Achievements';
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [randomizerFunction, setRandomizerFunction] = useState(null);
+    const [user, setUser] = useState(null);
+    const [randomizerFunction, setRandomizerFunction] = useState(null);
 
-  return (
-    <div id="root">
-      <Navbar user={user} onLogout={() => setUser(null)} />
-      <Routes>
-        <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} />} />
-        <Route path="/signin" element={<Signin onSignin={setUser} />} />
-        <Route path="/signup" element={<Signup onSignup={setUser} />} />
-        {user && (
-          <>
-            <Route path="/updateProfile" element={<UpdateUserProfile user={user} setUser={setUser} />} />
-            <Route path="/:id/history" element={<History />} />
-            <Route path="/:id/achievements" element={<Achievements user={user} />} />
-          </>
-        )}
-      </Routes>
-      <Footer onRandomize={randomizerFunction} />
-    </div>
-  );
+    return (
+        <div id="root">
+            <Navbar user={user} onLogout={() => setUser(null)} />
+            <Routes>
+                <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} />} />
+                {!user && <Route path="/" element={<Home />} />}
+                <Route path="/signin" element={<Signin onSignin={setUser} />} />
+                <Route path="/signup" element={<Signup onSignup={setUser} />} />
+                {user && (
+                    <>
+                        <Route path="/updateProfile" element={<UpdateUserProfile user={user} setUser={setUser} />} />
+                        <Route path="/:id/history" element={<History />} />
+                        <Route path="/:id/achievements" element={<Achievements user={user} />} />
+                    </>
+                )}
+            </Routes>
+            <Footer onRandomize={randomizerFunction} />
+        </div>
+    );
 }
 
 export default App;
