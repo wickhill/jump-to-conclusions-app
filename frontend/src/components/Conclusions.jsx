@@ -21,6 +21,7 @@ const colorMapping = {
 const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAchievements }) => {
     const [highlightedIndex, setHighlightedIndex] = useState(null);
     const [randomIndex, setRandomIndex] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         let interval;
@@ -35,7 +36,7 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAc
 
     const startRandomizer = () => {
         setRandomIndex(null); // Reset the randomIndex to clear previous selection
-        setHighlightedIndex(0);
+        setHighlightedIndex(5);
         setTimeout(() => {
             const finalRandomIndex = Math.floor(Math.random() * Object.keys(conclusions).length);
             setRandomIndex(finalRandomIndex);
@@ -62,6 +63,9 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAc
                 },
                 body: JSON.stringify({ conclusionId }),
             });
+            if (!response.ok) {
+                throw new Error('Failed to update conclusion');
+            }
             const data = await response.json();
             console.log('POST request sent successfully:', response);
             console.log('Response data:', data);
@@ -70,6 +74,7 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAc
             fetchAchievements();
         } catch (error) {
             console.error("Error updating conclusion:", error);
+            setError('Failed to update conclusion. Please try again.');
         }
     };
 
@@ -87,6 +92,8 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAc
                 <h2 className="text-3xl jersey-15-regular mb-2">to</h2>
                 <h2 className="text-4xl jersey-15-regular mb-2">Conclusions!</h2>
             </div>
+
+            {error && <div className="text-red-500">{error}</div>}
 
             <div className="grid grid-cols-3 gap-4">
                 {Object.keys(conclusions).map((key, index) => {

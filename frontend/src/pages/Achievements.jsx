@@ -38,9 +38,16 @@ const Achievements = ({ user }) => {
             if (user && user._id) {
                 const url = `http://localhost:3000/user/${user._id}/achievements`;
                 console.log('Fetching URL:', url);
+
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    throw new Error('Token not found');
+                }
+                console.log('Token:', token);
+
                 const response = await fetch(url, {
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                        'Authorization': `Bearer ${token}`,
                     },
                 });
                 console.log('Response:', response);
