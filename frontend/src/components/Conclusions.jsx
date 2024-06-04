@@ -18,7 +18,7 @@ const colorMapping = {
     conclusion12: "bg-purple-500 hover:bg-purple-300",
 };
 
-const Conclusions = ({ conclusions = conclusionsData, onRandomize, user }) => {
+const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAchievements }) => {
     const [highlightedIndex, setHighlightedIndex] = useState(null);
     const [randomIndex, setRandomIndex] = useState(null);
 
@@ -65,6 +65,9 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user }) => {
             const data = await response.json();
             console.log('POST request sent successfully:', response);
             console.log('Response data:', data);
+
+            // Re-fetch achievements
+            fetchAchievements();
         } catch (error) {
             console.error("Error updating conclusion:", error);
         }

@@ -12,12 +12,33 @@ import Achievements from './pages/Achievements';
 function App() {
     const [user, setUser] = useState(null);
     const [randomizerFunction, setRandomizerFunction] = useState(null);
+    const [achievements, setAchievements] = useState([]);
+
+    const fetchAchievements = async () => {
+        if (user && user._id) {
+            const url = `http://localhost:3000/user/${user._id}/achievements`;
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+            if (response.ok) {
+                const data = await response.json();
+                const achievementsMap = new Map(Object.entries(data.user.achievements));
+                const updatedAchievements = achievementsData.map(achievement => ({
+                    ...achievement,
+                    isUnlocked: achievementsMap.get(achievement.name) || false
+                }));
+                setAchievements(updatedAchievements);
+            }
+        }
+    };
 
     return (
         <div id="root">
             <Navbar user={user} onLogout={() => setUser(null)} />
             <Routes>
-                <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} />} />
+                <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} fetchAchievements={fetchAchievements} />} />
                 {!user && <Route path="/" element={<Home />} />}
                 <Route path="/signin" element={<Signin onSignin={setUser} />} />
                 <Route path="/signup" element={<Signup onSignup={setUser} />} />
@@ -25,7 +46,7 @@ function App() {
                     <>
                         <Route path="/updateProfile" element={<UpdateUserProfile user={user} setUser={setUser} />} />
                         <Route path="/:id/history" element={<History />} />
-                        <Route path="/:id/achievements" element={<Achievements user={user} />} />
+                        <Route path="/:id/achievements" element={<Achievements user={user} fetchAchievements={fetchAchievements} />} />
                     </>
                 )}
             </Routes>
