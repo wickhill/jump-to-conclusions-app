@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import conclusionsData from "../conclusionsData"; // Ensure the correct path to conclusionsData.js
-import colorMapping from "../colorMapping"; // Ensure the correct path to colorMapping.js
-import Conclusion from "./Conclusion"; // Ensure the correct path to Conclusion.jsx
+import conclusionsData from "../conclusionsData"; // the correct path to conclusionsData.js
+import colorMapping from "../colorMapping"; // the correct path to colorMapping.js
+import Conclusion from "./Conclusion"; // the correct path to Conclusion.jsx
 import '../App.css';
 
 const Conclusions = ({ user, fetchAchievements, onRandomize }) => {
@@ -31,9 +31,9 @@ const Conclusions = ({ user, fetchAchievements, onRandomize }) => {
             setHighlightedIndex(null);
 
             if (user) {
+
                 console.log(`The user Jumping to Conclusions is: ${user._id} Message 1`)
-                // console.log(`The user Jumping to Conclusions is: ${userId} Message 2`)
-                console.log(`The user Jumping to Conclusions is: ${user} Message 3`)
+
                 const conclusionId = Object.keys(conclusionsData)[finalRandomIndex];
                 console.log(`Sending POST request with conclusionId: ${conclusionId}`);
                 updateUserConclusion(user._id, conclusionId);

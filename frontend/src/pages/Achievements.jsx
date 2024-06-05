@@ -36,14 +36,15 @@ const Achievements = ({ user }) => {
     const [achievements, setAchievements] = useState(achievementsData);
     
     useEffect(() => {
-        console.log(`The user Jumping to Conclusions is: ${user._id} Message 1`);
+        // console.log(`The user accessing Achievements.jsx is userId: '${user._id}',`);
+        console.log('Achievements.jsx received user:', user);
     }, [user]);
 
     const fetchAchievements = async () => {
         try {
             if (user && user._id) {
                 const url = `http://localhost:3000/user/${user._id}/achievements`;
-                console.log('Fetching URL:', url);
+                // console.log('Fetching URL:', url);
 
                 const token = localStorage.getItem('token');
                 if (!token) {
