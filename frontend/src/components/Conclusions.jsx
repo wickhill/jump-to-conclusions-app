@@ -21,6 +21,7 @@ const Conclusions = ({ user, fetchAchievements, onRandomize }) => {
     }, [highlightedIndex]);
 
     const startRandomizer = () => {
+        console.log("startRandomizer called by user:", user);
         setRandomIndex(null);
         setHighlightedIndex(5);
         setTimeout(() => {

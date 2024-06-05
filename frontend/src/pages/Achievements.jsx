@@ -34,9 +34,10 @@ const achievementsData = [
 
 const Achievements = ({ user }) => {
     const [achievements, setAchievements] = useState(achievementsData);
-    console.log(`The user Jumping to Conclusions is: ${user._id} Message 1`)
-    // console.log(`The user Jumping to Conclusions is: ${userId} Message 2`)
-    console.log(`The user Jumping to Conclusions is: ${user} Message 3`)
+    
+    useEffect(() => {
+        console.log(`The user Jumping to Conclusions is: ${user._id} Message 1`);
+    }, [user]);
 
     const fetchAchievements = async () => {
         try {
@@ -48,37 +49,37 @@ const Achievements = ({ user }) => {
                 if (!token) {
                     throw new Error('Token not found');
                 }
-                console.log('Token:', token);
+                // console.log('Token:', token);
 
                 const response = await fetch(url, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
                 });
-                console.log('Response:', response);
+                // console.log('Response:', response);
 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                console.log('Fetched data:', data);
+                // console.log('Fetched data:', data);
 
                 if (!data.user || !data.user.achievements) {
                     throw new Error('Achievements data is not available in the response');
                 }
 
                 const achievementsMap = new Map(Object.entries(data.user.achievements));
-                console.log('Achievements Map:', achievementsMap);
+                // console.log('Achievements Map:', achievementsMap);
 
                 const updatedAchievements = achievementsData.map(achievement => ({
                     ...achievement,
                     isUnlocked: achievementsMap.get(achievement.name) || false
                 }));
-                console.log('Updated Achievements:', updatedAchievements);
+                // console.log('Updated Achievements:', updatedAchievements);
                 setAchievements(updatedAchievements);
             }
         } catch (error) {
-            console.error('Error fetching achievements:', error);
+            // console.error('Error fetching achievements:', error);
         }
     };
 

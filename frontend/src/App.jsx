@@ -50,7 +50,7 @@ function App() {
                     </>
                 )}
             </Routes>
-            <Footer onRandomize={randomizerFunction} />
+            <Footer user={user} onRandomize={randomizerFunction} />
         </div>
     );
 }

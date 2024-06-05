@@ -1,7 +1,8 @@
 import React from 'react';
 import footprintSvg from '../assets/footprint.svg';
+import App from '../App';
 
-const FootprintButton = ({ onClick }) => {
+const FootprintButton = ({ user, onClick }) => {
     return (
         <button className="footprint-button" onClick={() => {
             console.log('FootprintButton clicked');
@@ -12,8 +13,8 @@ const FootprintButton = ({ onClick }) => {
     );
 };
 
-const Footer = ({ onRandomize }) => {
-    console.log('Footer received onRandomize:', onRandomize);
+const Footer = ({ user, onRandomize }) => {
+    console.log('Footer received onRandomize:', user, onRandomize);
     return (
         <footer className="footer">
             <FootprintButton onClick={onRandomize} />
