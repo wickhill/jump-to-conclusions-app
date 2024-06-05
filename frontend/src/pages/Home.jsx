@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Conclusions from '../components/Conclusions';
 
-const Home = ({ setRandomizerFunction, fetchAchievements, user }) => {
+const Home = ({ setRandomizerFunction, fetchAchievements, user, setResetFunction }) => {
     useEffect(() => {
         console.log("Home component mounted by user:", user);
         setRandomizerFunction(() => {
@@ -16,7 +16,7 @@ const Home = ({ setRandomizerFunction, fetchAchievements, user }) => {
 
     return (
         <div id="content" className="p-1 text-center">
-            <Conclusions user={user} fetchAchievements={fetchAchievements} onRandomize={setRandomizerFunction} />
+            <Conclusions user={user} fetchAchievements={fetchAchievements} onRandomize={setRandomizerFunction} setResetFunction={setResetFunction} />
         </div>
     );
 };

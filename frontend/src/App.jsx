@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
@@ -13,6 +13,13 @@ function App() {
     const [user, setUser] = useState(null);
     const [randomizerFunction, setRandomizerFunction] = useState(null);
     const [achievements, setAchievements] = useState([]);
+    const [resetFunction, setResetFunction] = useState(() => () => {});
+
+    useEffect(() => {
+        if (!user) {
+            setRandomizerFunction(null);
+        }
+    }, [user]);
 
     const fetchAchievements = async () => {
         if (user && user._id) {
@@ -38,8 +45,8 @@ function App() {
         <div id="root">
             <Navbar user={user} onLogout={() => setUser(null)} />
             <Routes>
-                <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} fetchAchievements={fetchAchievements} user={user} />} />
-                {!user && <Route path="/signin" element={<Signin onSignin={setUser} />} />}
+                <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} fetchAchievements={fetchAchievements} user={user} setResetFunction={setResetFunction} />} />
+                {!user && <Route path="/signin" element={<Signin onSignin={setUser} resetState={resetFunction} />} />}
                 <Route path="/signup" element={<Signup onSignup={setUser} />} />
                 {user && (
                     <>

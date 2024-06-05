@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Signin = ({ onSignin }) => {
+const Signin = ({ onSignin, resetState }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -26,6 +26,7 @@ const Signin = ({ onSignin }) => {
                 console.log(res);
                 onSignin(res.user);
                 localStorage.setItem('token', res.token);
+                resetState(); // Reset the state
                 navigate("/");
             } else {
                 setError(res.msg || 'Failed to sign in');

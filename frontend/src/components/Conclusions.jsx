@@ -4,7 +4,7 @@ import colorMapping from "../colorMapping"; // the correct path to colorMapping.
 import Conclusion from "./Conclusion"; // the correct path to Conclusion.jsx
 import '../App.css';
 
-const Conclusions = ({ user, fetchAchievements, onRandomize }) => {
+const Conclusions = ({ user, fetchAchievements, onRandomize, setResetFunction }) => {
     const [highlightedIndex, setHighlightedIndex] = useState(null);
     const [randomIndex, setRandomIndex] = useState(null);
     const [error, setError] = useState(null);
@@ -23,16 +23,15 @@ const Conclusions = ({ user, fetchAchievements, onRandomize }) => {
     const startRandomizer = () => {
         console.log("startRandomizer called by user:", user);
         setRandomIndex(null);
-        setHighlightedIndex(5);
+        setHighlightedIndex(5); // Adjust the initial highlight index as needed
         setTimeout(() => {
             const finalRandomIndex = Math.floor(Math.random() * Object.keys(conclusionsData).length);
             setRandomIndex(finalRandomIndex);
-            console.log(`The user: '${user}' landed on conclusion: ${finalRandomIndex}`)
+            console.log(`The user: '${user}' landed on conclusion: ${finalRandomIndex}`);
             setHighlightedIndex(null);
 
             if (user) {
-
-                console.log(`The user Jumping to Conclusions is: ${user._id} Message 1`)
+                console.log(`The user Jumping to Conclusions is: ${user._id} Message 1`);
 
                 const conclusionId = Object.keys(conclusionsData)[finalRandomIndex];
                 console.log(`Sending POST request with conclusionId: ${conclusionId}`);
@@ -73,7 +72,23 @@ const Conclusions = ({ user, fetchAchievements, onRandomize }) => {
         if (onRandomize) {
             onRandomize(() => startRandomizer);
         }
-    }, [onRandomize]);
+    }, [onRandomize, user]); // Add user to the dependency array
+
+    useEffect(() => {
+        if (!user) {
+            setHighlightedIndex(null);
+            setRandomIndex(null);
+            setError(null);
+        }
+    }, [user]); // Reset state when user changes
+
+    useEffect(() => {
+        setResetFunction(() => () => {
+            setHighlightedIndex(null);
+            setRandomIndex(null);
+            setError(null);
+        });
+    }, [setResetFunction]);
 
     return (
         <div className="p-1">
