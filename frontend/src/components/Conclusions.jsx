@@ -27,7 +27,7 @@ const Conclusions = ({ user, fetchAchievements, onRandomize }) => {
         setTimeout(() => {
             const finalRandomIndex = Math.floor(Math.random() * Object.keys(conclusionsData).length);
             setRandomIndex(finalRandomIndex);
-            console.log(`The user landed on conclusion: ${finalRandomIndex}`)
+            console.log(`The user: '${user}' landed on conclusion: ${finalRandomIndex}`)
             setHighlightedIndex(null);
 
             if (user) {

@@ -38,9 +38,8 @@ function App() {
         <div id="root">
             <Navbar user={user} onLogout={() => setUser(null)} />
             <Routes>
-                <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} fetchAchievements={fetchAchievements} />} />
-                {!user && <Route path="/" element={<Home />} />}
-                <Route path="/signin" element={<Signin onSignin={setUser} />} />
+                <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} fetchAchievements={fetchAchievements} user={user} />} />
+                {!user && <Route path="/signin" element={<Signin onSignin={setUser} />} />}
                 <Route path="/signup" element={<Signup onSignup={setUser} />} />
                 {user && (
                     <>
