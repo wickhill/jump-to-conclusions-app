@@ -8,6 +8,7 @@ import Signup from './components/Signup';
 import UpdateUserProfile from './components/UpdateUserProfile';
 import History from './pages/History';
 import Achievements from './pages/Achievements';
+import Logout from './components/Logout';
 
 function App() {
     const [user, setUser] = useState(null);
@@ -43,7 +44,7 @@ function App() {
 
     return (
         <div id="root">
-            <Navbar user={user} onLogout={() => setUser(null)} />
+            <Navbar user={user} onLogout={() => { setUser(null); resetFunction(); }} />
             <Routes>
                 <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} fetchAchievements={fetchAchievements} user={user} setResetFunction={setResetFunction} />} />
                 {!user && <Route path="/signin" element={<Signin onSignin={setUser} resetState={resetFunction} />} />}

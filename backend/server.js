@@ -38,6 +38,16 @@ app.get("/:id/history/", (req, res) => {
     res.send("User History!");
 });
 
+app.get("/:id/conclusion", (req, res) => {
+    res.send("User Conclusions!");
+});
+
+app.get("/:id/achievements", (req, res) => {
+    res.send("User Achievements!");
+});
+
+
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {

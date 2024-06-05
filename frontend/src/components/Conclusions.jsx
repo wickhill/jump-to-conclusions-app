@@ -44,29 +44,26 @@ const Conclusions = ({ user, fetchAchievements, onRandomize, setResetFunction })
 
     const updateUserConclusion = async (userId, conclusionId) => {
         try {
-            console.log('Sending POST request to:', `/user/${userId}/conclusion`);
-            console.log('Request body:', JSON.stringify({ conclusionId }));
-            const response = await fetch(`/user/${userId}/conclusion`, {
+            console.log('Sending POST request to:', `http://localhost:3000/user/${userId}/conclusion`);
+            console.log('Request body:', { conclusionId });
+            const response = await fetch(`http://localhost:3000/user/${userId}/conclusion`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify({ conclusionId }),
             });
             if (!response.ok) {
                 throw new Error('Failed to update conclusion');
             }
-            const data = await response.json();
-            console.log('POST request sent successfully:', response);
-            console.log('Response data:', data);
-
-            fetchAchievements();
+            console.log('POST request sent successfully', response);
         } catch (error) {
             console.error("Error updating conclusion:", error);
             setError('Failed to update conclusion. Please try again.');
         }
     };
+    
 
     useEffect(() => {
         if (onRandomize) {
