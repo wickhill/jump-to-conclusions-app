@@ -1,25 +1,10 @@
 import React, { useState, useEffect } from "react";
-import colorMapping from "../colormapping";
-import Conclusion from "./Conclusion";
-import conclusionsData from "../conclusionsData";
+import conclusionsData from "../conclusionsData"; // Ensure the correct path to conclusionsData.js
+import colorMapping from "../colorMapping"; // Ensure the correct path to colorMapping.js
+import Conclusion from "./Conclusion"; // Ensure the correct path to Conclusion.jsx
 import '../App.css';
 
-// const colorMapping = {
-//     conclusion1: "bg-blue-500 hover:bg-blue-300",
-//     conclusion2: "bg-purple-500 hover:bg-purple-300",
-//     conclusion3: "bg-green-500 hover:bg-green-300",
-//     conclusion4: "bg-green-500 hover:bg-green-300",
-//     conclusion5: "bg-blue-500 hover:bg-blue-300",
-//     conclusion6: "bg-purple-500 hover:bg-purple-300",
-//     conclusion7: "bg-blue-500 hover:bg-blue-300",
-//     conclusion8: "bg-green-500 hover:bg-green-300",
-//     conclusion9: "bg-purple-500 hover:bg-purple-300",
-//     conclusion10: "bg-blue-500 hover:bg-blue-300",
-//     conclusion11: "bg-green-500 hover:bg-green-300",
-//     conclusion12: "bg-purple-500 hover:bg-purple-300",
-// };
-
-const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAchievements }) => {
+const Conclusions = ({ user, fetchAchievements, onRandomize }) => {
     const [highlightedIndex, setHighlightedIndex] = useState(null);
     const [randomIndex, setRandomIndex] = useState(null);
     const [error, setError] = useState(null);
@@ -28,28 +13,29 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAc
         let interval;
         if (highlightedIndex !== null) {
             interval = setInterval(() => {
-                const randomIndex = Math.floor(Math.random() * Object.keys(conclusions).length);
+                const randomIndex = Math.floor(Math.random() * Object.keys(conclusionsData).length);
                 setHighlightedIndex(randomIndex);
-            }, 200); // Change highlight every 200ms
+            }, 200);
         }
         return () => clearInterval(interval);
-    }, [highlightedIndex, conclusions]);
+    }, [highlightedIndex]);
 
     const startRandomizer = () => {
-        setRandomIndex(null); // Reset the randomIndex to clear previous selection
-        setHighlightedIndex(5);
+        setRandomIndex(null);
+        setHighlightedIndex(0);
         setTimeout(() => {
-            const finalRandomIndex = Math.floor(Math.random() * Object.keys(conclusions).length);
+            const finalRandomIndex = Math.floor(Math.random() * Object.keys(conclusionsData).length);
             setRandomIndex(finalRandomIndex);
             setHighlightedIndex(null);
 
-            // Send the conclusion landing to the backend
             if (user) {
-                const conclusionId = Object.keys(conclusions)[finalRandomIndex];
+                const conclusionId = Object.keys(conclusionsData)[finalRandomIndex];
                 console.log(`Sending POST request with conclusionId: ${conclusionId}`);
                 updateUserConclusion(user._id, conclusionId);
+            } else {
+                console.error("User is not defined");
             }
-        }, 2300); // Cycle for 2.3 seconds
+        }, 2300);
     };
 
     const updateUserConclusion = async (userId, conclusionId) => {
@@ -60,7 +46,7 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAc
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include the token
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
                 body: JSON.stringify({ conclusionId }),
             });
@@ -71,7 +57,6 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAc
             console.log('POST request sent successfully:', response);
             console.log('Response data:', data);
 
-            // Re-fetch achievements
             fetchAchievements();
         } catch (error) {
             console.error("Error updating conclusion:", error);
@@ -79,10 +64,9 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAc
         }
     };
 
-    // Make startRandomizer available to the parent component
     useEffect(() => {
         if (onRandomize) {
-            onRandomize(() => startRandomizer); // Pass function instead of invoking it
+            onRandomize(() => startRandomizer);
         }
     }, [onRandomize]);
 
@@ -97,8 +81,8 @@ const Conclusions = ({ conclusions = conclusionsData, onRandomize, user, fetchAc
             {error && <div className="text-red-500">{error}</div>}
 
             <div className="grid grid-cols-3 gap-4">
-                {Object.keys(conclusions).map((key, index) => {
-                    const conclusion = conclusions[key];
+                {Object.keys(conclusionsData).map((key, index) => {
+                    const conclusion = conclusionsData[key];
                     const colorClass = colorMapping[key];
                     return (
                         <div key={index} className={`${colorClass} ${highlightedIndex === index ? 'highlighted' : ''} ${randomIndex === index ? 'selected' : ''}`}>
