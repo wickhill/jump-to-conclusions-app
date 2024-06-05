@@ -22,10 +22,11 @@ const Conclusions = ({ user, fetchAchievements, onRandomize }) => {
 
     const startRandomizer = () => {
         setRandomIndex(null);
-        setHighlightedIndex(0);
+        setHighlightedIndex(5);
         setTimeout(() => {
             const finalRandomIndex = Math.floor(Math.random() * Object.keys(conclusionsData).length);
             setRandomIndex(finalRandomIndex);
+            console.log(`The user landed on ${finalRandomIndex}`)
             setHighlightedIndex(null);
 
             if (user) {
