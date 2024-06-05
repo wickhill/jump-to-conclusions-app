@@ -26,10 +26,13 @@ const Conclusions = ({ user, fetchAchievements, onRandomize }) => {
         setTimeout(() => {
             const finalRandomIndex = Math.floor(Math.random() * Object.keys(conclusionsData).length);
             setRandomIndex(finalRandomIndex);
-            console.log(`The user landed on ${finalRandomIndex}`)
+            console.log(`The user landed on conclusion: ${finalRandomIndex}`)
             setHighlightedIndex(null);
 
             if (user) {
+                console.log(`The user Jumping to Conclusions is: ${user._id} Message 1`)
+                // console.log(`The user Jumping to Conclusions is: ${userId} Message 2`)
+                console.log(`The user Jumping to Conclusions is: ${user} Message 3`)
                 const conclusionId = Object.keys(conclusionsData)[finalRandomIndex];
                 console.log(`Sending POST request with conclusionId: ${conclusionId}`);
                 updateUserConclusion(user._id, conclusionId);

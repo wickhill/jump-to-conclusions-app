@@ -32,6 +32,9 @@ const achievementsData = [
 
 const Achievements = ({ user }) => {
     const [achievements, setAchievements] = useState(achievementsData);
+    console.log(`The user Jumping to Conclusions is: ${user._id} Message 1`)
+    // console.log(`The user Jumping to Conclusions is: ${userId} Message 2`)
+    console.log(`The user Jumping to Conclusions is: ${user} Message 3`)
 
     const fetchAchievements = async () => {
         try {
