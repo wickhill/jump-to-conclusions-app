@@ -4,7 +4,7 @@ import '../App.css';
 
 const Conclusion = ({ conclusion, colorClass }) => {
   const textRef = useRef(null);
-  const divRef = useRef(null);
+  const divRef = useRef(null); // ref, add + rm CSS classes
 
   useEffect(() => {
     if (textRef.current) {
