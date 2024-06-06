@@ -21,20 +21,21 @@ const Conclusions = ({ user, fetchAchievements, onRandomize, setResetFunction })
     }, [highlightedIndex]);
 
     const startRandomizer = () => {
-        console.log("startRandomizer called by user:", user);
+        console.log("startRandomizer called by user:", user); // debugging
+        const currentUser = user;
         setRandomIndex(null);
-        setHighlightedIndex(5); // Adjust the initial highlight index as needed
+        setHighlightedIndex(5); // initial conclusion highlight index ALTER FOR onRandomizer DEBUGGING
         setTimeout(() => {
             const finalRandomIndex = Math.floor(Math.random() * Object.keys(conclusionsData).length);
             setRandomIndex(finalRandomIndex);
-            console.log(`The user: '${user}' landed on conclusion: ${finalRandomIndex}`);
+            console.log('The user:', currentUser, 'landed on conclusion:', finalRandomIndex + 1);
             setHighlightedIndex(null);
 
             if (user) {
-                console.log(`The user Jumping to Conclusions is: ${user._id} Message 1`);
+                console.log(`The user Jumping to Conclusions is: ${user._id} Message 1`); // debugging
 
                 const conclusionId = Object.keys(conclusionsData)[finalRandomIndex];
-                console.log(`Sending POST request with conclusionId: ${conclusionId}`);
+                console.log(`Sending POST request with conclusionId: ${conclusionId}`); // debugging
                 updateUserConclusion(user._id, conclusionId);
             } else {
                 console.error("User is not defined");
@@ -44,8 +45,8 @@ const Conclusions = ({ user, fetchAchievements, onRandomize, setResetFunction })
 
     const updateUserConclusion = async (userId, conclusionId) => {
         try {
-            console.log('Sending POST request to:', `http://localhost:3000/user/${userId}/conclusion`);
-            console.log('Request body:', { conclusionId });
+            console.log('Sending POST request to:', `http://localhost:3000/user/${userId}/conclusion`); // debugging
+            console.log('Request body:', { conclusionId }); // debugging
             const response = await fetch(`http://localhost:3000/user/${userId}/conclusion`, {
                 method: 'POST',
                 headers: {
@@ -57,7 +58,8 @@ const Conclusions = ({ user, fetchAchievements, onRandomize, setResetFunction })
             if (!response.ok) {
                 throw new Error('Failed to update conclusion');
             }
-            console.log('POST request sent successfully', response);
+            console.log('POST request sent successfully', response); // debugging
+            console.log('User has been updated', user); // debugging
         } catch (error) {
             console.error("Error updating conclusion:", error);
             setError('Failed to update conclusion. Please try again.');

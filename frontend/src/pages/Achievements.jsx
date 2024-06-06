@@ -37,50 +37,50 @@ const Achievements = ({ user }) => {
     
     useEffect(() => {
         // console.log(`The user accessing Achievements.jsx is userId: '${user._id}',`);
-        console.log('Achievements.jsx received user:', user);
+        console.log('Achievements.jsx received user:', user); // debugging
     }, [user]);
 
     const fetchAchievements = async () => {
         try {
             if (user && user._id) {
                 const url = `http://localhost:3000/user/${user._id}/achievements`;
-                // console.log('Fetching URL:', url);
+                // console.log('Fetching URL:', url); // debugging
 
                 const token = localStorage.getItem('token');
                 if (!token) {
                     throw new Error('Token not found');
                 }
-                // console.log('Token:', token);
+                // console.log('Token:', token); // debugging
 
                 const response = await fetch(url, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
                 });
-                // console.log('Response:', response);
+                // console.log('Response:', response); // debugging
 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                // console.log('Fetched data:', data);
+                // console.log('Fetched data:', data); // debugging
 
                 if (!data.user || !data.user.achievements) {
                     throw new Error('Achievements data is not available in the response');
                 }
 
                 const achievementsMap = new Map(Object.entries(data.user.achievements));
-                // console.log('Achievements Map:', achievementsMap);
+                // console.log('Achievements Map:', achievementsMap); // debugging
 
                 const updatedAchievements = achievementsData.map(achievement => ({
                     ...achievement,
                     isUnlocked: achievementsMap.get(achievement.name) || false
                 }));
-                // console.log('Updated Achievements:', updatedAchievements);
+                // console.log('Updated Achievements:', updatedAchievements); // debugging
                 setAchievements(updatedAchievements);
             }
         } catch (error) {
-            // console.error('Error fetching achievements:', error);
+            // console.error('Error fetching achievements:', error); // debugging
         }
     };
 

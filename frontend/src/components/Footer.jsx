@@ -4,8 +4,8 @@ import footprintSvg from '../assets/footprint.svg';
 const FootprintButton = ({ onClick, user }) => {
     return (
         <button className="footprint-button" onClick={() => {
-            console.log('FootprintButton clicked by user:', user);
-            console.log('onClick:', onClick);
+            console.log('FootprintButton clicked by user:', user); // debugging
+            console.log('onClick:', onClick); // debugging
             if (typeof onClick === 'function') {
                 onClick(user);
             } else {
@@ -18,8 +18,8 @@ const FootprintButton = ({ onClick, user }) => {
 };
 
 const Footer = ({ user, onRandomize }) => {
-    console.log('Footer received onRandomize:', onRandomize);
-    console.log('Footer received user:', user);
+    console.log('Footer received onRandomize:', onRandomize); // debugging
+    console.log('Footer received user:', user); // debugging
     return (
         <footer className="footer">
             <FootprintButton onClick={onRandomize} user={user} />

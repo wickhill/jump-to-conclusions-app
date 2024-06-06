@@ -8,7 +8,7 @@ const Home = ({ setRandomizerFunction, fetchAchievements, user, setResetFunction
             console.log("Randomizer function invoked by user:", user);
             // Return the function to be called
             return () => {
-                console.log("Randomizer logic executed for user:", user);
+                console.log("Randomizer logic executed by user:", user);
                 // Call the randomizer logic here
             };
         });
