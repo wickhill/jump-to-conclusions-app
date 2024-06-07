@@ -26,7 +26,8 @@ const Signin = ({ onSignin, resetState }) => {
                 console.log(res);
                 onSignin(res.user);
                 localStorage.setItem('token', res.token);
-                resetState(); // Reset the state
+                localStorage.setItem('user', JSON.stringify(res.user)); // Save user to local storage
+                resetState(); // Reset the state here
                 navigate("/");
             } else {
                 setError(res.msg || 'Failed to sign in');

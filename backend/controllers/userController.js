@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const History = require('../models/History.js');
 const requiredLandingsMap = require('../models/requiredLandingsMap.js');
 require('dotenv').config();
 const router = require('express').Router();
@@ -120,42 +121,53 @@ router.put('/:id', async (req, res) => {
 // POST Route for User Conclusions:
 router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
     const { id } = req.params;
-    const { conclusionId } = req.body;
+    const { conclusionId, question } = req.body; // Make sure question is included in the request body
 
-    console.log(`Received POST request with conclusionId: ${conclusionId}`);
+    console.log(`Received POST request with conclusionId: ${conclusionId} and question: ${question}`);
 
     try {
         const user = await User.findById(id);
         if (!user) {
             console.log('User not found');
-            return res.status(404).send('User not found');
+            return res.status(404).json({ error: 'User not found' }); // Send JSON response
         }
-        
-        // increment count for given conclusionId in user.conclusions:
+
+        // Increment count for given conclusionId in user.conclusions:
         user.conclusions.set(conclusionId, (user.conclusions.get(conclusionId) || 0) + 1);
 
         // Debugging logs
         console.log('Conclusion ID:', conclusionId);
         console.log('User conclusions:', user.conclusions);
 
-        // const requiredLandingsMap was once placed here.
-
-        // retrieves required number of landings for specified conclusionId from requiredLandingsMap
+        // Retrieves required number of landings for specified conclusionId from requiredLandingsMap
         const requiredLandings = requiredLandingsMap[conclusionId] || 1;
 
-        // check if incremented count meets required landings from requiredLandingsMap:
+        // Check if incremented count meets required landings from requiredLandingsMap:
         if (user.conclusions.get(conclusionId) >= requiredLandings) {
             user.achievements.set(conclusionId, true);
             console.log(`Achievement for ${conclusionId} unlocked!`);
         }
 
+        // Save history entry
+        const newHistory = new History({
+            userId: id,
+            username: user.username,
+            question,
+            conclusion: conclusionId,
+        });
+
+        await newHistory.save();
+        console.log('History saved:', newHistory); // Debugging
+
         await user.save();
-        res.status(200).send('Conclusion count updated');
+        res.status(200).json({ message: 'Conclusion count updated' }); // Send JSON response
     } catch (error) {
         console.error('Error updating conclusion:', error);
-        res.status(500).send('Internal Server Error');
+        res.status(500).json({ error: 'Internal Server Error' }); // Send JSON response
     }
 });
+
+
 
 // CREATE Route for User Achievements:
 router.get("/:id/achievements", function (req, res) {
@@ -183,19 +195,19 @@ router.get("/:id/achievements", function (req, res) {
 });
 
 // SHOW Route for User History:
-router.get("/:id/history", function (req, res) {
-    User.findById(req.params.id)
-        .then((user) => {
-            if (user) {
-                res.json({ user }); // Send user data as JSON
-            } else {
-                res.status(404).json({ message: "User not found" }); // Send 404 if user isn't found
-            }
-        })
-        .catch((err) => {
-            console.error(err);
-            res.status(500).json({ message: "Internal Server Error", error: err });
-        });
+router.get('/:id/history', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const history = await History.find({ userId: userId });
+
+        if (!history) {
+            return res.status(404).send({ message: 'History not found' });
+        }
+
+        res.status(200).json({ history });
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching history', error });
+    }
 });
 
 module.exports = router;

@@ -11,15 +11,13 @@ import Achievements from './pages/Achievements';
 import Logout from './components/Logout';
 
 function App() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) || null);
     const [randomizerFunction, setRandomizerFunction] = useState(null);
     const [achievements, setAchievements] = useState([]);
     const [resetFunction, setResetFunction] = useState(() => () => {});
 
     useEffect(() => {
-        if (!user) {
-            setRandomizerFunction(null);
-        }
+        localStorage.setItem('user', JSON.stringify(user));
     }, [user]);
 
     const fetchAchievements = async () => {
@@ -44,15 +42,15 @@ function App() {
 
     return (
         <div id="root">
-            <Navbar user={user} onLogout={() => { setUser(null); resetFunction(); }} />
+            <Navbar user={user} onLogout={() => { setUser(null); localStorage.removeItem('user'); resetFunction(); }} />
             <Routes>
                 <Route path="/" element={<Home setRandomizerFunction={setRandomizerFunction} fetchAchievements={fetchAchievements} user={user} setResetFunction={setResetFunction} />} />
-                {!user && <Route path="/signin" element={<Signin onSignin={setUser} resetState={resetFunction} />} />}
-                <Route path="/signup" element={<Signup onSignup={setUser} />} />
+                {!user && <Route path="/signin" element={<Signin onSignin={(user) => { setUser(user); localStorage.setItem('user', JSON.stringify(user)); }} resetState={resetFunction} />} />}
+                <Route path="/signup" element={<Signup onSignup={(user) => { setUser(user); localStorage.setItem('user', JSON.stringify(user)); }} />} />
                 {user && (
                     <>
                         <Route path="/updateProfile" element={<UpdateUserProfile user={user} setUser={setUser} />} />
-                        <Route path="/:id/history" element={<History />} />
+                        <Route path="/:id/history" element={<History user={user} />} />
                         <Route path="/:id/achievements" element={<Achievements user={user} fetchAchievements={fetchAchievements} />} />
                     </>
                 )}

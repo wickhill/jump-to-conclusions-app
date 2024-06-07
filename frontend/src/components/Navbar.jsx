@@ -87,7 +87,7 @@ const Navbar = ({ user, onLogout }) => {
                                 <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-white ring-opacity-5">
                                     <div>
                                         <Link to="/updateProfile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</Link>
-                                        <Link to={`/${user._id}/history`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">History</Link>
+                                        {/* <Link to={`/${user._id}/history`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">History</Link> */}
                                         <Logout onLogout={onLogout} />
                                     </div>
                                 </div>

@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const historySchema = new Schema({
-    username: { type: String, required: true, unique: true },
-    question: { type: String, required: false},
-    conclusion: { type: String, required: true }
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    question: { type: String, required: false },
+    conclusion: { type: String, required: true },
+    achievement: { type: String, required: false } // Optional
 });
 
-module.exports = historySchema;
+module.exports = mongoose.model('History', historySchema);
