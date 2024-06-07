@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../UserContext';
 
-const Signup = ({ onSignup }) => {
+const Signup = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [error, setError] = useState('');
+    const { setUser } = useContext(UserContext);
 
     const handleSignup = async (e) => {
         e.preventDefault();
@@ -25,7 +27,7 @@ const Signup = ({ onSignup }) => {
             });
             const res = await response.json();
             if (response.ok) {
-                onSignup(res.user);
+                setUser({ ...res.user, token: res.token });  // Include token in user object
                 localStorage.setItem('token', res.token);
                 navigate("/");
             } else {

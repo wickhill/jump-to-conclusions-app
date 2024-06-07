@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
-import conclusionsData from "../conclusionsData"; // the correct path to conclusionsData.js
-import colorMapping from "../colorMapping"; // the correct path to colorMapping.js
-import Conclusion from "./Conclusion"; // the correct path to Conclusion.jsx
+import React, { useState, useEffect, useContext } from "react";
+import conclusionsData from "../conclusionsData";
+import colorMapping from "../colorMapping";
+import Conclusion from "./Conclusion";
+import { UserContext } from '../UserContext';
 import '../App.css';
 
-const Conclusions = ({ user, fetchAchievements, onRandomize, setResetFunction }) => {
+const Conclusions = ({ fetchAchievements }) => {
+    const { user, setRandomizerFunction } = useContext(UserContext);
     const [highlightedIndex, setHighlightedIndex] = useState(null);
     const [randomIndex, setRandomIndex] = useState(null);
     const [error, setError] = useState(null);
@@ -21,21 +23,15 @@ const Conclusions = ({ user, fetchAchievements, onRandomize, setResetFunction })
     }, [highlightedIndex]);
 
     const startRandomizer = () => {
-        console.log("startRandomizer called by user:", user); // debugging
-        const currentUser = user;
         setRandomIndex(null);
-        setHighlightedIndex(5); // initial conclusion highlight index ALTER FOR onRandomizer DEBUGGING
+        setHighlightedIndex(5);
         setTimeout(() => {
             const finalRandomIndex = Math.floor(Math.random() * Object.keys(conclusionsData).length);
             setRandomIndex(finalRandomIndex);
-            console.log('The user:', currentUser, 'landed on conclusion:', finalRandomIndex + 1);
             setHighlightedIndex(null);
 
             if (user) {
-                console.log(`The user Jumping to Conclusions is: ${user._id} Message 1`); // debugging
-
                 const conclusionId = Object.keys(conclusionsData)[finalRandomIndex];
-                console.log(`Sending POST request with conclusionId: ${conclusionId}`); // debugging
                 updateUserConclusion(user._id, conclusionId);
             } else {
                 console.error("User is not defined");
@@ -45,49 +41,32 @@ const Conclusions = ({ user, fetchAchievements, onRandomize, setResetFunction })
 
     const updateUserConclusion = async (userId, conclusionId) => {
         try {
-            console.log('Sending POST request to:', `http://localhost:3000/user/${userId}/conclusion`); // debugging
-            console.log('Request body:', { conclusionId }); // debugging
             const response = await fetch(`http://localhost:3000/user/${userId}/conclusion`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
                 body: JSON.stringify({ conclusionId }),
             });
             if (!response.ok) {
                 throw new Error('Failed to update conclusion');
             }
-            console.log('POST request sent successfully', response); // debugging
-            console.log('User has been updated', user); // debugging
+            const data = await response.json();
+            if (fetchAchievements) {
+                fetchAchievements();
+            } else {
+                console.error("fetchAchievements is not defined");
+            }
         } catch (error) {
             console.error("Error updating conclusion:", error);
             setError('Failed to update conclusion. Please try again.');
         }
     };
-    
 
     useEffect(() => {
-        if (onRandomize) {
-            onRandomize(() => startRandomizer);
-        }
-    }, [onRandomize, user]); // Add user to the dependency array
-
-    useEffect(() => {
-        if (!user) {
-            setHighlightedIndex(null);
-            setRandomIndex(null);
-            setError(null);
-        }
-    }, [user]); // Reset state when user changes
-
-    useEffect(() => {
-        setResetFunction(() => () => {
-            setHighlightedIndex(null);
-            setRandomIndex(null);
-            setError(null);
-        });
-    }, [setResetFunction]);
+        setRandomizerFunction(() => startRandomizer);
+    }, [setRandomizerFunction]);
 
     return (
         <div className="p-1">

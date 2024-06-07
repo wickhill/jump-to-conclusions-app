@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Achievement from "./Achievement";
 import '../App.css';
-// import achievementsData from '../achievementsData';
-// import image from "../image";
 
 import fajita from '../assets/fajita.svg';
 import cake from '../assets/cake.svg';
@@ -32,61 +30,51 @@ const achievementsData = [
     { name: 'conclusion12', displayName: 'Weekend Warrior', image: trophy_first, isUnlocked: false },
 ];
 
-const Achievements = ({ user }) => {
+const Achievements = ({ user, fetchAchievements }) => {
     const [achievements, setAchievements] = useState(achievementsData);
     
     useEffect(() => {
-        // console.log(`The user accessing Achievements.jsx is userId: '${user._id}',`);
         console.log('Achievements.jsx received user:', user); // debugging
+        fetchAchievementsData();
     }, [user]);
 
-    const fetchAchievements = async () => {
+    const fetchAchievementsData = async () => {
         try {
             if (user && user._id) {
                 const url = `http://localhost:3000/user/${user._id}/achievements`;
-                // console.log('Fetching URL:', url); // debugging
 
                 const token = localStorage.getItem('token');
                 if (!token) {
                     throw new Error('Token not found');
                 }
-                // console.log('Token:', token); // debugging
 
                 const response = await fetch(url, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
                 });
-                // console.log('Response:', response); // debugging
 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                // console.log('Fetched data:', data); // debugging
 
                 if (!data.user || !data.user.achievements) {
                     throw new Error('Achievements data is not available in the response');
                 }
 
                 const achievementsMap = new Map(Object.entries(data.user.achievements));
-                // console.log('Achievements Map:', achievementsMap); // debugging
 
                 const updatedAchievements = achievementsData.map(achievement => ({
                     ...achievement,
                     isUnlocked: achievementsMap.get(achievement.name) || false
                 }));
-                // console.log('Updated Achievements:', updatedAchievements); // debugging
                 setAchievements(updatedAchievements);
             }
         } catch (error) {
-            // console.error('Error fetching achievements:', error); // debugging
+            console.error('Error fetching achievements:', error);
         }
     };
-
-    useEffect(() => {
-        fetchAchievements();
-    }, [user]);
 
     const unlockedCount = achievements.filter(achievement => achievement.isUnlocked).length;
 
