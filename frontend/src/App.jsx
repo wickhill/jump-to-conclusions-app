@@ -7,9 +7,10 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 import UpdateUserProfile from './components/UpdateUserProfile';
 import History from './pages/History';
-import Achievements from './pages/Achievements'; // Ensure this path is correct
+import Achievements from './pages/Achievements';
 import { UserProvider, UserContext } from './UserContext';
 import Logout from './components/Logout';
+import achievementsData from './achievementsData';  // Import achievementsData
 
 function App() {
     const { user, setUser, randomizerFunction, onLogout } = useContext(UserContext);
@@ -23,10 +24,11 @@ function App() {
     }, [setUser]);
 
     useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(user));
+        if (user) {
+            localStorage.setItem('user', JSON.stringify(user));
+        }
     }, [user]);
 
-    // Currently, this needs to be both here AND in `Achievements.jsx to dynamically render cheeves.
     const fetchAchievements = async () => {
         if (user && user._id) {
             const url = `http://localhost:3000/user/${user._id}/achievements`;
@@ -67,7 +69,7 @@ function App() {
 
     return (
         <div id="root">
-            <Navbar user={user} onLogout={() => { setUser(null); localStorage.removeItem('user'); onLogout(); }} />
+            <Navbar user={user} onLogout={onLogout} />
             <Routes>
                 <Route path="/" element={<Home fetchAchievements={fetchAchievements} />} />
                 <Route path="/signin" element={<Signin onSignin={setUser} />} />
