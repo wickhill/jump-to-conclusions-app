@@ -23,6 +23,7 @@ const Conclusions = ({ fetchAchievements }) => {
     }, [highlightedIndex]);
 
     const startRandomizer = () => {
+        console.log("startRandomizer called by user:", user);
         setRandomIndex(null);
         setHighlightedIndex(5);
         setTimeout(() => {
@@ -33,6 +34,8 @@ const Conclusions = ({ fetchAchievements }) => {
             if (user) {
                 const conclusionId = Object.keys(conclusionsData)[finalRandomIndex];
                 updateUserConclusion(user._id, conclusionId);
+                console.log(`The user Jumping to Conclusions is: ${user._id}`); // debugging
+                console.log(`Sending POST request with conclusionId: ${conclusionId}`); // debugging
             } else {
                 console.error("User is not defined");
             }
@@ -65,8 +68,9 @@ const Conclusions = ({ fetchAchievements }) => {
     };
 
     useEffect(() => {
+        console.log("Setting randomizer function in Conclusions"); // Debug log
         setRandomizerFunction(() => startRandomizer);
-    }, [setRandomizerFunction]);
+    }, [setRandomizerFunction, startRandomizer]); // This is where setState was having issues, it's creating an infinite re-render to resolve the issue! Works, but this is not ideal!
 
     return (
         <div className="p-1">

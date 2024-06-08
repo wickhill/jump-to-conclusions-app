@@ -10,12 +10,12 @@ const Home = ({ fetchAchievements }) => {
         console.log("Home component mounted by user:", user);
         setRandomizerFunction(() => {
             return () => {
-                console.log("Randomizer logic executed for user:", user);
+                console.log("Randomizer logic in Home component received by user:", user);
             };
         });
 
         achievementsData.forEach(achievement => {
-            console.log(`conclusion: ${achievement.name} and cheeve: ${achievement.displayName} unlocked by user: ${JSON.stringify(user)}`);
+            // console.log(`conclusion: ${achievement.name} and cheeve: ${achievement.displayName} unlocked by user: ${JSON.stringify(user)}`);
         });
     }, [setRandomizerFunction, user]);
 

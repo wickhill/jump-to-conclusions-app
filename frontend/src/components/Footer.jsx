@@ -5,6 +5,9 @@ import { UserContext } from '../UserContext';
 const Footer = () => {
     const { user, randomizerFunction } = useContext(UserContext);
 
+    console.log("Footer received user:", user);  // debugging
+    console.log("Footer received randomizerFunction:", randomizerFunction);  // debugging
+
     const handleClick = () => {
         if (typeof randomizerFunction === 'function') {
             randomizerFunction();
