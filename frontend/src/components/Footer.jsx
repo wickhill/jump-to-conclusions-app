@@ -8,19 +8,19 @@ const Footer = () => {
     console.log("Footer received user:", user);  // debugging
     console.log("Footer received randomizerFunction:", randomizerFunction);  // debugging
 
-    const handleClick = () => {
-        if (typeof randomizerFunction === 'function') {
-            randomizerFunction();
-        } else {
-            console.error('randomizerFunction is not a function');
-        }
-    };
+    // const handleClick = () => {
+    //     if (typeof randomizerFunction === 'function') {
+    //         randomizerFunction();
+    //     } else {
+    //         console.error('randomizerFunction is not a function');
+    //     }
+    // };
 
     return (
         <footer className="footer">
-            <button className="footprint-button" onClick={handleClick}>
+            {/* <button className="footprint-button" onClick={handleClick}>
                 <img src={footprintSvg} alt="Footprint" className="footprint-icon" />
-            </button>
+            </button> */}
         </footer>
     );
 };

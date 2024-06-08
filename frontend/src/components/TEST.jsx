@@ -82,17 +82,16 @@ const Conclusions = ({ fetchAchievements }) => {
     };
 
     return (
-        <div className="p-1">
+        <div className="p-1 flex flex-col min-h-screen">
             <div className="jump-to-text text-center mb-5">
                 <h2 className="text-4xl jersey-15-regular mb-2">Jump!</h2>
                 <h2 className="text-3xl jersey-15-regular mb-2">to</h2>
                 <h2 className="text-4xl jersey-15-regular mb-2">Conclusions!</h2>
             </div>
 
-
             {error && <div className="text-red-500">{error}</div>}
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-4 flex-1">
                 {Object.keys(conclusionsData).map((key, index) => {
                     const conclusion = conclusionsData[key];
                     const colorClass = colorMapping[key];
@@ -103,7 +102,7 @@ const Conclusions = ({ fetchAchievements }) => {
                     );
                 })}
             </div>
-
+            
             <footer className="footer mt-auto">
                 <button className="footprint-button" onClick={handleClick}>
                     <img src={footprintSvg} alt="Footprint" className="footprint-icon" />
