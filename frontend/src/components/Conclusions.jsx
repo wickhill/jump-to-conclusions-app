@@ -82,11 +82,11 @@ const Conclusions = ({ fetchAchievements }) => {
     };
 
     return (
-        <div className="p-1">
-            <div className="jump-to-text text-center mb-5">
-                <h2 className="text-4xl jersey-15-regular mb-2">Jump!</h2>
-                <h2 className="text-3xl jersey-15-regular mb-2">to</h2>
-                <h2 className="text-4xl jersey-15-regular mb-2">Conclusions!</h2>
+        <div className="p-1 flex flex-col min-h-screen">
+            <div className="jump-to-text text-center mt-20 mb-1">
+                <h2 className="text-4xl jersey-15-regular mt-8 mb-5"  style={{ marginBottom: '-30px', marginTop: '68px' }}>Jump!</h2>
+                <h2 className="text-3xl jersey-15-regular mt-8 mb-5"  style={{ marginBottom: '-30px' }}>to</h2>
+                <h2 className="text-4xl jersey-15-regular mt-8 mb-5"  style={{ marginBottom: '25px' }}>Conclusions!</h2>
             </div>
 
 
