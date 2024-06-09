@@ -1,22 +1,12 @@
 <div id="top"></div>
 <!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
+*** Thanks for checking out the Best-README-Template.
 -->
 
 
 
 <!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -38,14 +28,16 @@
   <p align="center">
     Ask the app anything, and let it jump to a conclusion for you!
     <br />
-    <a href="https://github.com/wickhill/jumpToConclusions"><strong>Explore the docs »</strong></a>
+    <a href="https://www.youtube.com/watch?v=sDEL4Ty950Q&t=25s"><strong>A word from Tom, our Founder »</strong></a>
     <br />
     <br />
     <a href="https://github.com/wickhill/jumpToConclusions/">View Demo</a>
     ·
     <a href="https://github.com/wickhill/jumpToConclusions/issues">Report Bug</a>
     ·
-    <a href="https://github.com/wickhill/jumpToConclusions/issues">Request Feature</a>
+      <a href="https://www.youtube.com/watch?v=fjsSr3z5nVk">
+    <img src="https://img.shields.io/badge/Watch-Office_Space_Printer_Scene-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Office Space Printer Scene" />
+  </a>
   </p>
 </div>
 
@@ -116,13 +108,11 @@
 
 * [![React][React.js]][React-url]
 * [![W3Schools](https://img.shields.io/badge/W3Schools-1572B6?style=for-the-badge&logo=w3schools&logoColor=white)](https://www.w3schools.com)
-* [![IMDB](https://img.shields.io/badge/IMDB-ff9900?style=for-the-badge&logo=imdb&logoColor=white)](https://www.imdb.com)
-* [![TutsPlus](https://img.shields.io/badge/TutsPlus-28A745?style=for-the-badge&logo=tutsplus&logoColor=white)](https://webdesign.tutsplus.com)
 * [![SVGRepo](https://img.shields.io/badge/SVGRepo-232F3E?style=for-the-badge&logo=svg&logoColor=white)](https://www.svgrepo.com)
-
 * [![Tailwind CSS][Tailwind.js]][Tailwind-url]
 * [![NPM][NPM.js]][NPM-url]
 * [![ChatGPT][ChatGPT.js]][ChatGPT-url]
+* [![IMDB](https://img.shields.io/badge/IMDB-ff9900?style=for-the-badge&logo=imdb&logoColor=white)](https://www.imdb.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
