@@ -84,9 +84,9 @@ const Conclusions = ({ fetchAchievements }) => {
     return (
         <div className="p-1 flex flex-col min-h-screen">
             <div className="jump-to-text text-center mt-20 mb-1">
-                <h2 className="text-4xl jersey-15-regular mt-8 mb-5"  style={{ marginBottom: '-30px', marginTop: '68px' }}>Jump!</h2>
-                <h2 className="text-3xl jersey-15-regular mt-8 mb-5"  style={{ marginBottom: '-30px' }}>to</h2>
-                <h2 className="text-4xl jersey-15-regular mt-8 mb-5"  style={{ marginBottom: '25px' }}>Conclusions!</h2>
+                <h2 className="text-4xl jersey-15-regular mt-8 mb-5" style={{ marginBottom: '-30px', marginTop: '68px' }}>Jump!</h2>
+                <h2 className="text-3xl jersey-15-regular mt-8 mb-5" style={{ marginBottom: '-30px' }}>to</h2>
+                <h2 className="text-4xl jersey-15-regular mt-8 mb-5" style={{ marginBottom: '25px' }}>Conclusions!</h2>
             </div>
 
 
@@ -103,6 +103,17 @@ const Conclusions = ({ fetchAchievements }) => {
                     );
                 })}
             </div>
+
+
+
+            <div className="p-1">
+                <div className="start-line-text">
+                <h2 className="text-3xl jersey-15-regular mt-8 mb-5" style={{ marginBottom: '0px', marginTop: '20px' }}>---------------------------</h2>
+                <h2 className="text-4xl jersey-15-regular mt-8 mb-5" style={{ marginBottom: '0px', marginTop: '0px' }}>START</h2>
+                </div>
+            </div>
+
+
 
             <footer className="footer mt-auto">
                 <button className="footprint-button" onClick={handleClick}>
