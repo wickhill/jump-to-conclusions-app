@@ -3,8 +3,6 @@
 *** Thanks for checking out the Best-README-Template.
 -->
 
-
-
 <!-- PROJECT SHIELDS -->
 
 [![Contributors][contributors-shield]][contributors-url]
@@ -14,16 +12,13 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-<!--   <a href="https://jumpToConclusions-app.netlify.app"> -->
-    <img src="joanna-office-space.png" alt="Icon" width="80" height="80">
-  </a>
+  <img src="joanna-office-space.png" alt="Icon" width="80" height="80">
+  <!-- Removed the extraneous closing </a> tag here -->
 
-<h3 align="center">It's a... Jump To Conclusions App!</h3>
+  <h3 align="center">It's a... Jump To Conclusions App!</h3>
 
   <p align="center">
     Ask the app anything, and let it jump to a conclusion for you!
@@ -38,8 +33,6 @@
     <a href="https://github.com/wickhill/jumpToConclusions/issues" target="_blank">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -62,12 +55,12 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap: Leap Before You Look!</a></li>
-        <ul>
-        <li><a href="#project-origins">Our Journey</a></li>
-        <li><a href="#user-stories">User Stories</a></li>
-        <!-- <li><a href="#jump-to-conclusions-data">Jump To Conclusions Data</a></li> -->
-        <li><a href="#hurdles">Hurdles: Is This Good For The Company?</a></li>
-        </ul>
+    <ul>
+      <li><a href="#project-origins">Our Journey</a></li>
+      <li><a href="#user-stories">User Stories</a></li>
+      <!-- <li><a href="#jump-to-conclusions-data">Jump To Conclusions Data</a></li> -->
+      <li><a href="#hurdles">Hurdles: Is This Good For The Company?</a></li>
+    </ul>
     <li><a href="#screenshots">Screenshots</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -75,15 +68,13 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 <div align="center">
-  <a href="">
-    <img src="https://i.imgur.com/h5H3MwF.jpg" alt="Jump To Conclusions Homescreen" width="323" height="700">
-    <img src="https://i.imgur.com/pbKgb9W.jpg" alt="Jump To Conclusions Cheeves" width="324" height="700">
+  <img src="https://i.imgur.com/h5H3MwF.jpg" alt="Jump To Conclusions Homescreen" width="323" height="700">
+  <img src="https://i.imgur.com/pbKgb9W.jpg" alt="Jump To Conclusions Cheeves" width="324" height="700">
+  <a href="https://www.youtube.com/watch?v=sDEL4Ty950Q&t=25s" target="_blank">
     <img src="https://i.imgur.com/yGPWy4Y.jpg" alt="Jump To Conclusions Logo" width="450" height="450">
   </a>
 </div>
@@ -103,7 +94,6 @@
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 ### Built With
 
 * [![React][React.js]][React-url]
@@ -115,6 +105,7 @@
 * [![IMDB](https://img.shields.io/badge/IMDB-ff9900?style=for-the-badge&logo=imdb&logoColor=white)](https://www.imdb.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 
@@ -147,12 +138,10 @@ To get started with The Jump To Conclusions App, just follow these steps:
    npm i mongoose
    npm i cors
    npm i react-router-dom
-   npm i dotenv
    npm i jsonwebtoken
    npm i livereload
    npm i connect-livereload
    npm i method-override
-   npm i mongoose
    npm i bcrypt
    ```
 
@@ -178,7 +167,6 @@ To get started with The Jump To Conclusions App, just follow these steps:
 **With the Jump To Conclusions app, everyday is Casual Friday.**
 
 Why contemplate when you can jump to conclusions with a single click! Stuck on a question, but you don't want to deal with that pesky thing known as 'accountability'? Look no further, the Jump To Conclusions app is here to save the day! Just ask a question, click the footprint button, and let the app do the thinking for you.
-
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -222,7 +210,6 @@ Why contemplate when you can jump to conclusions with a single click! Stuck on a
 <!-- SCREENSHOTS -->
 
 <!-- ## Screenshots
-
 
 <p align="right">(<a href="#top">back to top</a>)</p> -->
 
@@ -320,7 +307,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/wickhill/jumpToConclusions.svg?style=for-the-badge
@@ -354,14 +340,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
 [Laravel-url]: https://laravel.com
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
+[bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
-[bootstrap-shield]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[bootstrap-url]: https://getbootstrap.com
-
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB "React Badge"
-[React-url]: https://reactjs.org/
 
 [Tailwind.js]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white "Tailwind CSS Badge"
 [Tailwind-url]: https://tailwindcss.com/
@@ -380,3 +361,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 [DallE.js]: https://img.shields.io/badge/DallE-000000?style=for-the-badge&logo=openai&logoColor=white "DallE Badge"
 [DallE-url]: https://www.openai.com/dall-e-2
+
