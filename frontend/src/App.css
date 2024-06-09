@@ -12,30 +12,33 @@ html, body {
     display: flex;
     width: 100%;
     flex-direction: column;
-    min-height: 100vh; /* Ensure it takes full height of the viewport */
-    box-sizing: border-box; /* Include padding in the element's total width and height */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-}
-
-.footer {
-    display: flex;
-    justify-content: center;
-    background-color: hsl(185, 87%, 43%);
-    width: 100%;
-    position: relative;
-    bottom: 0;
-
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 #content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    padding: 5px; /* Adjust padding as needed */
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
 }
+
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: hsl(185, 87%, 43%);
+    width: calc(100% + 18px);
+    margin: 0 -9px;
+    position: relative;
+    bottom: 0;
+    padding: 0;
+    padding-bottom: 5px;
+}
+
 
 /* Mobile-specific styling */
 
@@ -91,7 +94,7 @@ html, body {
 
 @media (max-width: 768px) {
     #root {
-        padding-top: 0px; /* Adjust top padding for mobile */
-        padding-bottom: 0px; /* Adjust bottom padding for mobile */
+        padding-top: 0px;
+        padding-bottom: 0px;
     }
 }
