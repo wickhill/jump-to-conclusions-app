@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import img1 from "../assets/vinyl.jpeg";
+import { UserContext } from "../UserContext";
 
-const UpdateUserProfile = ({ user, setUser }) => {
+const UpdateUserProfile = () => {
+  const { user, setUser } = useContext(UserContext);
 const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -68,6 +69,9 @@ const handleDelete = async () => {
         }
     }
 };
+if (!user) {
+    return <div>Loading...</div>; // or any fallback UI
+  }
 
     return (
     <div className="pt-[0px] relative w-full h-screen bg-zinc-700/90">
