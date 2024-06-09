@@ -132,7 +132,7 @@ Follow these steps to get started with The Jump To Conclusions App:
 
 2. Install NPM packages
    ```sh
-   npm install
+   npm i express
    npm i dotenv
    npm i axios
    npm i mongoose
