@@ -103,7 +103,7 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     let { password, ...updateData } = req.body;
     if (password === '') {
-        password = undefined; // Ignore password update if field is left empty
+        password = undefined; // ignore password update if field is left empty
     } else {
         const salt = await bcrypt.genSalt(10);
         password = await bcrypt.hash(password, salt);
@@ -121,7 +121,7 @@ router.put('/:id', async (req, res) => {
 // POST Route for User Conclusions:
 router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
     const { id } = req.params;
-    const { conclusionId, question } = req.body; // Make sure question is included in the request body
+    const { conclusionId, question } = req.body; // ensure question is included in the request body
 
     console.log(`Received POST request with conclusionId: ${conclusionId} and question: ${question}`);
 
@@ -132,23 +132,23 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
             return res.status(404).json({ error: 'User not found' }); // Send JSON response
         }
 
-        // Increment count for given conclusionId in user.conclusions:
+        // increment count for given conclusionId in user.conclusions (because it's a 0 index vs 'conclusion1'):
         user.conclusions.set(conclusionId, (user.conclusions.get(conclusionId) || 0) + 1);
 
-        // Debugging logs
+        // debugging logs
         console.log('Conclusion ID:', conclusionId);
         console.log('User conclusions:', user.conclusions);
 
-        // Retrieves required number of landings for specified conclusionId from requiredLandingsMap
+        // retrieves required number of landings for specified conclusionId from requiredLandingsMap
         const requiredLandings = requiredLandingsMap[conclusionId] || 1;
 
-        // Check if incremented count meets required landings from requiredLandingsMap:
+        // check if incremented count meets required landings from requiredLandingsMap:
         if (user.conclusions.get(conclusionId) >= requiredLandings) {
             user.achievements.set(conclusionId, true);
             console.log(`Achievement for ${conclusionId} unlocked!`);
         }
 
-        // Save history entry
+        // save history entry
         const newHistory = new History({
             userId: id,
             username: user.username,
@@ -157,13 +157,13 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
         });
 
         await newHistory.save();
-        console.log('History saved:', newHistory); // Debugging
+        console.log('History saved:', newHistory); // debugging
 
         await user.save();
-        res.status(200).json({ message: 'Conclusion count updated' }); // Send JSON response
+        res.status(200).json({ message: 'Conclusion count updated' }); // send JSON response
     } catch (error) {
         console.error('Error updating conclusion:', error);
-        res.status(500).json({ error: 'Internal Server Error' }); // Send JSON response
+        res.status(500).json({ error: 'Internal Server Error' }); // send JSON response
     }
 });
 
@@ -175,17 +175,17 @@ router.get("/:id/achievements", function (req, res) {
         .then((user) => {
             if (user) {
 
-                // Ensure achievements is included in the response
-                // Converts the user document to plain JavaScript object w/ user.toObject():
+                // ensure achievements is included in response
+                // converts the user document to plain JavaScript object w/ user.toObject():
                 const userWithAchievements = user.toObject();
 
-                // achievements map is included in the response by converting it to an object:
+                // achievements map is included in response by converting it to an object:
                 userWithAchievements.achievements = Object.fromEntries(user.achievements);
 
                 // responds w/ user data including achievements as JSON:
                 res.json({ user: userWithAchievements }); // Send user data as JSON
             } else {
-                res.status(404).json({ message: "User not found" }); // Send 404 if user isn't found
+                res.status(404).json({ message: "User not found" }); // send 404 if user isn't found
             }
         })
         .catch((err) => {

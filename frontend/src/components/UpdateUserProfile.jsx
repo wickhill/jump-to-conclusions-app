@@ -4,8 +4,8 @@ import axios from "axios";
 import { UserContext } from "../UserContext";
 
 const UpdateUserProfile = () => {
-  const { user, setUser } = useContext(UserContext);
-const [formData, setFormData] = useState({
+    const { user, setUser } = useContext(UserContext);
+    const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",

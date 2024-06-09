@@ -55,12 +55,12 @@ export const UserProvider = ({ children }) => {
     };
 
 
-    // provide user state and functions to component tree
+    // provide `user` state and functions to component tree
     return (
         <UserContext.Provider value={{ user, setUser, randomizerFunction, setRandomizerFunction, onLogout }}>
             {children}
         </UserContext.Provider>
-        // UserContext is a component provided by the context API that makes the context value available to all its child components
-        // it provides the state and functions defined in UserProvider to any component within the tree that consumes the context
+        // `UserContext` is a component provided by the context API that makes the context value available to all its child components
+        // it provides the state and functions defined in `UserProvider` to any component within the tree that consumes the context
     );
 };

@@ -1,4 +1,4 @@
-// Deprecated, no longer any function, route in App.jsx commented-out.
+// Deprecated, no longer any function, route in App.jsx commented-out. Keeping for reminder, posterity, and if I do manage to debug this in the future.
 
 import React, { useContext } from 'react';
 import footprintSvg from '../assets/footprint.svg';
