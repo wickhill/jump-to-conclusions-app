@@ -28,14 +28,14 @@
   <p align="center">
     Ask the app anything, and let it jump to a conclusion for you!
     <br />
-    <a href="https://www.youtube.com/watch?v=sDEL4Ty950Q&t=25s"><strong>A word from our Founder »</strong></a>
+    <a href="https://www.youtube.com/watch?v=sDEL4Ty950Q&t=25s" target="_blank"><strong>A word from our Founder »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/wickhill/jumpToConclusions/">View Demo</a>
+    <a href="https://github.com/wickhill/jumpToConclusions/" target="_blank">View Demo</a>
     ·
-    <a href="https://github.com/wickhill/jumpToConclusions/issues">Report Bug</a>
+    <a href="https://github.com/wickhill/jumpToConclusions/issues" target="_blank">Report Bug</a>
     ·
-    <a href="https://github.com/wickhill/jumpToConclusions/issues">Request Feature</a>
+    <a href="https://github.com/wickhill/jumpToConclusions/issues" target="_blank">Request Feature</a>
   </p>
 </div>
 
