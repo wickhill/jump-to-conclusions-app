@@ -35,9 +35,7 @@
     ·
     <a href="https://github.com/wickhill/jumpToConclusions/issues">Report Bug</a>
     ·
-      <a href="https://www.youtube.com/watch?v=fjsSr3z5nVk">
-    <img src="https://img.shields.io/badge/Watch-Office_Space_Printer_Scene-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Office Space Printer Scene" />
-  </a>
+    <a href="https://github.com/wickhill/jumpToConclusions/issues">Request Feature</a>
   </p>
 </div>
 
@@ -97,9 +95,9 @@
 - [Tom Smykowski](https://www.imdb.com/name/nm0726223/?ref_=tt_cl_t_8)
 
 ### Quick Links:
-- [Office Space IMDB](https://www.imdb.com/title/tt0151804/)
 - [Scott Chacon's "So You Think You Know Git?"](https://youtu.be/aolI_Rz0ZqY?si=iqDKHdpO9_uHtlib)
 - [NPM](https://www.npmjs.com)
+- [Office Space IMDB](https://www.imdb.com/title/tt0151804/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -132,7 +130,7 @@ To get started with The Jump To Conclusions App, just follow these steps:
 
 ### Installation
 
-1. First, read the films reviews and scores on IMDB! [https://www.imdb.com/title/tt0151804/](https://www.imdb.com/title/tt0151804/)
+1. First things first, check out the film on IMDB! [https://www.imdb.com/title/tt0151804/](https://www.imdb.com/title/tt0151804/)
 
 2. Clone the repo
    ```sh
@@ -145,18 +143,27 @@ To get started with The Jump To Conclusions App, just follow these steps:
    npm i dotenv
    npm i axios
    npm i mongoose
+   npm i cors
+   npm i react-router-dom
+   npm i dotenv
+   npm i jsonwebtoken
+   npm i livereload
+   npm i connect-livereload
+   npm i method-override
+   npm i mongoose
+   npm i bcrypt
    ```
 
-4. Enter your IMDB username into an `.env` file you create in your frontend root directory. You can find these Client parameters by going to:
-* []() Select your app --->
-* []() Settings --->
-* []() Client ID + click on 'View client secret'
-
-Then, this is what the code in your frontend `.env` should look like:
+4. Enter your Mongo Connection String into an `.env` file you create in your backend root directory. You can find these Client parameters by going to:
+* []() Visit [MongoDB Atlas](https://cloud.mongodb.com) and log in --->
+* []() Select your project from the dashboard, connect to your own Cluster --->
+* []() Click the "Connect" button and select "Connect Your Application." --->
+* []() Copy Connection String: Replace `<username>` and `<password>` with your MongoDB username and password --->
+* []() Add the connection string to your `.env` file as follows:
 
    ```js
-   VITE_APP_CLIENT_ID='ENTER YOUR CLIENT_ID';
-   VITE_APP_CLIENT_SECRET='ENTER YOUR CLIENT_SECRET';
+   MONGODB_URI='"mongodb+srv://<YOUR_USER_NAME>:<YOUR_PASSWORD>@cluster0.q7tdmnt.mongodb.net/jump-to-conclusions"';
+   SECRETKEY='ENTER_YOUR_CLIENT_SECRET';
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -166,9 +173,10 @@ Then, this is what the code in your frontend `.env` should look like:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-**Find Your Happiness with Casual Fridays.**
+**With the Jump To Conclusions app, everyday is Casual Friday.**
 
-Just don't get too casual and forget about those TPS Reports!
+Why contemplate when you can jump to conclusions with a single click! Stuck on a question, but you don't want to deal with that pesky thing known as 'accountability'? Look no further, the Jump To Conclusions app is here to save the day! Just ask a question, click the footprint button, and let the app do the thinking for you.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -181,10 +189,12 @@ Just don't get too casual and forget about those TPS Reports!
 
 - See my [Trello Board](https://trello.com/b/2dwSSjZy/jump-to-conclusions) for MVP and stretch goals.
 
-- Here's our Wireframe and ERDs:
+- Here's our Wireframes and ERDs:
 
 <div align="center">
   <a href="">
+    <img src="https://i.imgur.com/PZo1cYK.jpg" alt="Wireframe #1" width="383" height="700">
+    <img src="https://i.imgur.com/Lzj6CQA.jpg" alt="Wireframe #1" width="427" height="700">
     <img src="https://i.imgur.com/GIGtJM9.jpg" alt="Whiteboard Wireframe" width="400" height="300">
     <img src="https://i.imgur.com/qfzxthd.jpg" alt="Whiteboard ERD" width="400" height="300">
   </a>
@@ -198,7 +208,7 @@ Just don't get too casual and forget about those TPS Reports!
 
 ## Project Origins
 
-Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is meant to provide light entertainment for those who might be having a “Case of the Mondays”. Even if it is Casual Friday.
+Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is designed to offer light-hearted fun for anyone facing a “Case of the Mondays”. Even if it is Casual Friday.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -208,13 +218,13 @@ Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space
 
 ## User Stories
 
-**Elevator Pitch App**: As a Recruiter, I want to see an app that showcases the skills and personality of the candidate.
+**Showcasing Skills**: As a Recruiter, I want to see an app that demonstrates the candidate's skills and personality effectively.
 
-**Fun With Friends**: As a User, I have some spare time with which I'd like to have casual, non-demanding fun that I can also take screen-shots of and share with friends.
+**Casual Entertainment**: As a User, I want a fun and easy-going app that I can enjoy in my spare time and share amusing moments with friends.
 
-**Nostalgia**: As a User/Recruiter that is interested in seeing a concept from one of my favorite films ("Office Space") come to life.
+**Nostalgia**: As a User who loves the film "Office Space," I want to see a concept from the movie brought to life in a creative and engaging way.
 
-**Replay-ability**: As a User, the hidden "cheeves" (achievements) sprinkled into the game, as well as my personal player history, encourage me to come back and play again!
+**Replay Valie**: As a User, I want the app to include hidden achievements and a personal history feature to encourage me to return and play again.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -224,9 +234,7 @@ Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space
 
 ## Jump To Conclusions Data
 
-There's more to the game than you think! Go ahead and hit the "Mix it Up!" or "Do You Dare?" buttons to see what happens!
-
-_For additional technical information, please refer to the "Office Space" IMDB [Documentation](https://www.imdb.com/title/tt0151804/)_
+There's more to the app than you think! Earn "Cheeves" (achievements), build and view your history, and display your history, either anonymously or with your user handle!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -238,7 +246,7 @@ _For additional technical information, please refer to the "Office Space" IMDB [
 
 **Is This Good For The Company?**
 
-Even *we* get a case of 'The Mondays' from time to time ☹️. Hard to believe, I know. But hey, this ain't nothing that a few 'Shrimp Poppers' or 'Extreme Fajitas' can't fix 🦐🎉
+Even *we* ran into some issues from time to time. But it weren't nothin' that a few 'Shrimp Poppers' or 'Extreme Fajitas' couldn't fix 🦐🎉
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
