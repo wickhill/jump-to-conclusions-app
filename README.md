@@ -28,7 +28,7 @@
   <p align="center">
     Ask the app anything, and let it jump to a conclusion for you!
     <br />
-    <a href="https://www.youtube.com/watch?v=sDEL4Ty950Q&t=25s"><strong>A word from Tom, our Founder »</strong></a>
+    <a href="https://www.youtube.com/watch?v=sDEL4Ty950Q&t=25s"><strong>A word from our Founder »</strong></a>
     <br />
     <br />
     <a href="https://github.com/wickhill/jumpToConclusions/">View Demo</a>
@@ -82,7 +82,7 @@
 
 <div align="center">
   <a href="">
-    <img src="https://i.imgur.com/yGPWy4Y.jpg" alt="Jump To Conclusions Logo" width="700" height="700">
+    <img src="https://i.imgur.com/yGPWy4Y.jpg" alt="Jump To Conclusions Logo" width="600" height="600">
   </a>
 </div>
 
