@@ -62,9 +62,9 @@
       <li><a href="#hurdles">Hurdles: Is This Good For The Company?</a></li>
     </ul>
     <li><a href="#screenshots">Screenshots</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#license">License</a></li>
   </ol>
 </details>
 
@@ -264,30 +264,26 @@ There's more to the app than you think! Earn "Cheeves" (achievements), build and
 **Scope, Prop Drilling, UserContext.jsx**
 
 * []() Initially, the app faced challenges with scope, as certain Randomizer Functions were not being passed correctly across different components.
-* []() Prop drilling, the process of passing data from parent to child components through props, was attempted. However, it led to a complicated and hard-to-manage codebase without resolving the core issues.
-* []() To address these challenges, UserContext.jsx was implemented. This component simplified the code significantly, making it more manageable and easier to debug. 
+* []() Prop drilling, the process of passing data from parent to child components through props, was attempted. However, it led to a complicated and hard-to-manage codebase without resolving the various, core `randomizer` issues.
+* []() To address these challenges, `UserContext.jsx` was implemented. This component simplified the code significantly, making it more manageable and easier to debug. 
 * []() `UserContext.jsx` provided a centralized state management solution using React’s Context API, allowing state and functions to be accessed by any component without prop drilling.
 
 **A Not-So-Modular Compromise**
 
 * []() Footer Component Issue and Resolution: Despite the improvements with `UserContext.jsx`, the `Footer.jsx` component, which contained the critical `footprint-button` that initiated the `startRandomizer` function, still did not function as intended.
-* []() Ultimately, it was decided to remove the `Footer.jsx` component and rebuild it within `Conclusions.jsx`. 
-* []() This approach was successful, resolving the issues and ensuring the button worked as expected.
+* []() Ultimately, it was decided to 'decommission' the `Footer.jsx` component and rebuild it within `Conclusions.jsx`. 
+* []() This approach successfully resolved the issues with `startRandomizer` and ensured the `footprint-button` worked as expected.
 
 **Current Status**
 
-* []() However, this process took longer than anticipated, leading to some planned features not being implemented yet.
-* []() Features like audio integration and a user-input text bar will be added in the future. Additionally, the `History.jsx` component is still a work in progress.
+* []() While these bugs were resolved, the process of doing so took longer than anticipated, leading to some planned features not being implemented yet.
+* []() The good news is that the codebase is modular, and adding these features will be a straightforward process.
 
+**Looking Ahead**
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+* []() Features to be added in the near future: audio for randomizer function and unlocking achievements, a user-input text bar, leaderboard that accepts username and anonymous submissions.
+* []() `History.jsx` component will by styled, streamlined, and have and added functionality.
 
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -308,6 +304,15 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 * []() That guy who invented the Pet Rock
 * []() Caffeine
 * []() The Bobs
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
