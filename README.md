@@ -71,7 +71,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<div align="center">
+<div align="center" style="margin-top: 5px;">
   <img src="https://i.imgur.com/h5H3MwF.jpg" alt="Jump To Conclusions Homescreen" width="323" height="700">
   <img src="https://i.imgur.com/pbKgb9W.jpg" alt="Jump To Conclusions Cheeves" width="324" height="700">
   <a href="https://www.youtube.com/watch?v=sDEL4Ty950Q&t=25s" target="_blank">
@@ -175,7 +175,7 @@ Why contemplate? Leap before you look, and jump to conclusions with a single cli
 
 Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is designed to offer light-hearted fun for anyone facing a case of the Mondays.
 
-<div align="center">
+<div align="center" style="margin-top: 10px; margin-bottom: 10px;">
 <img src="https://i.imgur.com/v2q1Bys.jpg" alt="bob1" width="250" height="250">
 <img src="https://i.imgur.com/btZhrEY.jpg" alt="Jump To Conclusions Mat" width="168" height="250">
 <img src="https://i.imgur.com/uWc9dl1.jpg" alt="michael bolton" width="250" height="250">
@@ -185,7 +185,7 @@ Having a baseline helped, but adding features that encouraged replay value and u
 
 - View the [Figma Board](https://www.figma.com/board/ZmQYxUoys0tOWwHSDY3fia/Jump-To-Conclusions-App?node-id=0-1&t=BmHscWeCgJKBg3Vc-0) for the project's wireframe blueprint:
 
-<div align="center">
+<div align="center" style="margin-top: 5px;">
   <a href="">
     <img src="https://i.imgur.com/PZo1cYK.jpg" alt="Wireframe #1" width="383" height="700">
     <img src="https://i.imgur.com/Lzj6CQA.jpg" alt="Wireframe #1" width="427" height="700">
@@ -198,7 +198,7 @@ Having a baseline helped, but adding features that encouraged replay value and u
 
 - Here are the project's ERD blueprints:
 
-<div align="center">
+<div align="center" style="margin-top: 5px;">
   <a href="">
     <img src="https://i.imgur.com/GIGtJM9.jpg" alt="Whiteboard Wireframe" width="400" height="300">
     <img src="https://i.imgur.com/qfzxthd.jpg" alt="Whiteboard ERD" width="400" height="300">
