@@ -85,7 +85,6 @@
 
 ### Project Team:
 - [Wick Hill](https://github.com/wickhill)
-- [Tom Smykowski](https://www.imdb.com/name/nm0726223/?ref_=tt_cl_t_8)
 
 ### Quick Links:
 - [Scott Chacon's "So You Think You Know Git?"](https://youtu.be/aolI_Rz0ZqY?si=iqDKHdpO9_uHtlib)
@@ -112,7 +111,7 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get started with The Jump To Conclusions App, just follow these steps:
+Follow these steps to get started with The Jump To Conclusions App:
 
 ### Prerequisites
 
@@ -147,7 +146,8 @@ To get started with The Jump To Conclusions App, just follow these steps:
 * []() Visit [MongoDB Atlas](https://cloud.mongodb.com) and log in --->
 * []() Select your project from the dashboard, connect to your own Cluster --->
 * []() Click the "Connect" button and select "Connect Your Application." --->
-* []() Copy Connection String: Replace `<username>` and `<password>` with your MongoDB username and password --->
+* []() Copy Connection String  --->
+* []() Replace `<username>` and `<password>` with your MongoDB username and password --->
 * []() Add the connection string to your `.env` file as follows:
 
    ```js
@@ -175,7 +175,7 @@ Why contemplate? Leap before you look, and jump to conclusions with a single cli
 
 Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is designed to offer light-hearted fun for anyone facing a case of the Mondays.
 
-<div align="center" style="margin-top: 10px; margin-bottom: 10px;">
+<div align="center" style="margin-top: 20px; margin-bottom: 20px;">
 <img src="https://i.imgur.com/v2q1Bys.jpg" alt="bob1" width="250" height="250">
 <img src="https://i.imgur.com/btZhrEY.jpg" alt="Jump To Conclusions Mat" width="168" height="250">
 <img src="https://i.imgur.com/uWc9dl1.jpg" alt="michael bolton" width="250" height="250">
@@ -185,7 +185,7 @@ Having a baseline helped, but adding features that encouraged replay value and u
 
 - View the [Figma Board](https://www.figma.com/board/ZmQYxUoys0tOWwHSDY3fia/Jump-To-Conclusions-App?node-id=0-1&t=BmHscWeCgJKBg3Vc-0) for the project's wireframe blueprint:
 
-<div align="center" style="margin-top: 5px;">
+<div align="center" style="margin-top: 15px;">
   <a href="">
     <img src="https://i.imgur.com/PZo1cYK.jpg" alt="Wireframe #1" width="383" height="700">
     <img src="https://i.imgur.com/Lzj6CQA.jpg" alt="Wireframe #1" width="427" height="700">
