@@ -102,7 +102,7 @@
 * [![Tailwind CSS][Tailwind.js]][Tailwind-url]
 * [![NPM][NPM.js]][NPM-url]
 * [![ChatGPT][ChatGPT.js]][ChatGPT-url]
-* [![IMDB](https://img.shields.io/badge/IMDB-ff9900?style=for-the-badge&logo=imdb&logoColor=white)](https://www.imdb.com)
+* [![IMDB](https://img.shields.io/badge/IMDB-ff9900?style=for-the-badge&logo=imdb&logoColor=white)](https://www.imdb.com/title/tt0151804/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -123,14 +123,12 @@ To get started with The Jump To Conclusions App, just follow these steps:
 
 ### Installation
 
-1. First things first, check out the film on IMDB! [https://www.imdb.com/title/tt0151804/](https://www.imdb.com/title/tt0151804/)
-
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/wickhill/jumpToConclusions
    ```
 
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    npm i dotenv
@@ -145,7 +143,7 @@ To get started with The Jump To Conclusions App, just follow these steps:
    npm i bcrypt
    ```
 
-4. Enter your Mongo Connection String into an `.env` file you create in your backend root directory. You can find these Client parameters by going to:
+3. Enter your Mongo Connection String into an `.env` file you create in your backend root directory. You can find these Client parameters by doing the following:
 * []() Visit [MongoDB Atlas](https://cloud.mongodb.com) and log in --->
 * []() Select your project from the dashboard, connect to your own Cluster --->
 * []() Click the "Connect" button and select "Connect Your Application." --->
@@ -164,9 +162,9 @@ To get started with The Jump To Conclusions App, just follow these steps:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-**With the Jump To Conclusions app, everyday is Casual Friday.**
+**With the Jump To Conclusions app, everyday is Hawaiian Shirt Day.**
 
-Why contemplate when you can jump to conclusions with a single click! Stuck on a question, but you don't want to deal with that pesky thing known as 'accountability'? Look no further, the Jump To Conclusions app is here to save the day! Just ask a question, click the footprint button, and let the app do the thinking for you.
+Why contemplate? Leap before you look, and jump to conclusions with a single click! Stuck on a question, but you don't want to deal with that pesky thing known as 'accountability'? Look no further, the Jump To Conclusions app is here to save the day! Just ask a question, click the footprint button, and let the app do the thinking for you.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -175,11 +173,15 @@ Why contemplate when you can jump to conclusions with a single click! Stuck on a
 <!-- ROADMAP to Jump To Conclusions -->
 ## Roadmap
 
-* []() Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is designed to offer light-hearted fun for anyone facing a case of the Mondays.
+Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is designed to offer light-hearted fun for anyone facing a case of the Mondays.
 
+<div align="center">
 <img src="https://i.imgur.com/btZhrEY.jpg" alt="Jump To Conclusions Mat" width="168" height="250">
+<img src="https://i.imgur.com/v2q1Bys.jpg" alt="bob1" width="250" height="250">
+<img src="https://i.imgur.com/uWc9dl1.jpg" alt="michael bolton" width="250" height="250">
+</div>
 
-* []() Having a baseline helped, but adding features that encouraged replay value and user retention became essential. Concepts were worked out using Figma and Trello. Many ideas were used, and even those that haven't been used will likely be added in the near future.
+Having a baseline helped, but adding features that encouraged replay value and user retention became essential. Concepts were worked out using Figma and Trello. Many ideas were used, and even those that haven't been used will likely be added in the near future.
 
 - View the [Figma Board](https://www.figma.com/board/ZmQYxUoys0tOWwHSDY3fia/Jump-To-Conclusions-App?node-id=0-1&t=BmHscWeCgJKBg3Vc-0) for the project's wireframe blueprint:
 
