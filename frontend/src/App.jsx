@@ -82,7 +82,7 @@ function App() {
                     </>
                 )}
             </Routes>
-            <Footer user={user} onRandomize={randomizerFunction} />
+            {/* <Footer user={user} onRandomize={randomizerFunction} /> */}
         </div>
     );
 }

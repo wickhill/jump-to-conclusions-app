@@ -115,12 +115,14 @@
 ### Built With
 
 * [![React][React.js]][React-url]
-* [![Bootstrap][bootstrap-shield]][bootstrap-url]
+* [![W3Schools](https://img.shields.io/badge/W3Schools-1572B6?style=for-the-badge&logo=w3schools&logoColor=white)](https://www.w3schools.com)
+* [![IMDB](https://img.shields.io/badge/IMDB-ff9900?style=for-the-badge&logo=imdb&logoColor=white)](https://www.imdb.com)
+* [![TutsPlus](https://img.shields.io/badge/TutsPlus-28A745?style=for-the-badge&logo=tutsplus&logoColor=white)](https://webdesign.tutsplus.com)
+* [![SVGRepo](https://img.shields.io/badge/SVGRepo-232F3E?style=for-the-badge&logo=svg&logoColor=white)](https://www.svgrepo.com)
+
 * [![Tailwind CSS][Tailwind.js]][Tailwind-url]
 * [![NPM][NPM.js]][NPM-url]
-* [![jQuery][jQuery.js]][jQuery-url]
 * [![ChatGPT][ChatGPT.js]][ChatGPT-url]
-* [![DallE][DallE.js]][DallE-url]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
