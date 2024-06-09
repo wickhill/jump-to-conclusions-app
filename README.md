@@ -72,7 +72,7 @@
 ## About The Project
 
 <div align="center" style="margin-top: 5px;">
-  <img src="https://i.imgur.com/h5H3MwF.jpg" alt="Jump To Conclusions Homescreen" width="323" height="700">
+  <img src="https://i.imgur.com/ucpNspo.jpg" alt="Jump To Conclusions Homescreen" width="323" height="700">
   <img src="https://i.imgur.com/pbKgb9W.jpg" alt="Jump To Conclusions Cheeves" width="324" height="700">
   <a href="https://www.youtube.com/watch?v=sDEL4Ty950Q&t=25s" target="_blank">
     <img src="https://i.imgur.com/yGPWy4Y.jpg" alt="Jump To Conclusions Logo" width="450" height="450">
