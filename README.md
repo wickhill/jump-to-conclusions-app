@@ -96,9 +96,12 @@
 ### Built With
 
 * [![React][React.js]][React-url]
+* [![Tailwind CSS][Tailwind.js]][Tailwind-url]
+* [![Node.js][Node.js]][Node-url]
+* [![Express.js][Express.js]][Express-url]
+* [![MongoDB][MongoDB.js]][MongoDB-url]
 * [![W3Schools](https://img.shields.io/badge/W3Schools-1572B6?style=for-the-badge&logo=w3schools&logoColor=white)](https://www.w3schools.com)
 * [![SVGRepo](https://img.shields.io/badge/SVGRepo-232F3E?style=for-the-badge&logo=svg&logoColor=white)](https://www.svgrepo.com)
-* [![Tailwind CSS][Tailwind.js]][Tailwind-url]
 * [![NPM][NPM.js]][NPM-url]
 * [![ChatGPT][ChatGPT.js]][ChatGPT-url]
 * [![IMDB](https://img.shields.io/badge/IMDB-ff9900?style=for-the-badge&logo=imdb&logoColor=white)](https://www.imdb.com/title/tt0151804/)
@@ -325,6 +328,15 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 [license-shield]: https://img.shields.io/badge/License-MIT-yellow.svg
 [license-url]: https://opensource.org/licenses/MIT
+
+[MongoDB.js]: https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white "MongoDB Badge"
+[MongoDB-url]: https://www.mongodb.com/
+
+[Node.js]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white "Node.js Badge"
+[Node-url]: https://nodejs.org/
+
+[Express.js]: https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white "Express.js Badge"
+[Express-url]: https://expressjs.com/
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/wickhill/
