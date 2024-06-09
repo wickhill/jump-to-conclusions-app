@@ -176,8 +176,8 @@ Why contemplate? Leap before you look, and jump to conclusions with a single cli
 Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is designed to offer light-hearted fun for anyone facing a case of the Mondays.
 
 <div align="center">
-<img src="https://i.imgur.com/btZhrEY.jpg" alt="Jump To Conclusions Mat" width="168" height="250">
 <img src="https://i.imgur.com/v2q1Bys.jpg" alt="bob1" width="250" height="250">
+<img src="https://i.imgur.com/btZhrEY.jpg" alt="Jump To Conclusions Mat" width="168" height="250">
 <img src="https://i.imgur.com/uWc9dl1.jpg" alt="michael bolton" width="250" height="250">
 </div>
 
