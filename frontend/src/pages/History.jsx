@@ -30,16 +30,18 @@ const History = ({ user }) => {
 
     return (
         <div id="content" className="p-1 text-center">
+            <div className="history-text text-base jersey-15-regular mt-16 mb-1" style={{ marginBottom: '0px', marginTop: '120px' }}>
             <h1>History:</h1>
-            <div className="history-list">
+            </div>
+            <div className="history-text" style={{ marginBottom: '-30px', marginTop: '15px' }}>
                 {history.length > 0 ? (
                     history.map((entry, index) => {
                         const conclusion = conclusionsData[entry.conclusion];
                         {/* const achievement = achievementsData.find(ach => ach.name === entry.conclusion); */}
                         return (
                             <div key={index} className="history-entry">
-                                <p><strong>Question:</strong> {entry.question}</p>
-                                <p><strong>Conclusion:</strong> {conclusion ? conclusion.answer : 'Unknown'}</p>
+                                <span className="history-text text-lg jersey-15-regular mt-16 mb-1"><p>Question: {entry.question}</p></span>
+                                <span className="history-text text-base jersey-15-regular mt-16 mb-1"><p>Conclusion: {conclusion ? conclusion.answer : 'Unknown'}</p></span>
                                 {/* {achievement && <img src={achievement.image} alt={achievement.name} className="achievement-image" />} */}
                             </div>
                         );
