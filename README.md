@@ -65,7 +65,7 @@
         <ul>
         <li><a href="#project-origins">Our Journey</a></li>
         <li><a href="#user-stories">User Stories</a></li>
-        <li><a href="#jump-to-conclusions-data">Jump To Conclusions Data</a></li>
+        <!-- <li><a href="#jump-to-conclusions-data">Jump To Conclusions Data</a></li> -->
         <li><a href="#hurdles">Hurdles: Is This Good For The Company?</a></li>
         </ul>
     <li><a href="#screenshots">Screenshots</a></li>
@@ -82,7 +82,9 @@
 
 <div align="center">
   <a href="">
-    <img src="https://i.imgur.com/yGPWy4Y.jpg" alt="Jump To Conclusions Logo" width="600" height="600">
+    <img src="https://i.imgur.com/h5H3MwF.jpg" alt="Jump To Conclusions Homescreen" width="323" height="700">
+    <img src="https://i.imgur.com/pbKgb9W.jpg" alt="Jump To Conclusions Cheeves" width="324" height="700">
+    <img src="https://i.imgur.com/yGPWy4Y.jpg" alt="Jump To Conclusions Logo" width="450" height="450">
   </a>
 </div>
 
@@ -185,16 +187,29 @@ Why contemplate when you can jump to conclusions with a single click! Stuck on a
 <!-- ROADMAP to Jump To Conclusions -->
 ## Roadmap
 
-- See my [Figma Board](https://www.figma.com/board/ZmQYxUoys0tOWwHSDY3fia/Jump-To-Conclusions-App?node-id=0-1&t=BmHscWeCgJKBg3Vc-0) for my Wireframe and Proposed Features.
+* []() Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is designed to offer light-hearted fun for anyone facing a case of the Mondays.
 
-- See my [Trello Board](https://trello.com/b/2dwSSjZy/jump-to-conclusions) for MVP and stretch goals.
+<img src="https://i.imgur.com/btZhrEY.jpg" alt="Jump To Conclusions Mat" width="168" height="250">
 
-- Here's our Wireframes and ERDs:
+* []() Having a baseline helped, but adding features that encouraged replay value and user retention became essential. Concepts were worked out using Figma and Trello. Many ideas were used, and even those that haven't been used will likely be added in the near future.
+
+- View the [Figma Board](https://www.figma.com/board/ZmQYxUoys0tOWwHSDY3fia/Jump-To-Conclusions-App?node-id=0-1&t=BmHscWeCgJKBg3Vc-0) for the project's wireframe blueprint:
 
 <div align="center">
   <a href="">
     <img src="https://i.imgur.com/PZo1cYK.jpg" alt="Wireframe #1" width="383" height="700">
     <img src="https://i.imgur.com/Lzj6CQA.jpg" alt="Wireframe #1" width="427" height="700">
+  </a>
+</div>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+- View the [Trello Board](https://trello.com/b/2dwSSjZy/jump-to-conclusions) for MVP and stretch goals.
+
+- Here are the project's ERD blueprints:
+
+<div align="center">
+  <a href="">
     <img src="https://i.imgur.com/GIGtJM9.jpg" alt="Whiteboard Wireframe" width="400" height="300">
     <img src="https://i.imgur.com/qfzxthd.jpg" alt="Whiteboard ERD" width="400" height="300">
   </a>
@@ -204,17 +219,16 @@ Why contemplate when you can jump to conclusions with a single click! Stuck on a
 
 
 
-<!-- PROJECT ORIGINS -->
+<!-- SCREENSHOTS -->
 
-## Project Origins
-
-Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is designed to offer light-hearted fun for anyone facing a “Case of the Mondays”. Even if it is Casual Friday.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+<!-- ## Screenshots
 
 
+<p align="right">(<a href="#top">back to top</a>)</p> -->
 
-<!-- A WORD ON AUTHENTICATION -->
+
+
+<!-- USER STORIES -->
 
 ## User Stories
 
@@ -224,7 +238,7 @@ Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space
 
 **Nostalgia**: As a User who loves the film "Office Space," I want to see a concept from the movie brought to life in a creative and engaging way.
 
-**Replay Valie**: As a User, I want the app to include hidden achievements and a personal history feature to encourage me to return and play again.
+**Replay Valie**: As a User, I want the app to include hidden achievements and a personal history feature to encourage users to return and play again.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -232,11 +246,11 @@ Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space
 
 <!-- Jump To Conclusions Data -->
 
-## Jump To Conclusions Data
+<!-- ## Jump To Conclusions Data
 
 There's more to the app than you think! Earn "Cheeves" (achievements), build and view your history, and display your history, either anonymously or with your user handle!
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p> -->
 
 
 
@@ -246,16 +260,33 @@ There's more to the app than you think! Earn "Cheeves" (achievements), build and
 
 **Is This Good For The Company?**
 
-Even *we* ran into some issues from time to time. But it weren't nothin' that a few 'Shrimp Poppers' or 'Extreme Fajitas' couldn't fix 🦐🎉
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+* []() From time to time we ran into issues involving scope, context, and responsive design. Still, it wasn't anything that a few 'Shrimp Poppers' or 'Extreme Fajitas' couldn't fix 🦐🎉
 
 
+**'utils.js' - Keeping Component-Based Code DRY.**
 
-<!-- SCREENSHOTS -->
-## Screenshots
+* []() Dynamically rendering text and containers for responsive design was a top priority for 'Jump To Conclusions'. 
+* []() `utils.js` is a utility file that contains a reusable helper function (`resizeText`) that streamlines and simplifies styling code across the app.
+* []() By using `utils.js`, it became much easier to keep styling code modular, and later this concept set the stage for `UserContext.jsx` and centralizing commonly/globally used logic.
 
- <img src="https://i.imgur.com/btZhrEY.jpg" alt="Jump To Conclusions Mat" width="336" height="500">
+**Scope, Prop Drilling, UserContext.jsx**
+
+* []() Initially, the app faced challenges with scope, as certain Randomizer Functions were not being passed correctly across different components.
+* []() Prop drilling, the process of passing data from parent to child components through props, was attempted. However, it led to a complicated and hard-to-manage codebase without resolving the core issues.
+* []() To address these challenges, UserContext.jsx was implemented. This component simplified the code significantly, making it more manageable and easier to debug. 
+* []() `UserContext.jsx` provided a centralized state management solution using React’s Context API, allowing state and functions to be accessed by any component without prop drilling.
+
+**A Not-So-Modular Compromise**
+
+* []() Footer Component Issue and Resolution: Despite the improvements with `UserContext.jsx`, the `Footer.jsx` component, which contained the critical `footprint-button` that initiated the `startRandomizer` function, still did not function as intended.
+* []() Ultimately, it was decided to remove the `Footer.jsx` component and rebuild it within `Conclusions.jsx`. 
+* []() This approach was successful, resolving the issues and ensuring the button worked as expected.
+
+**Current Status**
+
+* []() However, this process took longer than anticipated, leading to some planned features not being implemented yet.
+* []() Features like audio integration and a user-input text bar will be added in the future. Additionally, the `History.jsx` component is still a work in progress.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
