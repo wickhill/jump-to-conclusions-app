@@ -11,7 +11,7 @@ const History = ({ user }) => {
     useEffect(() => {
         const fetchHistory = async () => {
             try {
-                const response = await fetch(`${backendUrl}/user/${user._id}/history`, {
+                const response = await fetch(`${backendUrl}/user/${id}/history`, {
                 // const response = await fetch(`http://localhost:3000/user/${id}/history`, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
