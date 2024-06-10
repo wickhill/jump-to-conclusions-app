@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../UserContext';
+const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -14,7 +15,8 @@ const Signup = () => {
         e.preventDefault();
         setError('');
         try {
-            const response = await fetch('http://localhost:3000/user/signup', {
+            const response = await fetch(`${backendUrl}/user/signup`, {
+            // const response = await fetch('http://localhost:3000/user/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

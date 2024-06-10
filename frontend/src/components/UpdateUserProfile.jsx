@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../UserContext";
+const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 
 const UpdateUserProfile = () => {
     const { user, setUser } = useContext(UserContext);
@@ -35,7 +36,8 @@ const handleChange = (event) => {
 const handleUpdate = async (event) => {
     event.preventDefault();
     try {
-        const response = await axios.put(`http://localhost:3000/user/${user._id}`, formData, {
+        const response = await axios.put(`${backendUrl}/user/${user._id}`, formData, {
+        // const response = await axios.put(`http://localhost:3000/user/${user._id}`, formData, {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         setUser(response.data.user); // Update user state with new user data
@@ -51,7 +53,8 @@ const handleUpdate = async (event) => {
 const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete your profile?")) {
     try {
-        await axios.delete(`http://localhost:3000/user/${user._id}`, {
+        await axios.delete(`${backendUrl}/user/${user._id}`, {
+        // await axios.delete(`http://localhost:3000/user/${user._id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         alert(
