@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import conclusionsData from '../conclusionsData';
 // import achievementsData from '../achievementsData';
+const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 
 const History = ({ user }) => {
     const { id } = useParams();
@@ -10,7 +11,8 @@ const History = ({ user }) => {
     useEffect(() => {
         const fetchHistory = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/user/${id}/history`, {
+                const response = await fetch(`${backendUrl}/user/${user._id}/history`, {
+                // const response = await fetch(`http://localhost:3000/user/${id}/history`, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     },

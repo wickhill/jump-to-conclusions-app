@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Achievement from "./Achievement";
 import '../App.css';
 import achievementsData from "../achievementsData";
+const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 
 
 const Achievements = ({ user, fetchAchievements }) => {
@@ -15,7 +16,8 @@ const Achievements = ({ user, fetchAchievements }) => {
     const fetchAchievementsData = async () => {
         try {
             if (user && user._id) {
-                const url = `http://localhost:3000/user/${user._id}/achievements`;
+                const url = `${backendUrl}/user/${user._id}/achievements`;
+                // const url = `http://localhost:3000/user/${user._id}/achievements`;
 
                 const token = localStorage.getItem('token');
                 if (!token) {

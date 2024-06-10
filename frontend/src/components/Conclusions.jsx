@@ -6,6 +6,7 @@ import Conclusion from "./Conclusion";
 import { UserContext } from '../UserContext';
 import footprintSvg from '../assets/footprint.svg';
 import '../App.css';
+const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 
 const Conclusions = ({ fetchAchievements }) => {
     const { user, setRandomizerFunction } = useContext(UserContext);
@@ -46,7 +47,8 @@ const Conclusions = ({ fetchAchievements }) => {
 
     const updateUserConclusion = async (userId, conclusionId) => {
         try {
-            const response = await fetch(`http://localhost:3000/user/${userId}/conclusion`, {
+            const response = await fetch(`${backendUrl}/user/${user._id}/conclusion`, {
+            // const response = await fetch(`http://localhost:3000/user/${userId}/conclusion`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
