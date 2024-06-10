@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import conclusionsData from "../conclusionsData";
-import colorMapping from "../colorMapping";
+import colorMapping from "../colormapping";
 import Conclusion from "./Conclusion";
 import { UserContext } from '../UserContext';
 import footprintSvg from '../assets/footprint.svg';
