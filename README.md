@@ -284,6 +284,15 @@ There's more to the app than you think! Earn "Cheeves" (achievements), build and
 * []() Features to be added in the near future: audio for randomizer function and unlocking achievements, a user-input text bar, leaderboard that accepts username and anonymous submissions.
 * []() `History.jsx` component will by styled, streamlined, and have and added functionality.
 
+**Outstanding Issues**
+
+* []() The `index-lqVEt2In.js` error: a file that was likely generated during the build process, probably by a tool like Vite or Webpack, or perhaps by Netlify.
+* []() Most likely, this file is a minified and bundled version of my source code created by my build tool(s).
+* []() Errors originating from this file likely come from the original source code but are harder to debug because the code is minified and obfuscated
+* []() To effectively debug errors originating from this file, source maps and browser developer tools should be used to trace the issue back to the original source code.
+* []() This will help to identify and fix the underlying problem in the application.
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
