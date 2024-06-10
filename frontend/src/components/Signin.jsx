@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
+console.log("Backend URL:", backendUrl);
 
 const Signin = () => {
   const [username, setUsername] = useState('');

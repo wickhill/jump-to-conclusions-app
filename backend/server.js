@@ -10,8 +10,15 @@ const morgan = require("morgan");
 const app = express();
 
 // Middleware
+const greenlist = ['http://localhost:5173', 'https://main--jump-to-conclusions.netlify.app'];
 const corsOptions = {
-    origin: 'http://localhost:5173', // Ensure no trailing slash
+    origin: function (origin, callback) {
+        if (greenlist.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     optionsSuccessStatus: 200
 };
 
@@ -45,8 +52,6 @@ app.get("/:id/conclusion", (req, res) => {
 app.get("/:id/achievements", (req, res) => {
     res.send("User Achievements!");
 });
-
-
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)

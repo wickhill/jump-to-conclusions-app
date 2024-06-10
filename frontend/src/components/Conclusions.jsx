@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import conclusionsData from "../conclusionsData";
-import colorMapping from "../colormapping";
+// import colorMapping from "../colorMapping"; // For local deployment
+import colorMapping from "../colormapping"; // For Netlify deployment
 import Conclusion from "./Conclusion";
 import { UserContext } from '../UserContext';
 import footprintSvg from '../assets/footprint.svg';
