@@ -267,6 +267,7 @@ There's more to the app than you think! Earn "Cheeves" (achievements), build and
 * []() Prop drilling, the process of passing data from parent to child components through props, was attempted. However, it led to a complicated and hard-to-manage codebase without resolving the various, core `randomizer` issues.
 * []() To address these challenges, `UserContext.jsx` was implemented. This component simplified the code significantly, making it more manageable and easier to debug. 
 * []() `UserContext.jsx` provided a centralized state management solution using React’s Context API, allowing state and functions to be accessed by any component without prop drilling.
+* []() `UserContext.jsx` also avoids unnecessary re-renders by isolating state changes to the components that need them.
 
 **A Not-So-Modular Compromise**
 
