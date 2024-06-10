@@ -5,12 +5,14 @@ import conclusionsData from '../conclusionsData';
 const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 
 const History = ({ user }) => {
+    const { id } = useParams();
     const [history, setHistory] = useState([]);
 
     useEffect(() => {
         const fetchHistory = async () => {
             try {
-                const response = await fetch(`${backendUrl}/user/${user._id}/history`, {
+                const response = await fetch(`${backendUrl}/user/${id}/history`, {
+                // const response = await fetch(`http://localhost:3000/user/${id}/history`, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     },
@@ -26,12 +28,12 @@ const History = ({ user }) => {
         };
 
         fetchHistory();
-    }, [user._id]);
+    }, [id]);
 
     return (
         <div id="content" className="p-1 text-center">
             <div className="history-text text-base jersey-15-regular mt-16 mb-1" style={{ marginBottom: '0px', marginTop: '120px' }}>
-                <h1>History:</h1>
+            <h1>History:</h1>
             </div>
             <div className="history-text" style={{ marginBottom: '-30px', marginTop: '15px' }}>
                 {history.length > 0 ? (
