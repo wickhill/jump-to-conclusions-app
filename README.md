@@ -15,7 +15,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://main--jump-to-conclusions.netlify.app/"><img src="joanna-office-space.png" alt="Icon" width="80" height="80"></a>
+  <a href="https://www.youtube.com/watch?v=_ChQK8j6so8"><img src="joanna-office-space.png" alt="Icon" width="80" height="80"></a>
   <!-- Removed the extraneous closing </a> tag here -->
 
   <h3 align="center">It's a... Jump To Conclusions App!</h3>
@@ -179,9 +179,9 @@ Why contemplate? Leap before you look, and jump to conclusions with a single cli
 Inspired by the “Jump to Conclusions” mat from the 1999 film “Office Space”, this app is designed to offer light-hearted fun for anyone facing a case of the Mondays.
 
 <div align="center" style="margin-top: 20px; margin-bottom: 20px;">
-<img src="https://i.imgur.com/v2q1Bys.jpg" alt="bob1" width="250" height="250">
+<a href="https://www.youtube.com/watch?v=af8DVIZ5LX4"><img src="https://i.imgur.com/v2q1Bys.jpg" alt="bob1" width="250" height="250"></a>
 <img src="https://i.imgur.com/btZhrEY.jpg" alt="Jump To Conclusions Mat" width="168" height="250">
-<img src="https://i.imgur.com/uWc9dl1.jpg" alt="michael bolton" width="250" height="250">
+<a href="https://www.youtube.com/watch?v=1ZTHUUDP2PE"><img src="https://i.imgur.com/uWc9dl1.jpg" alt="michael bolton" width="250" height="250"></a>
 </div>
 
 Having a baseline helped, but adding features that encouraged replay value and user retention became essential. Concepts were worked out using Figma and Trello. Many ideas were used, and even those that haven't been used will likely be added in the near future.
