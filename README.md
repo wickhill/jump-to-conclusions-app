@@ -285,8 +285,12 @@ There's more to the app than you think! Earn "Cheeves" (achievements), build and
 * []() Features to be added in the near future: audio for randomizer function and unlocking achievements, a user-input text bar, leaderboard that accepts username and anonymous submissions.
 * []() `History.jsx` component will by styled, streamlined, and have and added functionality.
 
-**Outstanding Issues**
+**Outstanding Issues: `colormapping` vs `colorMapping`, and the harmless `index-lqVEt2In.js` error**
 
+* []() `colormapping` was the original `colormapping` file for the conclusions cards. Later, when I changed it to the camel-case `colorMapping`, I didn't give it a second thought.
+* []() Long Story Short: Netlify requires `colormapping`, whereas local deployment breaks without `colorMapping`.
+* []() Caches have been cleared, package.json files reinstalled: I may just need to create `colorMappingS` to resolve this.
+* []() 
 * []() The `index-lqVEt2In.js` error: a file that was likely generated during the build process, probably by a tool like Vite or Webpack, or perhaps by Netlify.
 * []() Most likely, this file is a minified and bundled version of my source code created by my build tool(s).
 * []() Errors originating from this file likely come from the original source code but are harder to debug because the code is minified and obfuscated
