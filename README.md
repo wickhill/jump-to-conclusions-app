@@ -224,13 +224,13 @@ Having a baseline helped, but adding features that encouraged replay value and u
 
 ## User Stories
 
-**Showcasing Skills**: As a Recruiter, I want to see an app that demonstrates the candidate's skills and personality effectively.
+**Showcasing Skills**: As a Recruiter, I want to see an app that demonstrates the coder's skills and personality effectively.
 
 **Casual Entertainment**: As a User, I want a fun and easy-going app that I can enjoy in my spare time and share amusing moments with friends.
 
-**Nostalgia**: As a User who loves the film "Office Space," I want to see a concept from the movie brought to life in a creative and engaging way.
+**Replay Value**: As a User, I want the app to include hidden achievements and a personal history feature to encourage users to return and play again.
 
-**Replay Valie**: As a User, I want the app to include hidden achievements and a personal history feature to encourage users to return and play again.
+**Nostalgia**: As a User who loves the film "Office Space," I want to see a concept from the movie brought to life in a creative and engaging way.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
