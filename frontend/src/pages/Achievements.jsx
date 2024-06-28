@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Achievement from "./Achievement";
 import '../App.css';
-import achievementsData from "../achievementsData";
 const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 
-
 const Achievements = ({ user, fetchAchievements }) => {
-    const [achievements, setAchievements] = useState(achievementsData);
-    
+    const [achievements, setAchievements] = useState([]);
+
     useEffect(() => {
-        console.log('Achievements.jsx received user:', user); // debugging
         fetchAchievementsData();
     }, [user]);
 
     const fetchAchievementsData = async () => {
         try {
+            const achievementsResponse = await fetch(`${backendUrl}/achievementsData`);
+            const achievementsData = await achievementsResponse.json();
+
             if (user && user._id) {
                 const url = `${backendUrl}/user/${user._id}/achievements`;
-                // const url = `http://localhost:3000/user/${user._id}/achievements`;
 
                 const token = localStorage.getItem('token');
                 if (!token) {
@@ -35,16 +34,19 @@ const Achievements = ({ user, fetchAchievements }) => {
                 }
                 const data = await response.json();
 
+                console.log('Achievements data received:', data);
+
                 if (!data.user || !data.user.achievements) {
                     throw new Error('Achievements data is not available in the response');
                 }
 
                 const achievementsMap = new Map(Object.entries(data.user.achievements));
-
                 const updatedAchievements = achievementsData.map(achievement => ({
                     ...achievement,
                     isUnlocked: achievementsMap.get(achievement.name) || false
                 }));
+
+                console.log('Updated achievements:', updatedAchievements);
                 setAchievements(updatedAchievements);
             }
         } catch (error) {

@@ -10,7 +10,6 @@ import History from './pages/History';
 import Achievements from './pages/Achievements';
 import { UserProvider, UserContext } from './UserContext';
 import Logout from './components/Logout';
-import achievementsData from './achievementsData';  // Import achievementsData
 
 function App() {
     const { user, setUser, randomizerFunction, onLogout } = useContext(UserContext);
