@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Achievement from "./Achievement";
 import '../App.css';
 import achievementsData from "../achievementsData";
-import images from "../assets/imageImports";
 const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 
 const Achievements = ({ user, fetchAchievements }) => {
@@ -40,7 +39,7 @@ const Achievements = ({ user, fetchAchievements }) => {
                 }
 
                 const achievementsMap = new Map(Object.entries(data.user.achievements));
-                const updatedAchievements = data.map(achievement => ({
+                const updatedAchievements = achievementsData.map(achievement => ({
                     ...achievement,
                     isUnlocked: achievementsMap.get(achievement.name) || false
                 }));
