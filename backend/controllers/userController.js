@@ -1,5 +1,4 @@
 const User = require('../models/User');
-const History = require('../models/History.js');
 require('dotenv').config();
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
@@ -131,30 +130,36 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
             return res.status(404).json({ error: 'User not found' }); // Send JSON response
         }
 
-        // increment count for given conclusionId in user.conclusions (because it's a 0 index vs 'conclusion1'):
-        user.conclusions.set(conclusionId, (user.conclusions.get(conclusionId) || 0) + 1);
+        // Increment count for given conclusionId in user.conclusions
+        const currentCount = user.conclusions.get(conclusionId) || 0;
+        console.log(`Current count for ${conclusionId}: ${currentCount}`);
+        
+        const newCount = currentCount + 1;
+        user.conclusions.set(conclusionId, newCount);
+        console.log(`New count for ${conclusionId}: ${newCount}`);
 
-        // retrieves required number of landings for specified conclusionId from requiredLandingsMap
+        // Retrieve required number of landings for specified conclusionId
         const achievement = achievementsData.find(a => a.name === conclusionId);
         const requiredLandings = achievement ? achievement.requiredLandings : 3;
         console.log(`Required landings for ${conclusionId}: ${requiredLandings}`);
+        console.log(`Current count type: ${typeof currentCount}, Required landings type: ${typeof requiredLandings}`);
 
-        // check if incremented count meets required landings from requiredLandingsMap:
-        if (user.conclusions.get(conclusionId) >= requiredLandings) {
+        // Check if incremented count meets required landings
+        if (newCount >= requiredLandings) {
             user.achievements.set(conclusionId, true);
             console.log(`Achievement for ${conclusionId} unlocked!`);
         }
 
-        // save history entry
-        const newHistory = new History({
-            userId: id,
-            username: user.username,
-            question,
-            conclusion: conclusionId,
-        });
+        // Save history entry
+        // const newHistory = new History({
+        //     userId: id,
+        //     username: user.username,
+        //     question,
+        //     conclusion: conclusionId,
+        // });
 
-        await newHistory.save();
-        console.log('History saved:', newHistory); // debugging
+        // await newHistory.save();
+        // console.log('History saved:', newHistory); // debugging
 
         await user.save();
         res.status(200).json({ message: 'Conclusion count updated' }); // send JSON response
@@ -164,14 +169,11 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
     }
 });
 
-
-
 // CREATE Route for User Achievements:
 router.get("/:id/achievements", function (req, res) {
     User.findById(req.params.id)
         .then((user) => {
             if (user) {
-
                 // ensure achievements is included in response
                 // converts the user document to plain JavaScript object w/ user.toObject():
                 const userWithAchievements = user.toObject();
@@ -189,22 +191,6 @@ router.get("/:id/achievements", function (req, res) {
             console.error(err);
             res.status(500).json({ message: "Internal Server Error", error: err });
         });
-});
-
-// SHOW Route for User History:
-router.get('/:id/history', async (req, res) => {
-    try {
-        const userId = req.params.id;
-        const history = await History.find({ userId: userId });
-
-        if (!history) {
-            return res.status(404).send({ message: 'History not found' });
-        }
-
-        res.status(200).json({ history });
-    } catch (error) {
-        res.status(500).json({ message: 'Error fetching history', error });
-    }
 });
 
 // GET Route for achievementsData

@@ -2,14 +2,15 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 import UpdateUserProfile from './components/UpdateUserProfile';
-import History from './pages/History';
 import Achievements from './pages/Achievements';
 import { UserProvider, UserContext } from './UserContext';
 import Logout from './components/Logout';
+import achievementsData from './achievementsData'; // Import achievementsData
+
+const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL; // Import backend URL
 
 function App() {
     const { user, setUser, randomizerFunction, onLogout } = useContext(UserContext);
@@ -30,7 +31,7 @@ function App() {
 
     const fetchAchievements = async () => {
         if (user && user._id) {
-            const url = `http://localhost:3000/user/${user._id}/achievements`;
+            const url = `${backendUrl}/user/${user._id}/achievements`;
             const token = localStorage.getItem('token');
             if (!token) {
                 throw new Error('Token not found');
@@ -76,7 +77,7 @@ function App() {
                 {user && (
                     <>
                         <Route path="/updateProfile" element={<UpdateUserProfile />} />
-                        <Route path="/:id/history" element={<History />} />
+                        {/* <Route path="/:id/history" element={<History />} /> */}
                         <Route path="/:id/achievements" element={<Achievements user={user} fetchAchievements={fetchAchievements} />} />
                     </>
                 )}

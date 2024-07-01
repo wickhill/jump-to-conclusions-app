@@ -40,10 +40,10 @@ app.get("/", (req, res) => {
     res.send("Jump! To Conclusions!");
 });
 
-// Show Route
-app.get("/:id/history/", (req, res) => {
-    res.send("User History!");
-});
+// // Show Route
+// app.get("/:id/history/", (req, res) => {
+//     res.send("User History!");
+// });
 
 app.get("/:id/conclusion", (req, res) => {
     res.send("User Conclusions!");
