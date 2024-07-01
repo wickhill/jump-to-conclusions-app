@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import colorMapping from "../colorMapping"; // For local deployment, otherwise app breaks
 // import colorMapping from "../colormapping"; // For Netlify deployment, otherwise app breaks
+import achievementsData from "../achievementsData";
 import Conclusion from "./Conclusion";
 import { UserContext } from '../UserContext';
 import footprintSvg from '../assets/footprint.svg';
@@ -9,52 +10,31 @@ const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 
 const Conclusions = ({ fetchAchievements }) => {
     const { user, setRandomizerFunction } = useContext(UserContext);
-    const [conclusionsData, setConclusionsData] = useState([]);
     const [highlightedIndex, setHighlightedIndex] = useState(null);
     const [randomIndex, setRandomIndex] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchConclusionsData = async () => {
-            try {
-                const response = await fetch(`${backendUrl}/achievementsData`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                    },
-                });
-                const data = await response.json();
-                setConclusionsData(data);
-            } catch (error) {
-                console.error('Error fetching conclusions data:', error);
-            }
-        };
-
-        fetchConclusionsData();
-    }, []);
-
-    useEffect(() => {
         let interval;
         if (highlightedIndex !== null) {
             interval = setInterval(() => {
-                const randomIndex = Math.floor(Math.random() * conclusionsData.length);
+                const randomIndex = Math.floor(Math.random() * achievementsData.length);
                 setHighlightedIndex(randomIndex);
             }, 200);
         }
         return () => clearInterval(interval);
-    }, [highlightedIndex, conclusionsData.length]);
+    }, [highlightedIndex]);
 
     const startRandomizer = useCallback(() => {
-        // console.log("startRandomizer called by user:", user); // Debug log
         setRandomIndex(null);
         setHighlightedIndex(5);
         setTimeout(() => {
-            const finalRandomIndex = Math.floor(Math.random() * conclusionsData.length);
+            const finalRandomIndex = Math.floor(Math.random() * achievementsData.length);
             setRandomIndex(finalRandomIndex);
             setHighlightedIndex(null);
 
             if (user) {
-                const conclusionId = conclusionsData[finalRandomIndex].name;
+                const conclusionId = achievementsData[finalRandomIndex].name;
                 updateUserConclusion(user._id, conclusionId);
                 console.log(`The user Jumping to Conclusions is: ${user._id}`);
                 console.log(`Sending POST request with conclusionId: ${conclusionId}`);
@@ -62,7 +42,7 @@ const Conclusions = ({ fetchAchievements }) => {
                 console.error("User is not defined");
             }
         }, 2300);
-    }, [user, conclusionsData]);
+    }, [user]);
 
     const updateUserConclusion = async (userId, conclusionId) => {
         try {
@@ -90,9 +70,8 @@ const Conclusions = ({ fetchAchievements }) => {
     };
 
     useEffect(() => {
-        // console.log("Setting randomizer function in Conclusions"); // Debug log
         setRandomizerFunction(() => startRandomizer);
-    }, [setRandomizerFunction, startRandomizer]); 
+    }, [setRandomizerFunction, startRandomizer]);
 
     const handleClick = () => {
         if (typeof startRandomizer === 'function') {
@@ -113,7 +92,7 @@ const Conclusions = ({ fetchAchievements }) => {
             {error && <div className="text-red-500">{error}</div>}
 
             <div className="grid grid-cols-3 gap-4">
-                {conclusionsData.map((conclusion, index) => {
+                {achievementsData.map((conclusion, index) => {
                     const colorClass = colorMapping[conclusion.name];
                     return (
                         <div key={index} className={`${colorClass} ${highlightedIndex === index ? 'highlighted' : ''} ${randomIndex === index ? 'selected' : ''}`}>

@@ -1,6 +1,5 @@
 const User = require('../models/User');
 const History = require('../models/History.js');
-const achievementsData = require('../models/achievementsData')
 require('dotenv').config();
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
