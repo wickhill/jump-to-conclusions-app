@@ -130,25 +130,29 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
             return res.status(404).json({ error: 'User not found' }); // Send JSON response
         }
 
-        // Increment count for given conclusionId in user.conclusions
-        const currentCount = user.conclusions.get(conclusionId) || 0;
-        console.log(`Current count for ${conclusionId}: ${currentCount}`);
-        
-        const newCount = currentCount + 1;
-        user.conclusions.set(conclusionId, newCount);
-        console.log(`New count for ${conclusionId}: ${newCount}`);
+    // Increment count for given conclusionId in user.conclusions
+    const userLandingCount = user.conclusions.get(conclusionId) || 0;
+    console.log(`Current count for ${conclusionId}: ${userLandingCount}`);
 
-        // Retrieve required number of landings for specified conclusionId
-        const achievement = achievementsData.find(a => a.name === conclusionId);
-        const requiredLandings = achievement ? achievement.requiredLandings : 3;
-        console.log(`Required landings for ${conclusionId}: ${requiredLandings}`);
-        console.log(`Current count type: ${typeof currentCount}, Required landings type: ${typeof requiredLandings}`);
+    const newCount = userLandingCount + 1;
+    user.conclusions.set(conclusionId, newCount);
+    console.log(`New count for ${conclusionId}: ${newCount}`);
 
-        // Check if incremented count meets required landings
-        if (newCount >= requiredLandings) {
-            user.achievements.set(conclusionId, true);
-            console.log(`Achievement for ${conclusionId} unlocked!`);
-        }
+    // Retrieve required number of landings for specified conclusionId
+    const achievement = achievementsData.find(a => a.name === conclusionId);
+    const requiredLandings = achievement ? achievement.requiredLandings : 3;
+    console.log(`Required landings for ${conclusionId}: ${requiredLandings}`);
+    console.log(`Current count type: ${typeof userLandingCount}, Required landings type: ${typeof requiredLandings}`);
+
+    // Check if incremented count meets required landings
+    console.log(`New count: ${newCount}, Required landings: ${requiredLandings}`);
+    if (newCount >= requiredLandings) {
+        console.log('Setting achievement to false for', conclusionId);
+        // user.achievements.set(conclusionId, false); // commenting out for debugging
+        console.log(`Achievement for ${conclusionId} unlocked!`);
+    }
+    
+
 
         // Save history entry
         // const newHistory = new History({

@@ -13,7 +13,7 @@ import achievementsData from './achievementsData'; // Import achievementsData
 const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL; // Import backend URL
 
 function App() {
-    const { user, setUser, randomizerFunction, onLogout } = useContext(UserContext);
+    const { user, setUser, onLogout } = useContext(UserContext);
     const [achievements, setAchievements] = useState([]);
 
     useEffect(() => {
@@ -71,18 +71,17 @@ function App() {
         <div id="root">
             <Navbar user={user} onLogout={onLogout} />
             <Routes>
-                <Route path="/" element={<Home fetchAchievements={fetchAchievements} />} />
+                <Route path="/" element={<Home fetchAchievements={fetchAchievements} achievements={achievements} />} />
                 <Route path="/signin" element={<Signin onSignin={setUser} />} />
                 <Route path="/signup" element={<Signup onSignup={setUser} />} />
                 {user && (
                     <>
                         <Route path="/updateProfile" element={<UpdateUserProfile />} />
                         {/* <Route path="/:id/history" element={<History />} /> */}
-                        <Route path="/:id/achievements" element={<Achievements user={user} fetchAchievements={fetchAchievements} />} />
+                        <Route path="/:id/achievements" element={<Achievements user={user} fetchAchievements={fetchAchievements} achievements={achievements} />} />
                     </>
                 )}
             </Routes>
-            {/* <Footer user={user} onRandomize={randomizerFunction} /> */}
         </div>
     );
 }

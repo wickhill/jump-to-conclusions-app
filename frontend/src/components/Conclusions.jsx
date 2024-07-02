@@ -35,9 +35,9 @@ const Conclusions = ({ fetchAchievements }) => {
 
             if (user) {
                 const conclusionId = achievementsData[finalRandomIndex].name;
-                updateUserConclusion(user._id, conclusionId);
                 console.log(`The user Jumping to Conclusions is: ${user._id}`);
                 console.log(`Sending POST request with conclusionId: ${conclusionId}`);
+                updateUserConclusion(user._id, conclusionId);
             } else {
                 console.error("User is not defined");
             }
@@ -58,11 +58,11 @@ const Conclusions = ({ fetchAchievements }) => {
                 throw new Error('Failed to update conclusion');
             }
             const data = await response.json();
-            if (fetchAchievements) {
-                fetchAchievements();
-            } else {
-                console.error("fetchAchievements is not defined");
-            }
+            // if (fetchAchievements) {
+            //     fetchAchievements();
+            // } else {
+            //     console.error("fetchAchievements is not defined");
+            // }
         } catch (error) {
             console.error("Error updating conclusion:", error);
             setError('Failed to update conclusion. Please try again.');
