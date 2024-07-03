@@ -1,29 +1,29 @@
 import fajita from './fajita.svg';
 import cake from './cake.svg';
-import coffee_mug from './coffee-mug.svg';
-import movie_night from './movie-night.svg';
-import printer_2 from './printer-2.svg';
-import alarm_clock from './alarm-clock.svg';
+import coffeemug from './coffeemug.svg';
+import movienight from './movienight.svg';
+import printer2 from './printer2.svg';
+import alarmclock from './alarmclock.svg';
 import atm from './atm.svg';
-import baseball_bat from './baseball-bat.svg';
+import baseballbat from './baseballbat.svg';
 import fishing from './fishing.svg';
 import beer from './beer.svg';
 import gaming from './gaming.svg';
-import trophy_first from './trophy-first.svg';
+import trophyfirst from './trophyfirst.svg';
 
 const images = {
     fajita,
     cake,
-    coffee_mug,
-    movie_night,
-    printer_2,
-    alarm_clock,
+    coffeemug,
+    movienight,
+    printer2,
+    alarmclock,
     atm,
-    baseball_bat,
+    baseballbat,
     fishing,
     beer,
     gaming,
-    trophy_first,
+    trophyfirst,
 };
 
 export default images;

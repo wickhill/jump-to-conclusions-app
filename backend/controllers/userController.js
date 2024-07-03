@@ -4,6 +4,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../jwt.config');
+const achievementsData = require('../models/achievementsData');
 
 // Create token function with expiration
 function createToken(user) {
@@ -30,6 +31,11 @@ function ensureLoggedIn(req, res, next) {
     if (req.user) return next();
     res.status(401).json({ msg: 'Unauthorized You Shall Not Pass' });
 }
+
+// Fetch achievementsData
+router.get('/achievementsData', (req, res) => {
+    res.json(achievementsData);
+});
 
 // SIGNUP
 router.post('/signup', async (req, res) => {

@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import Conclusions from '../components/Conclusions';
 import { UserContext } from '../UserContext';
 
-const Home = ({ fetchAchievements }) => {
+const Home = ({ fetchAchievements, unlockedAchievements, achievementsData }) => {
     const { user, setRandomizerFunction } = useContext(UserContext);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const Home = ({ fetchAchievements }) => {
 
     return (
         <div id="content" className="p-1 text-center">
-            <Conclusions fetchAchievements={fetchAchievements} />
+            <Conclusions fetchAchievements={fetchAchievements} unlockedAchievements={unlockedAchievements} achievementsData={achievementsData} />
         </div>
     );
 };

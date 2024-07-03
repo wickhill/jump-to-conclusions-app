@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
@@ -7,14 +7,11 @@ import Signup from './components/Signup';
 import UpdateUserProfile from './components/UpdateUserProfile';
 import Achievements from './pages/Achievements';
 import { UserProvider, UserContext } from './UserContext';
+const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 import Logout from './components/Logout';
-import achievementsData from './achievementsData'; // Import achievementsData
-
-const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL; // Import backend URL
 
 function App() {
-    const { user, setUser, onLogout } = useContext(UserContext);
-    const [unlockedAchievements, setUnlockedAchievements] = useState([]);
+    const { user, setUser, onLogout, unlockedAchievements, setUnlockedAchievements, achievementsData, fetchAchievementsData } = useContext(UserContext);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -29,6 +26,10 @@ function App() {
         }
     }, [user]);
 
+    useEffect(() => {
+        fetchAchievementsData();
+    }, [fetchAchievementsData]);
+
     const fetchAchievements = async () => {
         if (user && user._id) {
             const url = `${backendUrl}/user/${user._id}/achievements`;
@@ -36,22 +37,22 @@ function App() {
             if (!token) {
                 throw new Error('Token not found');
             }
-    
+
             const response = await fetch(url, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-    
+
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-    
+
             if (!data.user || !data.user.unlockedAchievements) {
                 throw new Error('Achievements data is not available in the response');
             }
-    
+
             const unlockedAchievementsMap = new Map(Object.entries(data.user.unlockedAchievements));
             const updatedAchievements = achievementsData.map(achievement => ({
                 ...achievement,
@@ -60,19 +61,18 @@ function App() {
             setUnlockedAchievements(updatedAchievements);
         }
     };
-    
 
     useEffect(() => {
         if (user) {
             fetchAchievements();
         }
-    }, [user]);
+    }, [user, achievementsData]); // include achievementsData dependency
 
     return (
         <div id="root">
             <Navbar user={user} onLogout={onLogout} />
             <Routes>
-                <Route path="/" element={<Home fetchAchievements={fetchAchievements} unlockedAchievements={unlockedAchievements} />} />
+                <Route path="/" element={<Home fetchAchievements={fetchAchievements} unlockedAchievements={unlockedAchievements} achievementsData={achievementsData} />} />
                 <Route path="/signin" element={<Signin onSignin={setUser} />} />
                 <Route path="/signup" element={<Signup onSignup={setUser} />} />
                 {user && (
