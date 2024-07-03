@@ -8,7 +8,7 @@ import footprintSvg from '../assets/footprint.svg';
 import '../App.css';
 const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 
-const Conclusions = ({ fetchAchievements }) => {
+const Conclusions = ({ fetchAchievements, unlockedAchievements }) => {
     const { user, setRandomizerFunction } = useContext(UserContext);
     const [highlightedIndex, setHighlightedIndex] = useState(null);
     const [randomIndex, setRandomIndex] = useState(null);

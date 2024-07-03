@@ -3,10 +3,11 @@ require('dotenv').config();
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const config = require('../jwt.config');
 
-// Create token form
+// Create token function with expiration
 function createToken(user) {
-    return jwt.sign({ user }, process.env.SECRETKEY);
+    return jwt.sign({ user }, config.jwtSecret, { expiresIn: config.jwtSession.expiresIn });
 }
 
 // Verify a token
@@ -14,7 +15,7 @@ function checkToken(req, res, next) {
     let token = req.get('Authorization');
     if (token) {
         token = token.split(' ')[1];
-        jwt.verify(token, process.env.SECRETKEY, (err, decoded) => {
+        jwt.verify(token, config.jwtSecret, (err, decoded) => {
             req.user = err ? null : decoded.user;
             return next();
         });
@@ -24,6 +25,7 @@ function checkToken(req, res, next) {
     }
 }
 
+// Ensure user is logged in
 function ensureLoggedIn(req, res, next) {
     if (req.user) return next();
     res.status(401).json({ msg: 'Unauthorized You Shall Not Pass' });
@@ -33,8 +35,10 @@ function ensureLoggedIn(req, res, next) {
 router.post('/signup', async (req, res) => {
     try {
         const { username, email, password } = req.body;
+        console.log("Received signup data:", req.body); // Log the received data
         const existingUser = await User.findOne({ username });
         if (existingUser) {
+            console.log(`Username ${username} already exists.`);
             return res.status(409).json({ msg: `Username ${username} already exists. Please sign in.` });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -43,7 +47,7 @@ router.post('/signup', async (req, res) => {
             email,
             password: hashedPassword,
             conclusions: new Map(),
-            achievements: new Map()
+            unlockedAchievements: new Map(achievementsData.map(a => [a.name, false])) // Initialize unlockedAchievements to false
         });
         await newUser.save();
         const token = createToken(newUser);
@@ -53,6 +57,7 @@ router.post('/signup', async (req, res) => {
         res.status(400).json({ msg: error.message });
     }
 });
+
 
 // SIGNIN
 router.post('/signin', async (req, res) => {
@@ -116,7 +121,7 @@ router.put('/:id', async (req, res) => {
     res.status(200).json({ token, user: updatedUser });
 });
 
-// POST Route for User Conclusions:
+// POST Route for User Conclusions
 router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
     const { id } = req.params;
     const { conclusionId, question } = req.body; // ensure question is included in the request body
@@ -130,40 +135,27 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
             return res.status(404).json({ error: 'User not found' }); // Send JSON response
         }
 
-    // Increment count for given conclusionId in user.conclusions
-    const userLandingCount = user.conclusions.get(conclusionId) || 0;
-    console.log(`Current count for ${conclusionId}: ${userLandingCount}`);
+        // Increment count for given conclusionId in user.conclusions
+        const userLandingCount = user.conclusions.get(conclusionId) || 0;
+        console.log(`Current count for ${conclusionId}: ${userLandingCount}`);
 
-    const newCount = userLandingCount + 1;
-    user.conclusions.set(conclusionId, newCount);
-    console.log(`New count for ${conclusionId}: ${newCount}`);
+        const newCount = userLandingCount + 1;
+        user.conclusions.set(conclusionId, newCount);
+        console.log(`New count for ${conclusionId}: ${newCount}`);
 
-    // Retrieve required number of landings for specified conclusionId
-    const achievement = achievementsData.find(a => a.name === conclusionId);
-    const requiredLandings = achievement ? achievement.requiredLandings : 3;
-    console.log(`Required landings for ${conclusionId}: ${requiredLandings}`);
-    console.log(`Current count type: ${typeof userLandingCount}, Required landings type: ${typeof requiredLandings}`);
+        // Retrieve required number of landings for specified conclusionId
+        const achievement = achievementsData.find(a => a.name === conclusionId);
+        const requiredLandings = achievement ? achievement.requiredLandings : 3;
+        console.log(`Required landings for ${conclusionId}: ${requiredLandings}`);
+        console.log(`Current count type: ${typeof userLandingCount}, Required landings type: ${typeof requiredLandings}`);
 
-    // Check if incremented count meets required landings
-    console.log(`New count: ${newCount}, Required landings: ${requiredLandings}`);
-    if (newCount >= requiredLandings) {
-        console.log('Setting achievement to false for', conclusionId);
-        // user.achievements.set(conclusionId, false); // commenting out for debugging
-        console.log(`Achievement for ${conclusionId} unlocked!`);
-    }
-    
-
-
-        // Save history entry
-        // const newHistory = new History({
-        //     userId: id,
-        //     username: user.username,
-        //     question,
-        //     conclusion: conclusionId,
-        // });
-
-        // await newHistory.save();
-        // console.log('History saved:', newHistory); // debugging
+        // Check if incremented count meets required landings
+        console.log(`New count: ${newCount}, Required landings: ${requiredLandings}`);
+        if (newCount >= requiredLandings) {
+            console.log('Setting achievement to true for', conclusionId);
+            user.unlockedAchievements.set(conclusionId, true);
+            console.log(`Achievement for ${conclusionId} unlocked!`);
+        }
 
         await user.save();
         res.status(200).json({ message: 'Conclusion count updated' }); // send JSON response
@@ -173,7 +165,7 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
     }
 });
 
-// CREATE Route for User Achievements:
+// CREATE Route for User Achievements
 router.get("/:id/achievements", function (req, res) {
     User.findById(req.params.id)
         .then((user) => {
@@ -182,8 +174,8 @@ router.get("/:id/achievements", function (req, res) {
                 // converts the user document to plain JavaScript object w/ user.toObject():
                 const userWithAchievements = user.toObject();
 
-                // achievements map is included in response by converting it to an object:
-                userWithAchievements.achievements = Object.fromEntries(user.achievements);
+                // unlockedAchievements map is included in response by converting it to an object:
+                userWithAchievements.unlockedAchievements = Object.fromEntries(user.unlockedAchievements);
 
                 // responds w/ user data including achievements as JSON:
                 res.json({ user: userWithAchievements }); // Send user data as JSON

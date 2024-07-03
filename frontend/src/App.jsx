@@ -14,7 +14,7 @@ const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL; // Import backen
 
 function App() {
     const { user, setUser, onLogout } = useContext(UserContext);
-    const [achievements, setAchievements] = useState([]);
+    const [unlockedAchievements, setUnlockedAchievements] = useState([]);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -36,30 +36,31 @@ function App() {
             if (!token) {
                 throw new Error('Token not found');
             }
-
+    
             const response = await fetch(url, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-
+    
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-
-            if (!data.user || !data.user.achievements) {
+    
+            if (!data.user || !data.user.unlockedAchievements) {
                 throw new Error('Achievements data is not available in the response');
             }
-
-            const achievementsMap = new Map(Object.entries(data.user.achievements));
+    
+            const unlockedAchievementsMap = new Map(Object.entries(data.user.unlockedAchievements));
             const updatedAchievements = achievementsData.map(achievement => ({
                 ...achievement,
-                isUnlocked: achievementsMap.get(achievement.name) || false
+                isUnlocked: unlockedAchievementsMap.get(achievement.name) || false
             }));
-            setAchievements(updatedAchievements);
+            setUnlockedAchievements(updatedAchievements);
         }
     };
+    
 
     useEffect(() => {
         if (user) {
@@ -71,14 +72,13 @@ function App() {
         <div id="root">
             <Navbar user={user} onLogout={onLogout} />
             <Routes>
-                <Route path="/" element={<Home fetchAchievements={fetchAchievements} achievements={achievements} />} />
+                <Route path="/" element={<Home fetchAchievements={fetchAchievements} unlockedAchievements={unlockedAchievements} />} />
                 <Route path="/signin" element={<Signin onSignin={setUser} />} />
                 <Route path="/signup" element={<Signup onSignup={setUser} />} />
                 {user && (
                     <>
                         <Route path="/updateProfile" element={<UpdateUserProfile />} />
-                        {/* <Route path="/:id/history" element={<History />} /> */}
-                        <Route path="/:id/achievements" element={<Achievements user={user} fetchAchievements={fetchAchievements} achievements={achievements} />} />
+                        <Route path="/:id/achievements" element={<Achievements user={user} fetchAchievements={fetchAchievements} unlockedAchievements={unlockedAchievements} />} />
                     </>
                 )}
             </Routes>

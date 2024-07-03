@@ -9,9 +9,10 @@ const userSchema = new Schema({
         type: Map,
         of: Number
     },
-    achievements: {
+    unlockedAchievements: {
         type: Map,
-        of: Boolean
+        of: Boolean,
+        default: () => new Map()
     }
 });
 
