@@ -49,6 +49,10 @@ const Conclusions = ({ fetchAchievements, unlockedAchievements, achievementsData
 
     const updateUserConclusion = async (userId, conclusionId) => {
         try {
+            const token = localStorage.getItem('token'); // Ensure token is retrieved correctly
+            if (!token) {
+                throw new Error('Token not found');
+            }
             const response = await fetch(`${backendUrl}/user/${userId}/conclusion`, {
                 method: 'POST',
                 headers: {
