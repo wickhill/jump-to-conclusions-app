@@ -65,11 +65,11 @@ const Conclusions = ({ fetchAchievements, unlockedAchievements, achievementsData
                 throw new Error('Failed to update conclusion');
             }
             const data = await response.json();
-            // if (fetchAchievements) {
-            //     fetchAchievements();
-            // } else {
-            //     console.error("fetchAchievements is not defined");
-            // }
+            if (fetchAchievements) {
+                fetchAchievements();
+            } else {
+                console.error("fetchAchievements is not defined");
+            }
         } catch (error) {
             console.error("Error updating conclusion:", error);
             setError('Failed to update conclusion. Please try again.');
