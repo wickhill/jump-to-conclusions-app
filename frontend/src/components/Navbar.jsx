@@ -66,12 +66,12 @@ const Navbar = () => {
             </div>
           )}
         </div>
-        {user && (
+        {/* {user && (
           <Link to={`/${user._id}/history`} className="flex flex-col items-center">
             <img src={TPSreport} className="h-16" />
             <span className="text-center text-xs text-gray-900 mt-1">History</span>
           </Link>
-        )}
+        )} */}
         <div className="flex items-center space-x-3 h-10">
           {user ? (
             <div className="relative">
