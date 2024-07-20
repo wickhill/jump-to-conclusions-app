@@ -12,6 +12,13 @@ const Conclusions = ({ fetchAchievements, unlockedAchievements, achievementsData
     const [highlightedIndex, setHighlightedIndex] = useState(null);
     const [randomIndex, setRandomIndex] = useState(null);
     const [error, setError] = useState(null);
+    const [inputText, setInputText] = useState("");
+
+    const handleInputChange = (event) => {
+        setInputText(event.target.value);
+    };
+    
+
 
     useEffect(() => {
         let interval;
@@ -37,7 +44,7 @@ const Conclusions = ({ fetchAchievements, unlockedAchievements, achievementsData
                     const conclusionId = achievementsData[finalRandomIndex].name;
                     console.log(`The user Jumping to Conclusions is: ${user._id}`);
                     console.log(`Sending POST request with conclusionId: ${conclusionId}`);
-                    updateUserConclusion(user._id, conclusionId);
+                    updateUserConclusion(user._id, conclusionId, inputText);
                 } else {
                     console.error("User is not defined");
                 }
@@ -45,9 +52,9 @@ const Conclusions = ({ fetchAchievements, unlockedAchievements, achievementsData
                 console.error("Achievements data is not an array");
             }
         }, 2300);
-    }, [user, achievementsData]);
+    }, [user, achievementsData, inputText]);
 
-    const updateUserConclusion = async (userId, conclusionId) => {
+    const updateUserConclusion = async (userId, conclusionId, inputText) => {
         try {
             const token = localStorage.getItem('token'); // Ensure token is retrieved correctly
             if (!token) {
@@ -59,7 +66,7 @@ const Conclusions = ({ fetchAchievements, unlockedAchievements, achievementsData
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
-                body: JSON.stringify({ conclusionId }),
+                body: JSON.stringify({ conclusionId, inputText }),
             });
             if (!response.ok) {
                 throw new Error('Failed to update conclusion');
@@ -114,6 +121,15 @@ const Conclusions = ({ fetchAchievements, unlockedAchievements, achievementsData
                 <h2 className="text-3xl jersey-15-regular mt-8 mb-5" style={{ marginBottom: '0px', marginTop: '20px' }}>---------------------------</h2>
                 <h2 className="text-4xl jersey-15-regular mt-8 mb-5" style={{ marginBottom: '0px', marginTop: '0px' }}>START</h2>
                 </div>
+
+                <input
+            type="text"
+            value={inputText}
+            onChange={handleInputChange}
+            placeholder="Enter your question"
+            className="text-input"
+        />
+
             </div>
 
             <footer className="footer mt-auto">
