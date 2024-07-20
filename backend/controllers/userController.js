@@ -131,7 +131,7 @@ router.put('/:id', async (req, res) => {
 // POST Route for User Conclusions
 router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
     const { id } = req.params;
-    const { conclusionId, text } = req.body; // ensure question is included in the request body
+    const { conclusionId, question } = req.body; // ensure question is included in the request body
 
     console.log(`Received POST request with conclusionId: ${conclusionId} and question: ${question}`);
 
@@ -159,7 +159,7 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
         console.log(`Required keywords for ${conclusionId}: ${requiredKeywords}`);
 
         // Extract user question keywords
-        const userKeywords = extractKeywords(text);
+        const userKeywords = extractKeywords(question);
 
         // Check if incremented count meets required landings and keywords are present
         const hasRequiredKeywords = requiredKeywords.every(keyword => userKeywords.includes(keyword));
