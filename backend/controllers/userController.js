@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../jwt.config');
 const achievementsData = require('../models/achievementsData');
+const { extractKeywords } = require('../backendUtils');
 
 // Create token function with expiration
 function createToken(user) {
@@ -130,7 +131,7 @@ router.put('/:id', async (req, res) => {
 // POST Route for User Conclusions
 router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
     const { id } = req.params;
-    const { conclusionId, question } = req.body; // ensure question is included in the request body
+    const { conclusionId, text } = req.body; // ensure question is included in the request body
 
     console.log(`Received POST request with conclusionId: ${conclusionId} and question: ${question}`);
 
@@ -149,15 +150,22 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
         user.conclusions.set(conclusionId, newCount);
         console.log(`New count for ${conclusionId}: ${newCount}`);
 
-        // Retrieve required number of landings for specified conclusionId
+        // Retrieve required number of landings and required keywords for specified conclusionId
         const achievement = achievementsData.find(a => a.name === conclusionId);
         const requiredLandings = achievement ? achievement.requiredLandings : 3;
-        console.log(`Required landings for ${conclusionId}: ${requiredLandings}`);
-        console.log(`Current count type: ${typeof userLandingCount}, Required landings type: ${typeof requiredLandings}`);
+        const requiredKeywords = achievement.requiredKeywords || []; // Ensure requiredKeywords is an array
 
-        // Check if incremented count meets required landings
+        console.log(`Required landings for ${conclusionId}: ${requiredLandings}`);
+        console.log(`Required keywords for ${conclusionId}: ${requiredKeywords}`);
+
+        // Extract user question keywords
+        const userKeywords = extractKeywords(text);
+
+        // Check if incremented count meets required landings and keywords are present
+        const hasRequiredKeywords = requiredKeywords.every(keyword => userKeywords.includes(keyword));
+
         console.log(`New count: ${newCount}, Required landings: ${requiredLandings}`);
-        if (newCount >= requiredLandings) {
+        if (newCount >= requiredLandings || hasRequiredKeywords) {
             console.log('Setting achievement to true for', conclusionId);
             user.unlockedAchievements.set(conclusionId, true);
             console.log(`Achievement for ${conclusionId} unlocked!`);
