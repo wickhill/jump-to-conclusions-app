@@ -6,6 +6,7 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 import UpdateUserProfile from './components/UpdateUserProfile';
 import Achievements from './pages/Achievements';
+import History from './pages/History';
 import { UserProvider, UserContext } from './UserContext';
 const backendUrl = import.meta.env.VITE_APP_CLIENT_BACKEND_URL;
 import Logout from './components/Logout';
@@ -79,6 +80,7 @@ function App() {
                     <>
                         <Route path="/updateProfile" element={<UpdateUserProfile />} />
                         <Route path="/:id/achievements" element={<Achievements user={user} fetchAchievements={fetchAchievements} unlockedAchievements={unlockedAchievements} />} />
+                        <Route path="/:id/history" element={<History />} />
                     </>
                 )}
             </Routes>

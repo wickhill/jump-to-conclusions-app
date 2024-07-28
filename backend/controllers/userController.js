@@ -208,4 +208,23 @@ router.get('/achievementsData', (req, res) => {
     res.json(achievementsData);
 });
 
+// GET route for user history
+router.get('/:id/history', checkToken, ensureLoggedIn, async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Assuming user.history is an array of objects with question and conclusion fields
+        res.status(200).json({ history: user.history || [] });
+    } catch (error) {
+        console.error('Error fetching user history:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
 module.exports = router;
