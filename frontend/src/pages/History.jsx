@@ -10,7 +10,7 @@ const History = ({ user }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${backendUrl}/achievementsData`);
+                const response = await fetch(`${backendUrl}/user/achievementsData`);
                 const data = await response.json();
                 setAchievementsData(data);
             } catch (error) {

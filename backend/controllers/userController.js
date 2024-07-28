@@ -129,11 +129,12 @@ router.put('/:id', async (req, res) => {
 });
 
 // POST Route for User Conclusions
+// POST Route for User Conclusions
 router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
     const { id } = req.params;
-    const { conclusionId, question } = req.body; // ensure question is included in the request body
+    const { conclusionId, inputText } = req.body; // Changed question to inputText
 
-    console.log(`Received POST request with conclusionId: ${conclusionId} and question: ${question}`);
+    console.log(`Received POST request with conclusionId: ${conclusionId} and question: ${inputText}`);
 
     try {
         const user = await User.findById(id);
@@ -159,7 +160,7 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
         console.log(`Required keywords for ${conclusionId}: ${requiredKeywords}`);
 
         // Extract user question keywords
-        const userKeywords = extractKeywords(question);
+        const userKeywords = extractKeywords(inputText);
 
         // Check if incremented count meets required landings and keywords are present
         const hasRequiredKeywords = requiredKeywords.every(keyword => userKeywords.includes(keyword));
@@ -171,13 +172,20 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
             console.log(`Achievement for ${conclusionId} unlocked!`);
         }
 
+        // Add entry to user history
+        user.history.push({
+            question: inputText || '',
+            conclusion: conclusionId
+        });
+
         await user.save();
-        res.status(200).json({ message: 'Conclusion count updated' }); // send JSON response
+        res.status(200).json({ message: 'Conclusion count updated and history added' }); // send JSON response
     } catch (error) {
         console.error('Error updating conclusion:', error);
         res.status(500).json({ error: 'Internal Server Error' }); // send JSON response
     }
 });
+
 
 // CREATE Route for User Achievements
 router.get("/:id/achievements", function (req, res) {
@@ -203,17 +211,17 @@ router.get("/:id/achievements", function (req, res) {
         });
 });
 
-// GET Route for achievementsData
-router.get('/achievementsData', (req, res) => {
-    res.json(achievementsData);
-});
+// Duplicate GET Route for achievementsData
+// router.get('/achievementsData', (req, res) => {
+//     res.json(achievementsData);
+// });
 
 // GET route for user history
 router.get('/:id/history', checkToken, ensureLoggedIn, async (req, res) => {
     const { id } = req.params;
 
     try {
-        const user = await User.findById(id);
+        const user = await User.findById(id).select('history');
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }

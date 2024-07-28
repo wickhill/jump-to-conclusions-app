@@ -45,13 +45,13 @@ app.get("/", (req, res) => {
 //     res.send("User History!");
 // });
 
-app.get("/:id/conclusion", (req, res) => {
-    res.send("User Conclusions!");
-});
+// app.get("/:id/conclusion", (req, res) => {
+//     res.send("User Conclusions!");
+// });
 
-app.get("/:id/achievements", (req, res) => {
-    res.send("User Achievements!");
-});
+// app.get("/:id/achievements", (req, res) => {
+//     res.send("User Achievements!");
+// });
 
 
 // Connect to MongoDB
