@@ -53,8 +53,8 @@ const History = ({ user }) => {
                         const conclusion = achievementsData.find(ach => ach.name === entry.conclusion);
                         return (
                             <div key={index} className="history-entry">
-                                <span className="history-text text-lg jersey-15-regular mt-16 mb-1"><p>Question: {entry.question}</p></span>
-                                <span className="history-text text-base jersey-15-regular mt-16 mb-1"><p>Conclusion: {conclusion ? conclusion.answer : 'Unknown'}</p></span>
+                                <span className="history-text text-3xl jersey-15-regular mt-16 mb-1"><p>Question: <span className='text-blue-500'>{entry.question}</span></p></span>
+                                <span className="history-text text-3xl jersey-15-regular mt-16 mb-1"><p>Conclusion: <span className='text-green-500'>{conclusion ? conclusion.answer : 'Unknown'}</span></p></span>
                             </div>
                         );
                     })
