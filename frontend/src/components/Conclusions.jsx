@@ -54,7 +54,7 @@ const Conclusions = ({ fetchAchievements, unlockedAchievements, achievementsData
         }, 2300);
     }, [user, achievementsData, inputText]);
 
-    const updateUserConclusion = async (userId, conclusionId, inputText) => {
+    const updateUserConclusion = async (userId, conclusionId, inputText = "No Question") => {
         try {
             const token = localStorage.getItem('token'); // Ensure token is retrieved correctly
             if (!token) {

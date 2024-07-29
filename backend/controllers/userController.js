@@ -129,10 +129,9 @@ router.put('/:id', async (req, res) => {
 });
 
 // POST Route for User Conclusions
-// POST Route for User Conclusions
 router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
     const { id } = req.params;
-    const { conclusionId, inputText } = req.body; // Changed question to inputText
+    const { conclusionId, inputText = "No Question"} = req.body; // Changed question to inputText
 
     console.log(`Received POST request with conclusionId: ${conclusionId} and question: ${inputText}`);
 
@@ -174,7 +173,7 @@ router.post('/:id/conclusion', checkToken, ensureLoggedIn, async (req, res) => {
 
         // Add entry to user history
         user.history.push({
-            question: inputText || '',
+            question: inputText,
             conclusion: conclusionId
         });
 

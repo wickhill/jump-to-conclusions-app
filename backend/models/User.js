@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const historySchema = new Schema({
-    question: { type: String, required: true },
+    question: { type: String },
     conclusion: { type: String, required: true },
     timestamp: { type: Date, default: Date.now }
 });
