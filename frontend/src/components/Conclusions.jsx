@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
-// import colorMapping from "../colorMapping"; // For local deployment, otherwise app breaks
-import colorMapping from "../colormapping"; // For Netlify deployment, otherwise app breaks
+import colorMapping from "../colorMapping"; // For local deployment, otherwise app breaks
+// import colorMapping from "../colormapping"; // For Netlify deployment, otherwise app breaks
 import Conclusion from "./Conclusion";
 import { UserContext } from '../UserContext';
 import footprintSvg from '../assets/footprint.svg';
