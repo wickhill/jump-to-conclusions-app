@@ -24,6 +24,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Allow preflight requests for all routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
@@ -40,20 +41,6 @@ app.use('/user', userController);
 app.get("/", (req, res) => {
     res.send("Jump! To Conclusions!");
 });
-
-// // Show Route
-// app.get("/:id/history/", (req, res) => {
-//     res.send("User History!");
-// });
-
-// app.get("/:id/conclusion", (req, res) => {
-//     res.send("User Conclusions!");
-// });
-
-// app.get("/:id/achievements", (req, res) => {
-//     res.send("User Achievements!");
-// });
-
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
