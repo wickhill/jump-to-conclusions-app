@@ -45,7 +45,7 @@ const History = ({ user }) => {
     return (
         <div id="content" className="p-1 text-center">
             <div className="history-text text-base jersey-15-regular mt-16 mb-1" style={{ marginBottom: '0px', marginTop: '120px' }}>
-            <h1>History:</h1>
+            <h1>User History:</h1>
             </div>
             <div className="history-text" style={{ marginBottom: '-30px', marginTop: '15px' }}>
                 {history.length > 0 ? (
