@@ -56,7 +56,10 @@ export const UserProvider = ({ children }) => {
     
         try {
             const response = await fetch(`${backendUrl}/user/achievementsData`, {
-                credentials: 'include'
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -101,3 +104,5 @@ export const UserProvider = ({ children }) => {
         // it provides the state and functions defined in `UserProvider` to any component within the tree that consumes the context
     );
 };
+
+export default UserProvider;
