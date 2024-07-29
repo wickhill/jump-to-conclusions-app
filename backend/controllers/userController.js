@@ -35,6 +35,7 @@ function ensureLoggedIn(req, res, next) {
 
 // Fetch achievementsData
 router.get('/achievementsData', (req, res) => {
+    console.log('Fetching achievements data');
     res.json(achievementsData);
 });
 
