@@ -55,7 +55,9 @@ export const UserProvider = ({ children }) => {
         if (dataFetched) return; // prevent multiple fetches
     
         try {
-            const response = await fetch(`${backendUrl}/user/achievementsData`);
+            const response = await fetch(`${backendUrl}/user/achievementsData`, {
+                credentials: 'include'
+            });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
