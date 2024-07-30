@@ -72,7 +72,7 @@
 ## About The Project
 
 <div align="center" style="margin-top: 5px;">
-  <a href="https://main--jump-to-conclusions.netlify.app/"><img src="https://i.imgur.com/ucpNspo.jpg" alt="Jump To Conclusions Homescreen" width="323" height="700"></a>
+  <a href="https://main--jump-to-conclusions.netlify.app/"><img src="https://i.imgur.com/4JMbnN2.jpg" alt="Jump To Conclusions Homescreen" width="323" height="700"></a>
   <a href="https://main--jump-to-conclusions.netlify.app/"><img src="https://i.imgur.com/pbKgb9W.jpg" alt="Jump To Conclusions Cheeves" width="324" height="700"></a>
   <a href="https://www.youtube.com/watch?v=sDEL4Ty950Q&t=25s" target="_blank">
     <img src="https://i.imgur.com/yGPWy4Y.jpg" alt="Jump To Conclusions Logo" width="450" height="450">
