@@ -19,7 +19,6 @@ const Conclusions = ({ fetchAchievements, unlockedAchievements, achievementsData
     };
     
 
-
     useEffect(() => {
         let interval;
         if (highlightedIndex !== null && Array.isArray(achievementsData)) {

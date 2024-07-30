@@ -10,7 +10,7 @@ const morgan = require("morgan");
 const app = express();
 
 // Middleware
-const whitelist = ['http://localhost:5173', 'https://main--jump-to-conclusions.netlify.app', 'https://your-heroku-app.herokuapp.com'];
+const whitelist = ['http://localhost:5173', 'https://main--jump-to-conclusions.netlify.app', 'https://jump-to-conclusions-backend-38ce299a6f94.herokuapp.com'];
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
