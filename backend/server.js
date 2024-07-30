@@ -10,12 +10,7 @@ const morgan = require("morgan");
 const app = express();
 
 // Middleware
-const whitelist = [
-    'http://localhost:5173', 
-    'https://main--jump-to-conclusions.netlify.app',
-    'https://jump-to-conclusions-backend-f0c77742ec0a.herokuapp.com/'
-];
-
+const whitelist = ['http://localhost:5173', 'https://main--jump-to-conclusions.netlify.app', 'https://your-heroku-app.herokuapp.com'];
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
@@ -24,10 +19,12 @@ const corsOptions = {
             callback(new Error('Not allowed by CORS'));
         }
     },
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 200,
+    credentials: true // Allow credentials
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Allow preflight requests for all routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
