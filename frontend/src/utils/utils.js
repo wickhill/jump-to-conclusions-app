@@ -30,7 +30,7 @@ export const resizeText = (element, minFontSize, maxFontSize) => {
   } else if (words.length === 2) {
     fontSize = Math.min(maxFontSize, fontSize - 3); // Slightly decrease the font size for two words
     // console.log(`Two words adjustment - font size: ${fontSize}px`);
-  } else if (words[0].length >= 6 || words[0] === "ACCEPT") {
+  } else if (words[0].length >= 6 || words[0] === "ACCEPT" || words[0] === "LOOSE") {
     fontSize = Math.min(maxFontSize, fontSize - 3); // Slightly decrease the font size if the first word is longer than 6 characters
     // console.log(`Long first word adjustment - font size: ${fontSize}px`);
   } else {
